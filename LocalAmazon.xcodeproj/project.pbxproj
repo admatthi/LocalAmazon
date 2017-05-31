@@ -1,0 +1,805 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84314A941B2BCC3098E06679 /* Pods_LocalAmazonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3233F17A963C780CFF2AC /* Pods_LocalAmazonTests.framework */; };
+		9D63E6861EDE141B0003C3B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6851EDE141B0003C3B9 /* AppDelegate.swift */; };
+		9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6871EDE141B0003C3B9 /* ViewController.swift */; };
+		9D63E68B1EDE141B0003C3B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E6891EDE141B0003C3B9 /* Main.storyboard */; };
+		9D63E68D1EDE141B0003C3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E68C1EDE141B0003C3B9 /* Assets.xcassets */; };
+		9D63E6901EDE141B0003C3B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E68E1EDE141B0003C3B9 /* LaunchScreen.storyboard */; };
+		9D63E69B1EDE141B0003C3B9 /* LocalAmazonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E69A1EDE141B0003C3B9 /* LocalAmazonTests.swift */; };
+		9D63E6A61EDE141B0003C3B9 /* LocalAmazonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6A51EDE141B0003C3B9 /* LocalAmazonUITests.swift */; };
+		9D63E6B41EDE15620003C3B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E6B31EDE15620003C3B9 /* GoogleService-Info.plist */; };
+		9D63E6B51EDE15620003C3B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E6B31EDE15620003C3B9 /* GoogleService-Info.plist */; };
+		9D63E6B61EDE15620003C3B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E6B31EDE15620003C3B9 /* GoogleService-Info.plist */; };
+		9D63E6B81EDE15C80003C3B9 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */; };
+		9D63E6B91EDE15C80003C3B9 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */; };
+		9D63E6BA1EDE15C80003C3B9 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */; };
+		9D63E6BC1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */; };
+		9D63E6BD1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */; };
+		9D63E6BE1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */; };
+		9D63E6C01EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */; };
+		9D63E6C11EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */; };
+		9D63E6C21EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */; };
+		9D63E6C41EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */; };
+		9D63E6C51EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */; };
+		9D63E6C61EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */; };
+		9D63E6C81EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */; };
+		9D63E6C91EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */; };
+		9D63E6CA1EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */; };
+		9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
+		9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
+		9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
+		9DEDB6B71EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6B61EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift */; };
+		9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */; };
+		9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */; };
+		9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */; };
+		A11C8A7550B7CA4DA6DB01FB /* Pods_LocalAmazonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9D08C06520E0DD04A5316F /* Pods_LocalAmazonUITests.framework */; };
+		E7BD21549253FE6CD5F68446 /* Pods_LocalAmazon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23E07248141852F019EEFEA /* Pods_LocalAmazon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9D63E6971EDE141B0003C3B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D63E67A1EDE141B0003C3B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D63E6811EDE141B0003C3B9;
+			remoteInfo = LocalAmazon;
+		};
+		9D63E6A21EDE141B0003C3B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D63E67A1EDE141B0003C3B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D63E6811EDE141B0003C3B9;
+			remoteInfo = LocalAmazon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F9D08C06520E0DD04A5316F /* Pods_LocalAmazonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalAmazonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21F3233F17A963C780CFF2AC /* Pods_LocalAmazonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalAmazonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		399AF003035145447D06D6BA /* Pods-LocalAmazonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonUITests/Pods-LocalAmazonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3C02998C2D678B07D459F1CE /* Pods-LocalAmazonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonUITests/Pods-LocalAmazonUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7C32BAE4A3487D2C02816E25 /* Pods-LocalAmazon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazon.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazon/Pods-LocalAmazon.release.xcconfig"; sourceTree = "<group>"; };
+		9D63E6821EDE141B0003C3B9 /* LocalAmazon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalAmazon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D63E6851EDE141B0003C3B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9D63E6871EDE141B0003C3B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D63E68A1EDE141B0003C3B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9D63E68C1EDE141B0003C3B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9D63E68F1EDE141B0003C3B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9D63E6911EDE141B0003C3B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D63E6961EDE141B0003C3B9 /* LocalAmazonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalAmazonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D63E69A1EDE141B0003C3B9 /* LocalAmazonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAmazonTests.swift; sourceTree = "<group>"; };
+		9D63E69C1EDE141B0003C3B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D63E6A11EDE141B0003C3B9 /* LocalAmazonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalAmazonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D63E6A51EDE141B0003C3B9 /* LocalAmazonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAmazonUITests.swift; sourceTree = "<group>"; };
+		9D63E6A71EDE141B0003C3B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D63E6B31EDE15620003C3B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCartViewController.swift; sourceTree = "<group>"; };
+		9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmationViewController.swift; sourceTree = "<group>"; };
+		9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPurchasesViewController.swift; sourceTree = "<group>"; };
+		9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCreateViewController.swift; sourceTree = "<group>"; };
+		9DEDB6B61EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActualProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCartTableViewCell.swift; sourceTree = "<group>"; };
+		9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPurchasesTableViewCell.swift; sourceTree = "<group>"; };
+		D7CE557F2DFF0603333EF5BA /* Pods-LocalAmazon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazon/Pods-LocalAmazon.debug.xcconfig"; sourceTree = "<group>"; };
+		E053FBC822DFAEEFB20549A5 /* Pods-LocalAmazonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonTests/Pods-LocalAmazonTests.release.xcconfig"; sourceTree = "<group>"; };
+		F23E07248141852F019EEFEA /* Pods_LocalAmazon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalAmazon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB6F1515E6A12224B086A167 /* Pods-LocalAmazonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonTests/Pods-LocalAmazonTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9D63E67F1EDE141B0003C3B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7BD21549253FE6CD5F68446 /* Pods_LocalAmazon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D63E6931EDE141B0003C3B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84314A941B2BCC3098E06679 /* Pods_LocalAmazonTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D63E69E1EDE141B0003C3B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11C8A7550B7CA4DA6DB01FB /* Pods_LocalAmazonUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F745160EA24FF675C14D54E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F23E07248141852F019EEFEA /* Pods_LocalAmazon.framework */,
+				21F3233F17A963C780CFF2AC /* Pods_LocalAmazonTests.framework */,
+				0F9D08C06520E0DD04A5316F /* Pods_LocalAmazonUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D63E6791EDE141B0003C3B9 = {
+			isa = PBXGroup;
+			children = (
+				9D63E6841EDE141B0003C3B9 /* LocalAmazon */,
+				9D63E6991EDE141B0003C3B9 /* LocalAmazonTests */,
+				9D63E6A41EDE141B0003C3B9 /* LocalAmazonUITests */,
+				9D63E6831EDE141B0003C3B9 /* Products */,
+				9E2FCF4C44601C3061EDD5B8 /* Pods */,
+				2F745160EA24FF675C14D54E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9D63E6831EDE141B0003C3B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D63E6821EDE141B0003C3B9 /* LocalAmazon.app */,
+				9D63E6961EDE141B0003C3B9 /* LocalAmazonTests.xctest */,
+				9D63E6A11EDE141B0003C3B9 /* LocalAmazonUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D63E6841EDE141B0003C3B9 /* LocalAmazon */ = {
+			isa = PBXGroup;
+			children = (
+				9D63E6851EDE141B0003C3B9 /* AppDelegate.swift */,
+				9D63E6871EDE141B0003C3B9 /* ViewController.swift */,
+				9DEDB6B61EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift */,
+				9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */,
+				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */,
+				9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */,
+				9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */,
+				9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */,
+				9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */,
+				9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */,
+				9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */,
+				9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */,
+				9D63E68C1EDE141B0003C3B9 /* Assets.xcassets */,
+				9D63E68E1EDE141B0003C3B9 /* LaunchScreen.storyboard */,
+				9D63E6911EDE141B0003C3B9 /* Info.plist */,
+				9D63E6B31EDE15620003C3B9 /* GoogleService-Info.plist */,
+			);
+			path = LocalAmazon;
+			sourceTree = "<group>";
+		};
+		9D63E6991EDE141B0003C3B9 /* LocalAmazonTests */ = {
+			isa = PBXGroup;
+			children = (
+				9D63E69A1EDE141B0003C3B9 /* LocalAmazonTests.swift */,
+				9D63E69C1EDE141B0003C3B9 /* Info.plist */,
+			);
+			path = LocalAmazonTests;
+			sourceTree = "<group>";
+		};
+		9D63E6A41EDE141B0003C3B9 /* LocalAmazonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9D63E6A51EDE141B0003C3B9 /* LocalAmazonUITests.swift */,
+				9D63E6A71EDE141B0003C3B9 /* Info.plist */,
+			);
+			path = LocalAmazonUITests;
+			sourceTree = "<group>";
+		};
+		9E2FCF4C44601C3061EDD5B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7CE557F2DFF0603333EF5BA /* Pods-LocalAmazon.debug.xcconfig */,
+				7C32BAE4A3487D2C02816E25 /* Pods-LocalAmazon.release.xcconfig */,
+				FB6F1515E6A12224B086A167 /* Pods-LocalAmazonTests.debug.xcconfig */,
+				E053FBC822DFAEEFB20549A5 /* Pods-LocalAmazonTests.release.xcconfig */,
+				3C02998C2D678B07D459F1CE /* Pods-LocalAmazonUITests.debug.xcconfig */,
+				399AF003035145447D06D6BA /* Pods-LocalAmazonUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9D63E6811EDE141B0003C3B9 /* LocalAmazon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D63E6AA1EDE141B0003C3B9 /* Build configuration list for PBXNativeTarget "LocalAmazon" */;
+			buildPhases = (
+				AD32CEC7740E8EF945448148 /* [CP] Check Pods Manifest.lock */,
+				9D63E67E1EDE141B0003C3B9 /* Sources */,
+				9D63E67F1EDE141B0003C3B9 /* Frameworks */,
+				9D63E6801EDE141B0003C3B9 /* Resources */,
+				94C86B2D98C1DDBE3B0E9A44 /* [CP] Embed Pods Frameworks */,
+				6C0CE78FCF4894BE348FC7BB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocalAmazon;
+			productName = LocalAmazon;
+			productReference = 9D63E6821EDE141B0003C3B9 /* LocalAmazon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9D63E6951EDE141B0003C3B9 /* LocalAmazonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D63E6AD1EDE141B0003C3B9 /* Build configuration list for PBXNativeTarget "LocalAmazonTests" */;
+			buildPhases = (
+				654C8FFD0F830A7D5C46BD33 /* [CP] Check Pods Manifest.lock */,
+				9D63E6921EDE141B0003C3B9 /* Sources */,
+				9D63E6931EDE141B0003C3B9 /* Frameworks */,
+				9D63E6941EDE141B0003C3B9 /* Resources */,
+				18472C8A2563C3424944E4D3 /* [CP] Embed Pods Frameworks */,
+				02752A345DF51ED12FF1D83F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D63E6981EDE141B0003C3B9 /* PBXTargetDependency */,
+			);
+			name = LocalAmazonTests;
+			productName = LocalAmazonTests;
+			productReference = 9D63E6961EDE141B0003C3B9 /* LocalAmazonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9D63E6A01EDE141B0003C3B9 /* LocalAmazonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D63E6B01EDE141B0003C3B9 /* Build configuration list for PBXNativeTarget "LocalAmazonUITests" */;
+			buildPhases = (
+				8190B084EC97CF9F0F01DA34 /* [CP] Check Pods Manifest.lock */,
+				9D63E69D1EDE141B0003C3B9 /* Sources */,
+				9D63E69E1EDE141B0003C3B9 /* Frameworks */,
+				9D63E69F1EDE141B0003C3B9 /* Resources */,
+				0A3B579E42EBF995521BB374 /* [CP] Embed Pods Frameworks */,
+				2751BDD3DD9B5690886FB25B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D63E6A31EDE141B0003C3B9 /* PBXTargetDependency */,
+			);
+			name = LocalAmazonUITests;
+			productName = LocalAmazonUITests;
+			productReference = 9D63E6A11EDE141B0003C3B9 /* LocalAmazonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D63E67A1EDE141B0003C3B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "AA Tech";
+				TargetAttributes = {
+					9D63E6811EDE141B0003C3B9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 797Q3HJ5U5;
+						ProvisioningStyle = Automatic;
+					};
+					9D63E6951EDE141B0003C3B9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 797Q3HJ5U5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9D63E6811EDE141B0003C3B9;
+					};
+					9D63E6A01EDE141B0003C3B9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 797Q3HJ5U5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9D63E6811EDE141B0003C3B9;
+					};
+				};
+			};
+			buildConfigurationList = 9D63E67D1EDE141B0003C3B9 /* Build configuration list for PBXProject "LocalAmazon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9D63E6791EDE141B0003C3B9;
+			productRefGroup = 9D63E6831EDE141B0003C3B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9D63E6811EDE141B0003C3B9 /* LocalAmazon */,
+				9D63E6951EDE141B0003C3B9 /* LocalAmazonTests */,
+				9D63E6A01EDE141B0003C3B9 /* LocalAmazonUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9D63E6801EDE141B0003C3B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D63E6901EDE141B0003C3B9 /* LaunchScreen.storyboard in Resources */,
+				9D63E6B41EDE15620003C3B9 /* GoogleService-Info.plist in Resources */,
+				9D63E68D1EDE141B0003C3B9 /* Assets.xcassets in Resources */,
+				9D63E68B1EDE141B0003C3B9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D63E6941EDE141B0003C3B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D63E6B51EDE15620003C3B9 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D63E69F1EDE141B0003C3B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D63E6B61EDE15620003C3B9 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02752A345DF51ED12FF1D83F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalAmazonTests/Pods-LocalAmazonTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A3B579E42EBF995521BB374 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalAmazonUITests/Pods-LocalAmazonUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18472C8A2563C3424944E4D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalAmazonTests/Pods-LocalAmazonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2751BDD3DD9B5690886FB25B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalAmazonUITests/Pods-LocalAmazonUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		654C8FFD0F830A7D5C46BD33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6C0CE78FCF4894BE348FC7BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalAmazon/Pods-LocalAmazon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8190B084EC97CF9F0F01DA34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		94C86B2D98C1DDBE3B0E9A44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocalAmazon/Pods-LocalAmazon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD32CEC7740E8EF945448148 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9D63E67E1EDE141B0003C3B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D63E6C41EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
+				9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */,
+				9DEDB6B71EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift in Sources */,
+				9D63E6C81EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
+				9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */,
+				9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */,
+				9D63E6B81EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
+				9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */,
+				9D63E6C01EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
+				9D63E6861EDE141B0003C3B9 /* AppDelegate.swift in Sources */,
+				9D63E6BC1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D63E6921EDE141B0003C3B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D63E6BD1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
+				9D63E6C51EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
+				9D63E6B91EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
+				9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9D63E69B1EDE141B0003C3B9 /* LocalAmazonTests.swift in Sources */,
+				9D63E6C11EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
+				9D63E6C91EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D63E69D1EDE141B0003C3B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D63E6BE1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
+				9D63E6C61EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
+				9D63E6BA1EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
+				9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9D63E6A61EDE141B0003C3B9 /* LocalAmazonUITests.swift in Sources */,
+				9D63E6C21EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
+				9D63E6CA1EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9D63E6981EDE141B0003C3B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D63E6811EDE141B0003C3B9 /* LocalAmazon */;
+			targetProxy = 9D63E6971EDE141B0003C3B9 /* PBXContainerItemProxy */;
+		};
+		9D63E6A31EDE141B0003C3B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D63E6811EDE141B0003C3B9 /* LocalAmazon */;
+			targetProxy = 9D63E6A21EDE141B0003C3B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9D63E6891EDE141B0003C3B9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D63E68A1EDE141B0003C3B9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9D63E68E1EDE141B0003C3B9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D63E68F1EDE141B0003C3B9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9D63E6A81EDE141B0003C3B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9D63E6A91EDE141B0003C3B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9D63E6AB1EDE141B0003C3B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7CE557F2DFF0603333EF5BA /* Pods-LocalAmazon.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 797Q3HJ5U5;
+				INFOPLIST_FILE = LocalAmazon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9D63E6AC1EDE141B0003C3B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C32BAE4A3487D2C02816E25 /* Pods-LocalAmazon.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 797Q3HJ5U5;
+				INFOPLIST_FILE = LocalAmazon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		9D63E6AE1EDE141B0003C3B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB6F1515E6A12224B086A167 /* Pods-LocalAmazonTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 797Q3HJ5U5;
+				INFOPLIST_FILE = LocalAmazonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalAmazon.app/LocalAmazon";
+			};
+			name = Debug;
+		};
+		9D63E6AF1EDE141B0003C3B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E053FBC822DFAEEFB20549A5 /* Pods-LocalAmazonTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 797Q3HJ5U5;
+				INFOPLIST_FILE = LocalAmazonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalAmazon.app/LocalAmazon";
+			};
+			name = Release;
+		};
+		9D63E6B11EDE141B0003C3B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C02998C2D678B07D459F1CE /* Pods-LocalAmazonUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 797Q3HJ5U5;
+				INFOPLIST_FILE = LocalAmazonUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LocalAmazon;
+			};
+			name = Debug;
+		};
+		9D63E6B21EDE141B0003C3B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 399AF003035145447D06D6BA /* Pods-LocalAmazonUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 797Q3HJ5U5;
+				INFOPLIST_FILE = LocalAmazonUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LocalAmazon;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9D63E67D1EDE141B0003C3B9 /* Build configuration list for PBXProject "LocalAmazon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D63E6A81EDE141B0003C3B9 /* Debug */,
+				9D63E6A91EDE141B0003C3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D63E6AA1EDE141B0003C3B9 /* Build configuration list for PBXNativeTarget "LocalAmazon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D63E6AB1EDE141B0003C3B9 /* Debug */,
+				9D63E6AC1EDE141B0003C3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D63E6AD1EDE141B0003C3B9 /* Build configuration list for PBXNativeTarget "LocalAmazonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D63E6AE1EDE141B0003C3B9 /* Debug */,
+				9D63E6AF1EDE141B0003C3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D63E6B01EDE141B0003C3B9 /* Build configuration list for PBXNativeTarget "LocalAmazonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D63E6B11EDE141B0003C3B9 /* Debug */,
+				9D63E6B21EDE141B0003C3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D63E67A1EDE141B0003C3B9 /* Project object */;
+}
