@@ -8,8 +8,18 @@
 
 import UIKit
 import MapKit
+import CoreLocation
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
+import Firebase
 
-class ProductDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProductDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var openhours: UILabel!
+    @IBOutlet weak var citystateziplabel: UILabel!
+    @IBOutlet weak var featureslabel: UILabel!
+    @IBOutlet weak var featurestext: UILabel!
     @IBOutlet weak var price: UILabel!
 
     @IBOutlet weak var about: UILabel!
@@ -40,10 +50,164 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     @IBAction func tapAddToCart(_ sender: Any) {
     }
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBAction func tapReviews(_ sender: Any) {
+        
+        showreviews()
+        hidelocation()
+        hidedetails()
+    }
+    @IBOutlet weak var taplocation: UIButton!
+    @IBAction func tapLocation(_ sender: Any) {
+        
+        showlocation()
+        hidedetails()
+        hidereviews()
+    }
+    
+    @IBOutlet weak var tapreviews: UIButton!
+    @IBAction func tapDetails(_ sender: Any) {
+        
+        showdetails()
+        hidereviews()
+        hidelocation()
+    }
+    @IBOutlet weak var tapdetails: UIButton!
+    
+    func showreviews() {
+        
+        reviewstwo.alpha = 1
+        reviewimagetwo.alpha = 1
+        tableView.alpha = 1
+        
+    }
+    
+    func hidereviews() {
+       
+        reviewstwo.alpha = 0
+        reviewimagetwo.alpha = 0
+        tableView.alpha = 0
+        
+    }
+    
+    func hidelocation() {
+        
+        storename.alpha = 0
+        storeaddress.alpha = 0
+        mapView.alpha = 0
+        
+    }
+    
+    func showlocation() {
+        
+        storename.alpha = 1
+        storeaddress.alpha = 1
+        mapView.alpha = 1
+        
+    }
+    
+    @IBOutlet weak var descriptionlabel: UILabel!
+    func showdetails() {
+        
+        about.alpha = 1
+        aboutthebrand.alpha = 1
+        
+        descriptiontitle.alpha = 1
+        descriptionlabel.alpha = 1
+        
+    }
+    
+    func hidedetails() {
+        
+        about.alpha = 0
+        aboutthebrand.alpha = 0
+        
+        descriptiontitle.alpha = 0
+        descriptionlabel.alpha = 0
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        hidedetails()
+        hidelocation()
+        showreviews()
         // Do any additional setup after loading the view.
+        
+        productname.text = titles[thisproduct]
+        distanceaway.text = distances[thisproduct]
+
+
+        if productimages.count > 0 {
+            
+            productimage.image = productimages[thisproduct]
+            price.text = prices[thisproduct]
+            brandname.text = brands[thisproduct]
+            reviews.text = reviewss[thisproduct]
+            productsize.text = quantities[thisproduct]
+        }
+      
+        mapView.delegate = self
+
+        var bizLocation = CLLocationCoordinate2DMake((Double(bizlatitudes[thisproduct])!) , Double(bizlongitudes[thisproduct])!)
+        
+        
+        let region = MKCoordinateRegion(center: bizLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = bizLocation
+        
+        mapView.addAnnotation(annotation)
+        
+        mapView.setRegion(region, animated: true)
+        
+        ref = FIRDatabase.database().reference()
+
+        
+        queryforproductdata()
+    }
+    
+    var ref: FIRDatabaseReference?
+
+    
+    func queryforproductdata() {
+    
+        var thisproductid = relevantproductids[thisproduct]
+        
+            self.ref?.child("Products").child("\(thisproductid)").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if var name = value?["StoreName"] as? String {
+                    
+                    self.storename.text = name
+                    
+                }
+                
+                if var address = value?["StoreAddress"] as? String {
+                    
+                    self.storeaddress.text = address
+                   
+                    
+                }
+                
+                if var descriptionn = value?["Description"] as? String {
+                    
+                    self.descriptionlabel.text = descriptionn
+                    
+                }
+                
+                if var aboutbrand = value?["AboutBrand"] as? String {
+                    
+                    self.about.text = aboutbrand
+                    
+                }
+                
+          
+                
+    
+            })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +228,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return 1
         
     }
     

@@ -30,9 +30,21 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+	</array>
+	<key>Dosis-SemiBold.otf</key>
+	<string></string>
+	<key>Dosis-Medium.otf</key>
+	<string></string>
+	<key>Dosis-Regular.otf</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Tell you how far your favorite products are from you</string>
 </dict>
 </plist>

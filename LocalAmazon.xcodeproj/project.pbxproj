@@ -36,6 +36,30 @@
 		9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
 		9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
 		9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
+		9DEB62031EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
+		9DEB62041EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
+		9DEB62051EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
+		9DEB62061EDF05FB003113B0 /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */; };
+		9DEB62071EDF05FB003113B0 /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */; };
+		9DEB62081EDF05FB003113B0 /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */; };
+		9DEB62091EDF05FB003113B0 /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */; };
+		9DEB620A1EDF05FB003113B0 /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */; };
+		9DEB620B1EDF05FB003113B0 /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */; };
+		9DEB620C1EDF05FB003113B0 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FF1EDF05FB003113B0 /* Dosis-Light.otf */; };
+		9DEB620D1EDF05FB003113B0 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FF1EDF05FB003113B0 /* Dosis-Light.otf */; };
+		9DEB620E1EDF05FB003113B0 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FF1EDF05FB003113B0 /* Dosis-Light.otf */; };
+		9DEB620F1EDF05FB003113B0 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62001EDF05FB003113B0 /* Dosis-Medium.otf */; };
+		9DEB62101EDF05FB003113B0 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62001EDF05FB003113B0 /* Dosis-Medium.otf */; };
+		9DEB62111EDF05FB003113B0 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62001EDF05FB003113B0 /* Dosis-Medium.otf */; };
+		9DEB62121EDF05FB003113B0 /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */; };
+		9DEB62131EDF05FB003113B0 /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */; };
+		9DEB62141EDF05FB003113B0 /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */; };
+		9DEB62151EDF05FB003113B0 /* Dosis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */; };
+		9DEB62161EDF05FB003113B0 /* Dosis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */; };
+		9DEB62171EDF05FB003113B0 /* Dosis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */; };
+		9DEB62191EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */; };
+		9DEB621A1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */; };
+		9DEB621B1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */; };
 		9DEDB6B71EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6B61EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift */; };
 		9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */; };
 		9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */; };
@@ -87,6 +111,14 @@
 		9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmationViewController.swift; sourceTree = "<group>"; };
 		9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPurchasesViewController.swift; sourceTree = "<group>"; };
 		9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCreateViewController.swift; sourceTree = "<group>"; };
+		9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
+		9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
+		9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
+		9DEB61FF1EDF05FB003113B0 /* Dosis-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Light.otf"; sourceTree = "<group>"; };
+		9DEB62001EDF05FB003113B0 /* Dosis-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Medium.otf"; sourceTree = "<group>"; };
+		9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Regular.otf"; sourceTree = "<group>"; };
+		9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-SemiBold.otf"; sourceTree = "<group>"; };
+		9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularSearchesTableViewCell.swift; sourceTree = "<group>"; };
 		9DEDB6B61EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActualProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCartTableViewCell.swift; sourceTree = "<group>"; };
@@ -162,7 +194,10 @@
 			children = (
 				9D63E6851EDE141B0003C3B9 /* AppDelegate.swift */,
 				9D63E6871EDE141B0003C3B9 /* ViewController.swift */,
+				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
+				9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */,
 				9DEDB6B61EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift */,
+				9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */,
 				9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
 				9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */,
@@ -171,10 +206,15 @@
 				9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */,
 				9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */,
 				9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */,
-				9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */,
-				9D63E6B71EDE15C80003C3B9 /* ProductsViewController.swift */,
 				9D63E68C1EDE141B0003C3B9 /* Assets.xcassets */,
 				9D63E68E1EDE141B0003C3B9 /* LaunchScreen.storyboard */,
+				9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */,
+				9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */,
+				9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */,
+				9DEB61FF1EDF05FB003113B0 /* Dosis-Light.otf */,
+				9DEB62001EDF05FB003113B0 /* Dosis-Medium.otf */,
+				9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */,
+				9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */,
 				9D63E6911EDE141B0003C3B9 /* Info.plist */,
 				9D63E6B31EDE15620003C3B9 /* GoogleService-Info.plist */,
 			);
@@ -332,9 +372,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D63E6901EDE141B0003C3B9 /* LaunchScreen.storyboard in Resources */,
+				9DEB62121EDF05FB003113B0 /* Dosis-Regular.otf in Resources */,
+				9DEB62151EDF05FB003113B0 /* Dosis-SemiBold.otf in Resources */,
+				9DEB62091EDF05FB003113B0 /* Dosis-ExtraLight.otf in Resources */,
 				9D63E6B41EDE15620003C3B9 /* GoogleService-Info.plist in Resources */,
 				9D63E68D1EDE141B0003C3B9 /* Assets.xcassets in Resources */,
+				9DEB620F1EDF05FB003113B0 /* Dosis-Medium.otf in Resources */,
 				9D63E68B1EDE141B0003C3B9 /* Main.storyboard in Resources */,
+				9DEB620C1EDF05FB003113B0 /* Dosis-Light.otf in Resources */,
+				9DEB62061EDF05FB003113B0 /* Dosis-ExtraBold.otf in Resources */,
+				9DEB62031EDF05FB003113B0 /* Dosis-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +390,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D63E6B51EDE15620003C3B9 /* GoogleService-Info.plist in Resources */,
+				9DEB62101EDF05FB003113B0 /* Dosis-Medium.otf in Resources */,
+				9DEB62071EDF05FB003113B0 /* Dosis-ExtraBold.otf in Resources */,
+				9DEB620A1EDF05FB003113B0 /* Dosis-ExtraLight.otf in Resources */,
+				9DEB620D1EDF05FB003113B0 /* Dosis-Light.otf in Resources */,
+				9DEB62131EDF05FB003113B0 /* Dosis-Regular.otf in Resources */,
+				9DEB62041EDF05FB003113B0 /* Dosis-Bold.otf in Resources */,
+				9DEB62161EDF05FB003113B0 /* Dosis-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +405,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D63E6B61EDE15620003C3B9 /* GoogleService-Info.plist in Resources */,
+				9DEB62111EDF05FB003113B0 /* Dosis-Medium.otf in Resources */,
+				9DEB62081EDF05FB003113B0 /* Dosis-ExtraBold.otf in Resources */,
+				9DEB620B1EDF05FB003113B0 /* Dosis-ExtraLight.otf in Resources */,
+				9DEB620E1EDF05FB003113B0 /* Dosis-Light.otf in Resources */,
+				9DEB62141EDF05FB003113B0 /* Dosis-Regular.otf in Resources */,
+				9DEB62051EDF05FB003113B0 /* Dosis-Bold.otf in Resources */,
+				9DEB62171EDF05FB003113B0 /* Dosis-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +566,7 @@
 				9D63E6C81EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 				9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */,
 				9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9DEB62191EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */,
 				9D63E6B81EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */,
@@ -523,6 +585,7 @@
 				9D63E6B91EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9D63E69B1EDE141B0003C3B9 /* LocalAmazonTests.swift in Sources */,
+				9DEB621A1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9D63E6C11EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6C91EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 			);
@@ -537,6 +600,7 @@
 				9D63E6BA1EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9D63E6A61EDE141B0003C3B9 /* LocalAmazonUITests.swift in Sources */,
+				9DEB621B1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9D63E6C21EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6CA1EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 			);
