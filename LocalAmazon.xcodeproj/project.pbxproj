@@ -36,10 +36,25 @@
 		9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
 		9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
 		9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */; };
+		9D69F1421EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69F1411EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift */; };
+		9D69F1431EE1BD9800EAAE73 /* Dosis-Bold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
+		9D69F1441EE1BD9800EAAE73 /* Dosis-ExtraBold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */; };
+		9D69F1451EE1BD9800EAAE73 /* Dosis-ExtraLight.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */; };
+		9D69F1461EE1BD9800EAAE73 /* Dosis-Light.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB61FF1EDF05FB003113B0 /* Dosis-Light.otf */; };
+		9D69F1471EE1BD9800EAAE73 /* Dosis-Medium.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62001EDF05FB003113B0 /* Dosis-Medium.otf */; };
+		9D69F1481EE1BD9800EAAE73 /* Dosis-Regular.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */; };
+		9D69F1491EE1BD9800EAAE73 /* Dosis-SemiBold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */; };
+		9D69F14B1EE1C19D00EAAE73 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */; };
 		9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */; };
 		9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
 		9DCFC7AA1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
 		9DCFC7AB1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
+		9DCFC7AD1EE0D16A00D35238 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */; };
+		9DCFC7AE1EE0D16A00D35238 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */; };
+		9DCFC7AF1EE0D16A00D35238 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */; };
+		9DCFC7B11EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */; };
+		9DCFC7B21EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */; };
+		9DCFC7B31EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */; };
 		9DEB62031EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
 		9DEB62041EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
 		9DEB62051EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
@@ -118,8 +133,12 @@
 		9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmationViewController.swift; sourceTree = "<group>"; };
 		9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPurchasesViewController.swift; sourceTree = "<group>"; };
 		9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCreateViewController.swift; sourceTree = "<group>"; };
+		9D69F1411EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnOnLocationServicesViewController.swift; sourceTree = "<group>"; };
+		9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewCell.swift; sourceTree = "<group>"; };
 		9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellersTableViewCell.swift; sourceTree = "<group>"; };
+		9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
 		9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -208,14 +227,18 @@
 				9D63E6BB1EDE15DD0003C3B9 /* ProductDetailsViewController.swift */,
 				9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */,
 				9D63E6871EDE141B0003C3B9 /* ViewController.swift */,
+				9D69F1411EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift */,
 				9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */,
 				9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */,
+				9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */,
 				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */,
 				9DEB621C1EDF6F0F003113B0 /* AccountViewController.swift */,
 				9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */,
 				9D63E6C71EDE161F0003C3B9 /* MyPurchasesViewController.swift */,
 				9D63E6C31EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift */,
+				9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */,
 				9D63E6BF1EDE15F70003C3B9 /* ViewCartViewController.swift */,
 				9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */,
 				9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */,
@@ -573,21 +596,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D69F1431EE1BD9800EAAE73 /* Dosis-Bold.otf in Sources */,
+				9D69F1441EE1BD9800EAAE73 /* Dosis-ExtraBold.otf in Sources */,
+				9D69F1451EE1BD9800EAAE73 /* Dosis-ExtraLight.otf in Sources */,
+				9D69F1461EE1BD9800EAAE73 /* Dosis-Light.otf in Sources */,
+				9D69F1471EE1BD9800EAAE73 /* Dosis-Medium.otf in Sources */,
+				9D69F1481EE1BD9800EAAE73 /* Dosis-Regular.otf in Sources */,
+				9D69F1491EE1BD9800EAAE73 /* Dosis-SemiBold.otf in Sources */,
 				9D63E6C41EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
 				9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */,
 				9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
 				9DEB621D1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
 				9DEDB6B71EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift in Sources */,
 				9D63E6C81EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
+				9D69F1421EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift in Sources */,
 				9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */,
 				9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */,
 				9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9DEB62191EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
+				9DCFC7B11EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */,
 				9D63E6B81EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
+				9D69F14B1EE1C19D00EAAE73 /* FilterViewController.swift in Sources */,
 				9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */,
 				9D63E6C01EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6861EDE141B0003C3B9 /* AppDelegate.swift in Sources */,
+				9DCFC7AD1EE0D16A00D35238 /* SearchBar.swift in Sources */,
 				9D63E6BC1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,11 +634,13 @@
 				9D63E6C51EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
 				9D63E6B91EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9DCFC7B21EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9D63E69B1EDE141B0003C3B9 /* LocalAmazonTests.swift in Sources */,
 				9DEB621A1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9D63E6C11EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6C91EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 				9DCFC7AA1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
+				9DCFC7AE1EE0D16A00D35238 /* SearchBar.swift in Sources */,
 				9DEB621E1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,11 +653,13 @@
 				9D63E6C61EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
 				9D63E6BA1EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9DCFC7B31EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9D63E6A61EDE141B0003C3B9 /* LocalAmazonUITests.swift in Sources */,
 				9DEB621B1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9D63E6C21EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6CA1EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 				9DCFC7AB1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
+				9DCFC7AF1EE0D16A00D35238 /* SearchBar.swift in Sources */,
 				9DEB621F1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

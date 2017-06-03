@@ -20,6 +20,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var featurestext: UILabel!
     @IBOutlet weak var price: UILabel!
 
+    @IBOutlet weak var reviewshighlight: UILabel!
+    @IBOutlet weak var locationshighlight: UILabel!
+    @IBOutlet weak var detailshighlight: UILabel!
     @IBOutlet weak var about: UILabel!
     
     @IBOutlet weak var aboutthebrand: UILabel!
@@ -74,7 +77,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         reviewstwo.alpha = 1
         reviewimagetwo.alpha = 1
         tableView.alpha = 1
-        
+        reviewshighlight.alpha = 1
+
     }
     
     func hidereviews() {
@@ -82,18 +86,22 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         reviewstwo.alpha = 0
         reviewimagetwo.alpha = 0
         tableView.alpha = 0
+        reviewshighlight.alpha = 0
         
     }
     
     func hidelocation() {
   
         tableViewTwo.alpha = 0
+        locationshighlight.alpha = 0
     }
     
     func showlocation() {
         
    
         tableViewTwo.alpha = 1
+        locationshighlight.alpha = 1
+
         
 //        getsellerids { () -> () in
 //            
@@ -120,6 +128,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         descriptionlabel.alpha = 1
         featurestext.alpha = 1
         featureslabel.alpha = 1
+        featuretwo.alpha = 1
+        featurethree.alpha = 1
+        detailshighlight.alpha = 1
         
     }
     
@@ -133,17 +144,18 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         descriptionlabel.alpha = 0
         featurestext.alpha = 0
         featureslabel.alpha = 0
+        featuretwo.alpha = 0
+        featurethree.alpha = 0
+        detailshighlight.alpha = 0
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         hidedetails()
-        hidelocation()
-        showreviews()
-
         
-        currentlocation.text = searchString
+        showlocation()
+        hidereviews()
         
         // Do any additional setup after loading the view.
         
@@ -157,6 +169,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         reviews.text = "(\(reviewss[thisproduct]))"
         reviewstwo.text = "\(reviewss[thisproduct]) reviews"
         productsize.text = quantities[thisproduct]
+        
+        productimage.image = productimages[thisproduct]
       
 //        mapView.delegate = self
 //        
@@ -245,7 +259,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
             var functioncounter = 0
     
-                self.ref?.child("Products").child("\(thisproductid)").child("Sellers").observeSingleEvent(of: .value, with: { (snapshot) in
+                self.ref?.child("Products").child("\(thisproductid)").child("AllSellers").observeSingleEvent(of: .value, with: { (snapshot) in
     
                         if let snapDict = snapshot.value as? [String:AnyObject] {
     
@@ -289,7 +303,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         for each in sellerids {
             
-            self.ref?.child("Products").child("\(thisproductid)").child("Sellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.ref?.child("Products").child("\(thisproductid)").child("AllSellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -341,6 +355,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             
         }
         
+        let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
+                
         self.tableViewTwo.reloadData()
         
     }
@@ -376,6 +392,23 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                 if var aboutbrand = value?["AboutBrand"] as? String {
                     
                     self.about.text = aboutbrand
+                    
+                }
+                
+                if var g = value?["Feature1"] as? String {
+                    
+                    self.featurestext.text = g
+                    
+                }
+                if var ss = value?["Feature3"] as? String {
+                    
+                    self.featurethree.text = ss
+                    
+                }
+                
+                if var s = value?["Feature2"] as? String {
+                    
+                    self.featuretwo.text = s
                     
                 }
                 
@@ -428,6 +461,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         if tableView.tag == 1 {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SellersTableViewCell
+            
+            cell.selectionStyle = .none
         
             if sellernames.count > indexPath.row {
                 
@@ -441,12 +476,12 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             
             if sellerprices.count > indexPath.row {
                 
-                cell.price.text = sellerprices[indexPath.row]
+                cell.price.text = "$\(sellerprices[indexPath.row])"
             }
             
             if sellerdistances.count > indexPath.row {
                 
-                cell.distanceaway.text = sellerdistances[indexPath.row]
+                cell.distanceaway.text = "\(sellerdistances[indexPath.row]) mi"
             }
             
             if availablitily.count > indexPath.row {
@@ -463,6 +498,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActualProductDetails", for: indexPath) as! ActualProductDetailsTableViewCell
             
+            cell.selectionStyle = .none
+
+            
                 return cell
         }
         
@@ -471,6 +509,13 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         return cell
 
         
+    }
+    
+    @IBOutlet weak var featurethree: UILabel!
+    @IBOutlet weak var featuretwo: UILabel!
+    internal func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+
+            return nil
     }
 
 }
