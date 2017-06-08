@@ -45,6 +45,7 @@
 		9D69F1481EE1BD9800EAAE73 /* Dosis-Regular.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */; };
 		9D69F1491EE1BD9800EAAE73 /* Dosis-SemiBold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */; };
 		9D69F14B1EE1C19D00EAAE73 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */; };
+		9D965AC91EE5C0D900896098 /* CreateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */; };
 		9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */; };
 		9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
 		9DCFC7AA1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
@@ -135,6 +136,7 @@
 		9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCreateViewController.swift; sourceTree = "<group>"; };
 		9D69F1411EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnOnLocationServicesViewController.swift; sourceTree = "<group>"; };
 		9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProductViewController.swift; sourceTree = "<group>"; };
 		9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewCell.swift; sourceTree = "<group>"; };
 		9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellersTableViewCell.swift; sourceTree = "<group>"; };
 		9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */,
 				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */,
 				9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */,
 				9DEB621C1EDF6F0F003113B0 /* AccountViewController.swift */,
 				9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */,
@@ -620,6 +623,7 @@
 				9D69F14B1EE1C19D00EAAE73 /* FilterViewController.swift in Sources */,
 				9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */,
 				9D63E6C01EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
+				9D965AC91EE5C0D900896098 /* CreateProductViewController.swift in Sources */,
 				9D63E6861EDE141B0003C3B9 /* AppDelegate.swift in Sources */,
 				9DCFC7AD1EE0D16A00D35238 /* SearchBar.swift in Sources */,
 				9D63E6BC1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
@@ -796,13 +800,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7CE557F2DFF0603333EF5BA /* Pods-LocalAmazon.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
 				INFOPLIST_FILE = LocalAmazon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.NextDoor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -810,13 +815,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C32BAE4A3487D2C02816E25 /* Pods-LocalAmazon.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
 				INFOPLIST_FILE = LocalAmazon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.LocalAmazon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.NextDoor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

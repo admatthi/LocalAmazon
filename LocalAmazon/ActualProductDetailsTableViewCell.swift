@@ -10,6 +10,7 @@ import UIKit
 
 class ActualProductDetailsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var reviewername: UILabel!
     @IBOutlet weak var reviewdescription: UILabel!
     @IBOutlet weak var reviewsimage: UIImageView!
     @IBOutlet weak var reviewheadline: UILabel!

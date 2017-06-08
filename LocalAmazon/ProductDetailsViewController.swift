@@ -30,9 +30,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var descriptiontitle: UILabel!
     
+    
+    
     @IBOutlet weak var tableView: UITableView!
-    
-    
     @IBOutlet weak var reviewstwo: UILabel!
     
     @IBOutlet weak var reviewimagetwo: UIImageView!
@@ -132,6 +132,23 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         featurethree.alpha = 1
         detailshighlight.alpha = 1
         
+        if featurestext.text == "" {
+            
+            self.featureslabel.alpha = 0
+            
+            
+        }
+        
+        if descriptionlabel.text == "" {
+            
+            self.descriptiontitle.alpha = 0
+        }
+        
+        if about.text == "" {
+            
+            aboutthebrand.alpha = 0
+        }
+        
     }
     
     @IBOutlet weak var currentlocation: UILabel!
@@ -159,18 +176,55 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         // Do any additional setup after loading the view.
         
-        productname.text = titles[thisproduct]
         
-        distanceaway.text = "\(distances[thisproduct]) miles away"
+        if prices.count > 0 {
+            
+            if prices[thisproduct] != "" {
+            
+                price.text = "$\(prices[thisproduct])"
+                
+            } else {
+                
+                price.text = "No locations available"
+                price.textColor = .gray
+            }
+        }
+        
+        if titles.count > 0 {
+            
+            productname.text = titles[thisproduct]
+
+        }
+
+        if distances.count > 0 {
+            
+            distanceaway.text = "\(distances[thisproduct]) miles away"
+            
+            
+        } else {
+            
+            distanceaway.text = ""
+        }
+        
+        if brands.count > 0 {
+            
+            brandname.text = brands[thisproduct]
+
+        }
+        
+        if quantities.count > 0 {
+            
+            productsize.text = quantities[thisproduct]
+
+        }
         
         
-        price.text = "$\(prices[thisproduct])"
-        brandname.text = brands[thisproduct]
-        reviews.text = "(\(reviewss[thisproduct]))"
-        reviewstwo.text = "\(reviewss[thisproduct]) reviews"
-        productsize.text = quantities[thisproduct]
+        if productimages.count > 0 {
         
-        productimage.image = productimages[thisproduct]
+                productimage.image = productimages[thisproduct]
+                
+            }
+        
       
 //        mapView.delegate = self
 //        
@@ -194,6 +248,21 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
          
             self.queryforsellerdata { () -> () in
                 
+                self.queryforreviewids {
+                    
+                    self.queryforreviews()
+                    
+                    if reviewss.count > 0 {
+                    self.reviews.text = "(\(reviewss[thisproduct]))"
+                    self.reviewstwo.text = "\(reviewss[thisproduct]) reviews"
+                        
+                    }
+
+
+                    
+                    self.tableView.reloadData()
+                }
+                
                 self.updatedistances()
                 
             }
@@ -210,6 +279,10 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     var availablitily = [String]()
     var sellerlats = [String]()
     var sellerlongs = [String]()
+    var reviewIDs = [String]()
+    var reviewnames = [String]()
+    var reviewheadlines = [String]()
+    var reviewtext = [String]()
 
     
     var thisproductid = relevantproductids[thisproduct]
@@ -288,6 +361,87 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
                 
             }
+    
+    
+    
+    func queryforreviewids(completed: @escaping ( () -> () )) {
+        
+        var functioncounter = 0
+        
+        self.ref?.child("Products").child("\(thisproductid)").child("Reviews").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    self.reviewIDs.append(ids)
+                    
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        completed()
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                completed()
+            }
+            
+        })
+        
+        
+    }
+    
+    
+    func queryforreviews() {
+        
+        var functioncounter = 0
+        
+        if reviewIDs.count > 0 {
+            
+            for each in reviewIDs {
+                
+                self.ref?.child("Products").child("\(thisproductid)").child("Reviews").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    var value = snapshot.value as? NSDictionary
+                    
+                    
+                    if var review = value?["ReviewerName"] as? String {
+                        
+                        self.reviewnames.append(review)
+                    }
+                    
+                    if var date = value?["ReviewHeadline"] as? String {
+                        
+                        self.reviewheadlines.append(date)
+                        
+                    }
+                    
+                    if var userid = value?["ReviewText"] as? String {
+                        
+                        self.reviewtext.append(userid)
+                    }
+                    
+                    
+                    self.tableView.reloadData()
+
+                })
+                
+                tableView.reloadData()
+                
+            }
+            
+        }
+        
+    }
+
+
 
 
     func queryforsellerdata(completed: @escaping ( () -> () )) {
@@ -399,6 +553,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                     
                     self.featurestext.text = g
                     
+                    
                 }
                 if var ss = value?["Feature3"] as? String {
                     
@@ -445,7 +600,16 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             return sellernames.count
             
             
-        } else {
+        }
+        
+        if tableView.tag == 2 {
+            
+            return reviewIDs.count
+
+        }
+        
+        
+        else {
             
             return 1
 
@@ -467,6 +631,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             if sellernames.count > indexPath.row {
                 
                  cell.name.text = sellernames[indexPath.row]
+                
             }
             
             if selleraddresses.count > indexPath.row {
@@ -494,14 +659,31 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
         }
         
-        if tableView.tag == 0 {
+        if tableView.tag == 2 {
             
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ActualProductDetails", for: indexPath) as! ActualProductDetailsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActualProductDetails", for: indexPath) as! ActualProductDetailsTableViewCell
+            
+            if reviewtext.count > indexPath.row {
+                
+                cell.reviewdescription.text = reviewtext[indexPath.row]
+            }
+            
+            if reviewnames.count > indexPath.row {
+                
+                cell.reviewername.text = "- \(reviewnames[indexPath.row])"
+            }
+            
+            if reviewheadlines.count > indexPath.row {
+                
+                cell.reviewheadline.text = reviewheadlines[indexPath.row]
+            }
+            
+          
             
             cell.selectionStyle = .none
 
             
-                return cell
+            return cell
         }
         
         let cell = UITableViewCell()

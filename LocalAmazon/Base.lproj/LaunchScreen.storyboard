@@ -8,11 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Dosis-SemiBold.otf">
-            <string>Dosis-SemiBold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -26,28 +21,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen1" translatesAutoresizingMaskIntoConstraints="NO" id="4SB-AG-FwB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rp-IN-4u8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEXTDOOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fA-gQ-b6B">
-                                <rect key="frame" x="16" y="246" width="343" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="RPS-Bg-7MM"/>
-                                    <constraint firstAttribute="width" constant="343" id="dJq-P9-2bZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="55"/>
-                                <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.18805527687072754" green="0.77284145355224609" blue="0.58037185668945312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="g08-Bc-4MS">
+                                <rect key="frame" x="67" y="253.5" width="240" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="V7Y-Wq-5Jr"/>
+                                    <constraint firstAttribute="height" constant="160" id="zLF-2i-XxF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="4SB-AG-FwB" secondAttribute="bottom" id="Dsp-EJ-dhP"/>
-                            <constraint firstAttribute="trailing" secondItem="4SB-AG-FwB" secondAttribute="trailing" id="RKo-xd-zlj"/>
-                            <constraint firstItem="4SB-AG-FwB" firstAttribute="top" secondItem="9fA-gQ-b6B" secondAttribute="bottom" constant="-376" id="lj2-SS-BdU"/>
-                            <constraint firstItem="9fA-gQ-b6B" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qRZ-Bu-uIp"/>
-                            <constraint firstItem="4SB-AG-FwB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="shO-F2-v1a"/>
-                            <constraint firstItem="4SB-AG-FwB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="zJC-N7-sHe"/>
+                            <constraint firstItem="g08-Bc-4MS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4Ln-t6-6l8"/>
+                            <constraint firstAttribute="trailing" secondItem="4Rp-IN-4u8" secondAttribute="trailing" id="B7n-SX-vEm"/>
+                            <constraint firstItem="g08-Bc-4MS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VGB-6f-seo"/>
+                            <constraint firstItem="4Rp-IN-4u8" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="byO-em-3gZ"/>
+                            <constraint firstItem="4Rp-IN-4u8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="eoR-7j-wQW"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="4Rp-IN-4u8" secondAttribute="bottom" id="mte-wE-DhI"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -57,6 +53,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Screen1" width="375" height="667"/>
+        <image name="Image" width="195" height="364"/>
     </resources>
 </document>
