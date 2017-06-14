@@ -177,49 +177,46 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         // Do any additional setup after loading the view.
         
         
-        if prices.count > 0 {
-            
-            if prices[thisproduct] != "" {
+        if prices[thisproduct] != "" {
             
                 price.text = "$\(prices[thisproduct])"
                 
             } else {
                 
-                price.text = "No locations available"
-                price.textColor = .gray
+                price.text = ""
             }
-        }
         
-        if titles.count > 0 {
+        if titles[thisproduct] != "" {
             
             productname.text = titles[thisproduct]
 
         }
 
-        if distances.count > 0 {
+        if distances[thisproduct] != "" {
             
             distanceaway.text = "\(distances[thisproduct]) miles away"
             
             
         } else {
             
-            distanceaway.text = ""
+            distanceaway.text = "No locations available"
+            distanceaway.textColor = .gray
         }
         
-        if brands.count > 0 {
+        if brands[thisproduct] != "" {
             
-            brandname.text = brands[thisproduct]
+            brandname.text = ""
 
         }
         
-        if quantities.count > 0 {
+        if quantities[thisproduct] != "" {
             
             productsize.text = quantities[thisproduct]
 
         }
         
         
-        if productimages.count > 0 {
+        if productimages[thisproduct] != nil {
         
                 productimage.image = productimages[thisproduct]
                 
@@ -252,9 +249,10 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                     
                     self.queryforreviews()
                     
-                    if reviewss.count > 0 {
-                    self.reviews.text = "(\(reviewss[thisproduct]))"
-                    self.reviewstwo.text = "\(reviewss[thisproduct]) reviews"
+                    if self.reviewIDs.count > 0 {
+                        
+                    self.reviews.text = "(\(self.reviewIDs.count))"
+                    self.reviewstwo.text = "\(self.reviewIDs.count) reviews"
                         
                     }
 
@@ -460,7 +458,6 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             self.ref?.child("Products").child("\(thisproductid)").child("AllSellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
-                
                 
                 if var name = value?["StoreName"] as? String {
                     

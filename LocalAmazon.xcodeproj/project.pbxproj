@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		84314A941B2BCC3098E06679 /* Pods_LocalAmazonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3233F17A963C780CFF2AC /* Pods_LocalAmazonTests.framework */; };
+		9D1FE6A01EE9F31700A852B8 /* CreateSellerAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1FE69F1EE9F31700A852B8 /* CreateSellerAccountViewController.swift */; };
+		9D2B18FD1EEAF09800B3B176 /* AddProductToAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2B18FC1EEAF09800B3B176 /* AddProductToAccountViewController.swift */; };
+		9D2B18FF1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2B18FE1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift */; };
+		9D2B19011EEAF12F00B3B176 /* AddPriceToProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2B19001EEAF12F00B3B176 /* AddPriceToProductViewController.swift */; };
 		9D63E6861EDE141B0003C3B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6851EDE141B0003C3B9 /* AppDelegate.swift */; };
 		9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63E6871EDE141B0003C3B9 /* ViewController.swift */; };
 		9D63E68B1EDE141B0003C3B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D63E6891EDE141B0003C3B9 /* Main.storyboard */; };
@@ -114,6 +118,10 @@
 		399AF003035145447D06D6BA /* Pods-LocalAmazonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonUITests/Pods-LocalAmazonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3C02998C2D678B07D459F1CE /* Pods-LocalAmazonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonUITests/Pods-LocalAmazonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C32BAE4A3487D2C02816E25 /* Pods-LocalAmazon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazon.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazon/Pods-LocalAmazon.release.xcconfig"; sourceTree = "<group>"; };
+		9D1FE69F1EE9F31700A852B8 /* CreateSellerAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSellerAccountViewController.swift; sourceTree = "<group>"; };
+		9D2B18FC1EEAF09800B3B176 /* AddProductToAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductToAccountViewController.swift; sourceTree = "<group>"; };
+		9D2B18FE1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductToSellerAccountTableViewCell.swift; sourceTree = "<group>"; };
+		9D2B19001EEAF12F00B3B176 /* AddPriceToProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPriceToProductViewController.swift; sourceTree = "<group>"; };
 		9D63E6821EDE141B0003C3B9 /* LocalAmazon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalAmazon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D63E6851EDE141B0003C3B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D63E6871EDE141B0003C3B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +243,10 @@
 				9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */,
 				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9D2B19001EEAF12F00B3B176 /* AddPriceToProductViewController.swift */,
+				9D2B18FE1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift */,
+				9D2B18FC1EEAF09800B3B176 /* AddProductToAccountViewController.swift */,
+				9D1FE69F1EE9F31700A852B8 /* CreateSellerAccountViewController.swift */,
 				9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */,
 				9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */,
 				9DEB621C1EDF6F0F003113B0 /* AccountViewController.swift */,
@@ -610,8 +622,10 @@
 				9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */,
 				9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
 				9DEB621D1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
+				9D2B18FF1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift in Sources */,
 				9DEDB6B71EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift in Sources */,
 				9D63E6C81EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
+				9D2B18FD1EEAF09800B3B176 /* AddProductToAccountViewController.swift in Sources */,
 				9D69F1421EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift in Sources */,
 				9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */,
 				9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */,
@@ -620,6 +634,7 @@
 				9DCFC7B11EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */,
 				9D63E6B81EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
+				9D1FE6A01EE9F31700A852B8 /* CreateSellerAccountViewController.swift in Sources */,
 				9D69F14B1EE1C19D00EAAE73 /* FilterViewController.swift in Sources */,
 				9D63E6881EDE141B0003C3B9 /* ViewController.swift in Sources */,
 				9D63E6C01EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
@@ -627,6 +642,7 @@
 				9D63E6861EDE141B0003C3B9 /* AppDelegate.swift in Sources */,
 				9DCFC7AD1EE0D16A00D35238 /* SearchBar.swift in Sources */,
 				9D63E6BC1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
+				9D2B19011EEAF12F00B3B176 /* AddPriceToProductViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

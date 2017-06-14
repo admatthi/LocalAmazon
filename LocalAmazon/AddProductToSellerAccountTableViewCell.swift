@@ -1,17 +1,18 @@
 //
-//  PopularSearchesTableViewCell.swift
+//  AddProductToSellerAccountTableViewCell.swift
 //  LocalAmazon
 //
-//  Created by Alek Matthiessen on 5/31/17.
+//  Created by Alek Matthiessen on 6/9/17.
 //  Copyright © 2017 AA Tech. All rights reserved.
 //
 
 import UIKit
 
-class PopularSearchesTableViewCell: UITableViewCell {
+class AddProductToSellerAccountTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var category: UILabel!
-    
+    @IBOutlet weak var brand: UILabel!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var productimage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
