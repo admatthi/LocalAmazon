@@ -579,7 +579,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 self.tableView.alpha = 1
             }
-            errorlabel.alpha = 0
+//            errorlabel.alpha = 0
             
 //            loadingbackground.alpha = 0
 //            activityIndicator.alpha = 0
@@ -591,9 +591,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
         } else {
             
-            errorlabel.alpha = 1
-            
-            errorlabel.text = "No available products. Please refine your search"
+ 
             
             tableView.alpha = 0
             
@@ -777,37 +775,51 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             self.queryforproductids { () -> () in
             
-            self.queryforrelevantids { () -> () in
+                self.queryforrelevantids { () -> () in
                     
-                    self.queryforproductdata{ () -> () in
+                    if relevantproductids.count > 0 {
                         
-                        self.tableView.alpha = 1
+                        self.queryforproductdata{ () -> () in
+                            
+                            self.tableView.alpha = 1
+                            
+                            self.tableViewTwo.alpha = 0
+                            self.popularlabel.alpha = 0
+                            
+                            self.tableView.reloadData()
+                            
+                            self.errorlabel.alpha = 0
+                            
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.alpha = 0
+                            
+                            self.loadingbackground.alpha = 0
+                            
+                            
+                        }
                         
-                        self.tableViewTwo.alpha = 0
-                        self.popularlabel.alpha = 0
+                    } else {
                         
-                        self.tableView.reloadData()
+                        self.errorlabel.alpha = 1
                         
-                        self.errorlabel.alpha = 0
-                        
-                        self.activityIndicator.stopAnimating()
-                        self.activityIndicator.alpha = 0
+                        self.errorlabel.text = "No available products. Please refine your search"
                         
                         self.loadingbackground.alpha = 0
-                        
-                        
+                        self.activityIndicator.alpha = 0
+                        self.activityIndicator.stopAnimating()
                     }
+                    
+                }
                 
-            }
-            
-            self.tableView.reloadData()
-            
-        }
+                }
+                
                 
             } else {
                 
                 self.queryforrelevantids { () -> () in
                     
+                    if relevantproductids.count > 0 {
+                    
                     self.queryforproductdata{ () -> () in
                         
                         self.tableView.alpha = 1
@@ -823,8 +835,19 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         self.activityIndicator.alpha = 0
                         
                         self.loadingbackground.alpha = 0
+                  
                         
+                    }
                         
+                    } else {
+                        
+                        self.errorlabel.alpha = 1
+                        
+                        self.errorlabel.text = "No available products. Please refine your search"
+                        
+                       self.loadingbackground.alpha = 0
+                        self.activityIndicator.alpha = 0
+                       self.activityIndicator.stopAnimating()
                     }
                     
                 }
@@ -889,6 +912,53 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 self.queryforrelevantids { () -> () in
                     
+                    if relevantproductids.count > 0 {
+                        
+                        self.queryforproductdata{ () -> () in
+                            
+                            self.tableView.alpha = 1
+                            
+                            self.tableViewTwo.alpha = 0
+                            self.popularlabel.alpha = 0
+                            
+                            self.tableView.reloadData()
+                            
+                            self.errorlabel.alpha = 0
+                            
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.alpha = 0
+                            
+                            self.loadingbackground.alpha = 0
+                            
+                        
+                            
+                            
+                        }
+                        
+                    } else {
+                        
+                        self.errorlabel.alpha = 1
+                        
+                        self.errorlabel.text = "No available products. Please refine your search"
+                        
+                        self.loadingbackground.alpha = 0
+                        self.activityIndicator.alpha = 0
+                        self.activityIndicator.stopAnimating()
+                        
+                        self.tableView.alpha = 0
+                    }
+                    
+                }
+                
+            }
+            
+            
+        } else {
+            
+            self.queryforrelevantids { () -> () in
+                
+                if relevantproductids.count > 0 {
+                    
                     self.queryforproductdata{ () -> () in
                         
                         self.tableView.alpha = 1
@@ -905,36 +975,23 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         self.loadingbackground.alpha = 0
                         
+                       
+                        
                         
                     }
                     
-                }
-                
-                self.tableView.reloadData()
-                
-            }
-            
-        } else {
-            
-            self.queryforrelevantids { () -> () in
-                
-                self.queryforproductdata{ () -> () in
+                } else {
                     
-                    self.tableView.alpha = 1
+                    self.errorlabel.alpha = 1
                     
-                    self.tableViewTwo.alpha = 0
-                    self.popularlabel.alpha = 0
+                    self.errorlabel.text = "No available products. Please refine your search"
                     
-                    self.tableView.reloadData()
-                    
-                    self.errorlabel.alpha = 0
-                    
-                    self.activityIndicator.stopAnimating()
+                    self.loadingbackground.alpha = 1
                     self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
                     
-                    self.loadingbackground.alpha = 0
-                    
-                    
+                    self.tableView.alpha = 0
+
                 }
                 
             }
@@ -948,7 +1005,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-}
 
+}
 
 
