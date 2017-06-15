@@ -1,4 +1,6 @@
 PODS:
+  - Firebase (3.15.0):
+    - Firebase/Core (= 3.15.0)
   - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -41,6 +43,7 @@ PODS:
   - UXCam (2.5.8)
 
 DEPENDENCIES:
+  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -59,6 +62,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   UXCam: 76cb857694b8f1776998028de985d737b6852bce
 
-PODFILE CHECKSUM: 37ebd64aa01a620ba9b0e5132d006911b7c34f6e
+PODFILE CHECKSUM: b514c43431864c47624dce05aa32d959c92dad79
 
 COCOAPODS: 1.2.0

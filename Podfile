@@ -8,8 +8,9 @@ target 'LocalAmazon' do
 pod 'Firebase/Core'
 pod ‘Firebase/Storage’
 pod ‘Firebase/Auth’
-pod ‘Firebase/Database’
 pod ‘UXCam’
+pod ‘Firebase/Database’
+pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 
   # Pods for LocalAmazon
 

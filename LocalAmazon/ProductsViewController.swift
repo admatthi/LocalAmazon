@@ -154,45 +154,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         
     }
-    
-    func queryforpopularids(completed: @escaping ( () -> () )) {
-        
-        allproductids.removeAll()
-        
-        relevantproductids.removeAll()
-        
-        var functioncounter = 0
-        
-        self.ref?.child("Products").queryLimited(toFirst: 10).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    allproductids.append(ids)
-                    
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                        
-                        allproductids = Array(Set(allproductids))
-                        
-                        completed()
-                        
-                    }
-                    
-                }
-                
-            }
-            
-            
-        })
-        
-        
-    }
-    
+
     
 
 
@@ -203,7 +165,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         relevantproductids.removeAll()
         
-//        searchstrings = (searchString.components(separatedBy: " "))
+        searchstrings = (searchString.components(separatedBy: " "))
         
         var functioncounter = 0
         
