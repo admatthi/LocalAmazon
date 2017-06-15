@@ -11,6 +11,7 @@ pod ‘Firebase/Auth’
 pod ‘UXCam’
 pod ‘Firebase/Database’
 
+
   # Pods for LocalAmazon
 
   target 'LocalAmazonTests' do
