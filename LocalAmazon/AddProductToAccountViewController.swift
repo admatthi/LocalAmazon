@@ -28,6 +28,7 @@ var sellerviewaddresses = [String]()
 var sellerviewsellerids = [String]()
 var sellerviewsearchstrings = [String]()
 
+
 class AddProductToAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
