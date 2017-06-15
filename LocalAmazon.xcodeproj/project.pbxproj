@@ -60,6 +60,7 @@
 		9DCFC7B11EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */; };
 		9DCFC7B21EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */; };
 		9DCFC7B31EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */; };
+		9DE70D5C1EF1E18E00A9D5F6 /* CompanyFunctionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE70D5B1EF1E18E00A9D5F6 /* CompanyFunctionsViewController.swift */; settings = {COMPILER_FLAGS = "-w"; }; };
 		9DEB62031EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
 		9DEB62041EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
 		9DEB62051EDF05FB003113B0 /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */; };
@@ -149,6 +150,7 @@
 		9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellersTableViewCell.swift; sourceTree = "<group>"; };
 		9DCFC7AC1EE0D16A00D35238 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		9DCFC7B01EE1039A00D35238 /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
+		9DE70D5B1EF1E18E00A9D5F6 /* CompanyFunctionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyFunctionsViewController.swift; sourceTree = "<group>"; };
 		9DEB61FC1EDF05FB003113B0 /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
 		9DEB61FD1EDF05FB003113B0 /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		9DEB61FE1EDF05FB003113B0 /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */,
 				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9DE70D5B1EF1E18E00A9D5F6 /* CompanyFunctionsViewController.swift */,
 				9D2B19001EEAF12F00B3B176 /* AddPriceToProductViewController.swift */,
 				9D2B18FE1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift */,
 				9D2B18FC1EEAF09800B3B176 /* AddProductToAccountViewController.swift */,
@@ -631,6 +634,7 @@
 				9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */,
 				9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9DEB62191EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
+				9DE70D5C1EF1E18E00A9D5F6 /* CompanyFunctionsViewController.swift in Sources */,
 				9DCFC7B11EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */,
 				9D63E6B81EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,

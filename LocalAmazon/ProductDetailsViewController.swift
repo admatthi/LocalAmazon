@@ -281,6 +281,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     var reviewnames = [String]()
     var reviewheadlines = [String]()
     var reviewtext = [String]()
+    
 
     
     var thisproductid = relevantproductids[thisproduct]
@@ -291,13 +292,13 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         var counter = 0
         
-        for bizlatitude in sellerlats {
+        for (each, value) in sellerids {
             
             let manager = CLLocationManager()
             
             if let location = manager.location?.coordinate {
                 
-                if counter < sellerlats.count {
+                if counter < sellerids.count {
                     
                     var bizLocation = CLLocation(latitude: (Double(sellerlats[counter])!) , longitude: Double(sellerlongs[counter])!)
                     
@@ -307,11 +308,30 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                     
                     print("\(cluserLocation) & \(bizLocation) & \(distance)")
                     
-                    sellerdistances.append(String(format: "%.2f", distance))
+//                    sellerdistances[each] = (String(format: "%.2f", distance))
+                    
+                    sellerids[each] = distance
                     
                     counter += 1
                     
                     self.tableViewTwo.reloadData()
+                    
+                    if counter == sellerids.count {
+                        
+                        var closeststoreids = Array(sellerids.keys)
+                        
+                        var sortedKeys = sort(closeststoreids) {
+                            
+                            var obj1 = dict[$0] // get ob associated w/ key 1
+                            
+                            var obj2 = dict[$1] // get ob associated w/ key 2
+                            
+                            return obj1 > obj2
+                            
+                            
+                        }
+                        
+                    }
                     
                 }
                 
@@ -321,6 +341,71 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         
+    }
+    
+    func queryforshortestcompanies() {
+        
+        sellernames.removeAll()
+        selleraddresses.removeAll()
+        sellerprices.removeAll()
+        sellerlats.removeAll()
+        sellerlongs.removeAll()
+        availablitily.removeAll()
+        
+        var functioncounter = 0
+        
+        for each in closeststoreids {
+            
+            self.ref?.child("Products").child("\(thisproductid)").child("AllSellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if var name = value?["StoreName"] as? String {
+                    
+                    self.sellernames.append(name)
+                    
+                }
+                
+                if var address = value?["StoreAddress"] as? String {
+                    
+                    self.selleraddresses.append(address)
+                    
+                }
+                
+                if var price = value?["Price"] as? String {
+                    
+                    self.sellerprices.append(price)
+                    
+                }
+                
+                if var long = value?["Longitude"] as? String {
+                    
+                    self.sellerlongs.append(long)
+                    
+                }
+                
+                if var latitude = value?["Latitude"] as? String {
+                    
+                    self.sellerlats.append(latitude)
+                    
+                }
+                
+                self.tableViewTwo.reloadData()
+                
+            
+                
+            })
+            
+            
+            
+            
+        }
+        
+        let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
+        
+        self.tableViewTwo.reloadData()
+        
+
     }
 
     
@@ -338,13 +423,12 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
                                 let ids = each.key
     
-                                sellerids.append(ids)
+                                sellerids[id] = ""
     
                                 functioncounter += 1
     
                                 if functioncounter == snapDict.count {
     
-                                    sellerids = Array(Set(sellerids))
                                     
                                     completed()
     
@@ -438,6 +522,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         }
         
     }
+    
 
 
 
@@ -453,7 +538,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         var functioncounter = 0
         
-        for each in sellerids {
+        for (each, value) in sellerids {
             
             self.ref?.child("Products").child("\(thisproductid)").child("AllSellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -497,6 +582,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                     
                     completed()
                     
+                    
+                    
                 }
                 
             })
@@ -511,6 +598,11 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         self.tableViewTwo.reloadData()
         
     }
+    
+    func queryforshortestproductdata() {
+        
+        
+    }
 
     
     func queryforproductdata() {
@@ -520,19 +612,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             self.ref?.child("Products").child("\(thisproductid)").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
-                
-//                if var name = value?["StoreName"] as? String {
-//                    
-//                    self.storename.text = name
-//                    
-//                }
-//                
-//                if var address = value?["StoreAddress"] as? String {
-//                    
-//                    self.storeaddress.text = address
-//                   
-//                    
-//                }
+
                 
                 if var descriptionn = value?["Description"] as? String {
                     
@@ -594,7 +674,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         if tableView.tag == 1 {
             
-            return sellernames.count
+            return 10
             
             
         }
@@ -643,7 +723,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             
             if sellerdistances.count > indexPath.row {
                 
-                cell.distanceaway.text = "\(sellerdistances[indexPath.row]) mi"
+                cell.distanceaway.text = "\(sellerids[indexPath.row]) mi"
             }
             
             if availablitily.count > indexPath.row {
