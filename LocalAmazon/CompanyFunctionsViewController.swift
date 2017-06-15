@@ -415,11 +415,14 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
                         
                         let latitude = coordinates!.coordinate.latitude
                         
-                        let stringlatitude = String(latitude)
+//                        let stringlatitude = String(latitude)
+//                        
+//                        let longitudestring = String(longitude)
                         
-                        let longitudestring = String(longitude)
+//                        self.ref?.child("Sellers").child(each).updateChildValues(["Longitude" : "\(longitudestring)", "Latitude" : "\(stringlatitude)"])
                         
-                        self.ref?.child("Sellers").child(each).updateChildValues(["Longitude" : "\(longitudestring)", "Latitude" : "\(stringlatitude)"])
+                        self.ref?.child("Sellers").child(each).updateChildValues(["Longitude" : longitude, "Latitude" : latitude])
+
                         
                         
                     }

@@ -81,41 +81,172 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func displayusersaddress() {
+
+    
+    let lightgreen = UIColor(red:0.23, green:0.77, blue:0.58, alpha:1.0)
+    
+    
+  
+
+    func queryforsellerids(completed: @escaping ( () -> () )) {
+        
+        sellerids.removeAll()
+        
+        var functioncounter = 0
+        
+        self.ref?.child("Sellers").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    sellerids[ids] = 0
+                    
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        completed()
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            
+        })
+        
+    }
+    
+    var maxuserlong = Double()
+    var maxuserlat = Double()
+    var minuserlat = Double()
+    var minuserlong = Double()
+    
+    var relevantsellerids = [String]()
+    
+    func calculatemaxuserlongandlat() {
         
         let manager = CLLocationManager()
         
         if let location = manager.location?.coordinate {
-        
-        let geoCoder = CLGeocoder()
             
-        var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
-
-        geoCoder.reverseGeocodeLocation(cluserLocation, completionHandler: { (placemarks, error) in
+                var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
             
-            var placeMark: CLPlacemark!
+                maxuserlong = location.longitude + 1
+                maxuserlat = location.latitude + 1
+                minuserlong = location.longitude - 1
+                minuserlat = location.latitude - 1
             
-            placeMark = placemarks?[0]
-            
-            if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
-                
-                print(street)
-            
-            self.currentlocation.text = placeMark.addressDictionary?["Thoroughfare"] as? String
-            
-            }
-            
-        })
-
+                print(maxuserlong)
+                print(maxuserlat)
         }
     }
     
-    let lightgreen = UIColor(red:0.23, green:0.77, blue:0.58, alpha:1.0)
+    func queryforrelevantsellerids(completed: @escaping ( () -> () ))  {
+        
+        
+        var functioncounter = 0
+        
+        for (each, value) in sellerids {
+            
+            self.ref?.child("Sellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                var productitle = value?["Longitude"] as? Double
+                
+                var reviewnumber = value?["Latitude"] as? Double
+                
+                if productitle != nil && reviewnumber != nil {
+                
+                if productitle! < self.maxuserlong && reviewnumber! < self.maxuserlat  && productitle! > self.minuserlong && reviewnumber! > self.minuserlat {
+                    
+                        self.relevantsellerids.append(each)
+                    
+                }
+                    
+                }
+                
+
+                functioncounter += 1
+                
+                if functioncounter == sellerids.count {
+                    
+                    self.relevantsellerids = Array(Set(self.relevantsellerids))
+                    
+                    completed()
+                    
+                }
+                
+            })
+            
+        }
+
+    }
     
+    func searchwithinrelevantids(completed: @escaping ( () -> () )) {
+        
+        var functioncounter = 0
+        
+        for each in relevantsellerids {
+            
+            self.ref?.child("Products").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if var name = value?["Title"] as? String {
+                    
+                    if var brand = value?["Brand"] as? String {
+                        
+                        if var word = searchString as? String {
+                            
+                            //
+                            //                        if name.caseInsensitiveCompare(word) == ComparisonResult.orderedSame || brand.caseInsensitiveCompare(word) == ComparisonResult.orderedSame || name.contains(word.capitalized) || word.contains(searchString)  || name.contains(word) || brand.contains(word.capitalized) || name.contains(word.lowercased()) || brand.contains(word.lowercased())
+                            
+                            if name.contains(word.capitalized) || word.contains(name.capitalized) || brand.contains(word.capitalized) || word.contains(brand.capitalized) || name.contains(word.lowercased()) || brand.contains(word.lowercased()) || word.contains(brand.lowercased()) || word.contains(name.lowercased()){
+                                
+                                relevantproductids.append(each)
+                                
+                                relevantproductids = Array(Set(relevantproductids))
+                                
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                
+                functioncounter += 1
+                
+                if functioncounter == allproductids.count {
+                    
+                    completed()
+                    
+                    relevantproductids = Array(Set(relevantproductids))
+                    
+                    if relevantproductids.count == 0 {
+                        
+                        
+                        //                                    self.loadingbackground.alpha = 0
+                        //                                    self.activityIndicator.alpha = 0
+                        //                                    self.activityIndicator.stopAnimating()
+                    }
+                }
+                
+                
+            })
+            
+        }
+        
+    }
+
 
     
-    
-    
+
     
     func queryforproductids(completed: @escaping ( () -> () )) {
         
@@ -240,7 +371,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         addresses.removeAll()
         reviewss.removeAll()
 
-        
         for each in relevantproductids {
             
             self.ref?.child("Products").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -444,7 +574,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 locationManager.delegate = self
                 locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                 locationManager.startUpdatingLocation()
-                displayusersaddress()
 
                 
             default: break
@@ -496,7 +625,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
         }
         
-
+        calculatemaxuserlongandlat()
         
         // Do any additional setup after loading the view.
     }
@@ -735,14 +864,23 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if allproductids.count == 0 {
                 
-            self.queryforproductids { () -> () in
-            
-                self.queryforrelevantids { () -> () in
+//            self.queryforproductids { () -> () in
+//            
+//                self.queryforrelevantids { () -> () in
+//                    
+//                    if relevantproductids.count > 0 {
+//                        
+//                        self.queryforproductdata{ () -> () in
+                
+                queryforsellerids { () -> () in
                     
-                    if relevantproductids.count > 0 {
+                    self.queryforrelevantsellerids { () -> () in
                         
-                        self.queryforproductdata{ () -> () in
+                        self.searchwithinrelevantids { () -> () in
                             
+                            self.queryforproductdata { () -> () in
+              
+                
                             self.tableView.alpha = 1
                             
                             self.tableViewTwo.alpha = 0
@@ -757,19 +895,20 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             self.loadingbackground.alpha = 0
                             
+                            }
                             
                         }
                         
-                    } else {
-                        
-                        self.errorlabel.alpha = 1
-                        
-                        self.errorlabel.text = "No available products. Please refine your search"
-                        
-                        self.loadingbackground.alpha = 0
-                        self.activityIndicator.alpha = 0
-                        self.activityIndicator.stopAnimating()
-                    }
+//                    } else {
+//                        
+//                        self.errorlabel.alpha = 1
+//                        
+//                        self.errorlabel.text = "No available products. Please refine your search"
+//                        
+//                        self.loadingbackground.alpha = 0
+//                        self.activityIndicator.alpha = 0
+//                        self.activityIndicator.stopAnimating()
+//                    }
                     
                 }
                 
