@@ -577,7 +577,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             } else {
                 
-                self.tableView.alpha = 1
+                tableView.alpha = 0
             }
 //            errorlabel.alpha = 0
             
@@ -986,7 +986,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     self.errorlabel.text = "No available products. Please refine your search"
                     
-                    self.loadingbackground.alpha = 1
+                    self.loadingbackground.alpha = 0
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
                     
@@ -1002,8 +1002,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
         
+        searchBar.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
         
     }
+    
     
 
 }
