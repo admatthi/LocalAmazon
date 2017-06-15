@@ -78,9 +78,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "430"
-            endingLineNumber = "430"
-            landmarkName = "queryforproductdata(completed:)"
-            landmarkType = "7">
+            endingLineNumber = "430">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,9 +92,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "420"
-            endingLineNumber = "420"
-            landmarkName = "queryforproductdata(completed:)"
-            landmarkType = "7">
+            endingLineNumber = "420">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,9 +106,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "queryforproductdata(completed:)"
-            landmarkType = "7">
+            endingLineNumber = "418">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,9 +120,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "602"
-            endingLineNumber = "602"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
+            endingLineNumber = "602">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -142,9 +134,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "814"
-            endingLineNumber = "814"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "814">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,7 +149,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "tapContinueAnyway(_:)"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,9 +164,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "435"
-            endingLineNumber = "435"
-            landmarkName = "queryforproductdata(completed:)"
-            landmarkType = "7">
+            endingLineNumber = "435">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
