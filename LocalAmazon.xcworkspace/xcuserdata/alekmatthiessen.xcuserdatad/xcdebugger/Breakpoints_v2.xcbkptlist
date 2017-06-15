@@ -74,82 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519092217.368648"
+            timestampString = "519187263.451371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519092321.73764"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519092324.221769"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519093641.122799"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "602"
-            endingLineNumber = "602">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519093641.122799"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "814"
-            endingLineNumber = "814">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519093320.953127"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
+            landmarkName = "queryforproductdata(completed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -160,11 +90,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519093388.181599"
+            timestampString = "519187263.451371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435">
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "queryforproductdata(completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocalAmazon/ProductsViewController.swift"
+            timestampString = "519187263.451371"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
+            landmarkName = "queryforproductdata(completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocalAmazon/ProductsViewController.swift"
+            timestampString = "519187263.451371"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocalAmazon/ProductsViewController.swift"
+            timestampString = "519187263.451371"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "824"
+            endingLineNumber = "824"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocalAmazon/ProductsViewController.swift"
+            timestampString = "519187263.451371"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
+            landmarkName = "queryforproductdata(completed:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -197,38 +193,6 @@
             endingLineNumber = "39"
             landmarkName = "tapUpdateProductSellers(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LocalAmazon.CompanyFunctionsViewController.(tapUpdateProductSellers (Any) -&gt; ()).(closure #1).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "LocalAmazon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alekmatthiessen/Desktop/LocalAmazon/LocalAmazon/CompanyFunctionsViewController.swift"
-                  timestampString = "519178427.387639"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "95">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LocalAmazon.CompanyFunctionsViewController.(tapUpdateProductSellers (Any) -&gt; ()).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "LocalAmazon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alekmatthiessen/Desktop/LocalAmazon/LocalAmazon/CompanyFunctionsViewController.swift"
-                  timestampString = "519178427.390261"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "35">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
