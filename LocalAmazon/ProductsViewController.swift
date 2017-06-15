@@ -577,7 +577,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             } else {
                 
-                tableView.alpha = 0
+                tableView.alpha = 1
             }
 //            errorlabel.alpha = 0
             
