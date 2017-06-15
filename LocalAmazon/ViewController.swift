@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             if let location = manager.location?.coordinate  {
                 
-                ref?.child("Users").child(uid).child("Location").setValue(["Latitude" : "\(location.latitude)", "Longitude" : "\(location.longitude)"])
+                ref?.child("Users").child(uid).setValue(["Latitude" : "\(location.latitude)", "Longitude" : "\(location.longitude)"])
                 
             }
             
