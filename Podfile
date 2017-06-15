@@ -10,7 +10,6 @@ pod ‘Firebase/Storage’
 pod ‘Firebase/Auth’
 pod ‘UXCam’
 pod ‘Firebase/Database’
-pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 
   # Pods for LocalAmazon
 
