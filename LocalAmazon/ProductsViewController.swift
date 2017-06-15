@@ -34,6 +34,8 @@ var ignored = false
 
 var firstlaunch = true
 
+var searched = false
+
 
 var thisproduct = 0
 
@@ -110,42 +112,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     let lightgreen = UIColor(red:0.23, green:0.77, blue:0.58, alpha:1.0)
     
-    func updatedistances() {
-        
-        var counter = 0
-        
-        for bizlatitude in bizlatitudes {
-            
-            let manager = CLLocationManager()
-            
-            if let location = manager.location?.coordinate {
-                
-                if counter < bizlatitudes.count {
-                    
-                    var bizLocation = CLLocation(latitude: (Double(bizlatitudes[counter])!) , longitude: Double(bizlongitudes[counter])!)
-                    
-                    var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
-                    
-                    var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
-                    
-                    print("\(cluserLocation) & \(bizLocation) & \(distance)")
-                    
-                    distances.append(String(format: "%.2f", distance))
-                    
-                    counter += 1
-                    
-                    self.tableView.reloadData()
-                    
-                }
-                
-            }
-            
-            
-        }
-        
-        
-    }
-    
+
     
     
     
@@ -473,6 +440,13 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         
+                if allproductids.count == 0  {
+        
+                    queryforproductids { () -> () in
+        
+                    }
+                }
+        
         categories.removeAll()
         
         categories.append("Perfect Foods Peanut Butter Bar")
@@ -519,9 +493,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
 //        if searchString == "" {
         
+        
+        if searched == false {
+            
             tableViewTwo.alpha = 1
             tableView.alpha = 0
             popularlabel.alpha = 1
+            
+        }
+        
         
             
 //        } else {
@@ -536,12 +516,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.errorlabel.alpha = 0
     
-        if firstlaunch == true {
-                        
-                    firstlaunch = false
-
-        }
-        
+                
         let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
         
         searchBar.backgroundColor = lightgreen
@@ -559,6 +534,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
         }
         
+
+        
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var errorlabel: UILabel!
@@ -573,8 +550,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+  
     /*
     // MARK: - Navigation
 
@@ -594,6 +570,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             if ignored == false {
                 
                 self.tableView.alpha = 0
+                
+                notavailablelabel.alpha = 1
+                loadingbackground.alpha = 1
+                continueanyway.alpha = 1
+                
             } else {
                 
                 self.tableView.alpha = 1
@@ -772,6 +753,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if tableView.tag == 2 {
             
+            searched = true
+            
             activityIndicator.alpha = 1
             activityIndicator.startAnimating()
             
@@ -790,14 +773,42 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             firstlaunch == false
             
+            if allproductids.count == 0 {
+                
+            self.queryforproductids { () -> () in
             
-            queryforproductids { () -> () in
+            self.queryforrelevantids { () -> () in
+                    
+                    self.queryforproductdata{ () -> () in
+                        
+                        self.tableView.alpha = 1
+                        
+                        self.tableViewTwo.alpha = 0
+                        self.popularlabel.alpha = 0
+                        
+                        self.tableView.reloadData()
+                        
+                        self.errorlabel.alpha = 0
+                        
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.alpha = 0
+                        
+                        self.loadingbackground.alpha = 0
+                        
+                        
+                    }
+                
+            }
+            
+            self.tableView.reloadData()
+            
+        }
+                
+            } else {
                 
                 self.queryforrelevantids { () -> () in
                     
                     self.queryforproductdata{ () -> () in
-                        
-                        self.updatedistances()
                         
                         self.tableView.alpha = 1
                         
@@ -818,12 +829,14 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                 }
                 
+                self.tableView.reloadData()
+
+                
+                
             }
-            
-            self.tableView.reloadData()
-            
-        }
         
+        
+    }
         
     }
     
@@ -850,24 +863,36 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        tableViewTwo.alpha = 0
-        popularlabel.alpha = 0
-        
-        firstlaunch == false
-
-        searchString = searchBar.text!
         
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
         
         loadingbackground.alpha = 1
         
-            self.queryforrelevantids { () -> () in
+        searchString = searchBar.text!
+        
+        
+        tableViewTwo.alpha = 0
+        popularlabel.alpha = 0
+        
+        self.tableView.alpha = 0
+        notavailablelabel.alpha = 0
+        continueanyway.alpha = 0
+        
+        firstlaunch == false
+        
+        searched = true
+        
+        if allproductids.count == 0 {
+            
+            self.queryforproductids { () -> () in
                 
-                self.queryforproductdata{ () -> () in
-                                            
-                        self.tableView.alpha = 1
+                self.queryforrelevantids { () -> () in
                     
+                    self.queryforproductdata{ () -> () in
+                        
+                        self.tableView.alpha = 1
+                        
                         self.tableViewTwo.alpha = 0
                         self.popularlabel.alpha = 0
                         
@@ -877,25 +902,49 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         self.activityIndicator.stopAnimating()
                         self.activityIndicator.alpha = 0
-
+                        
                         self.loadingbackground.alpha = 0
-                    
-          
+                        
+                        
                     }
-
+                    
+                }
+                
+                self.tableView.reloadData()
+                
             }
             
-
-        self.tableView.reloadData()
+        } else {
+            
+            self.queryforrelevantids { () -> () in
+                
+                self.queryforproductdata{ () -> () in
+                    
+                    self.tableView.alpha = 1
+                    
+                    self.tableViewTwo.alpha = 0
+                    self.popularlabel.alpha = 0
+                    
+                    self.tableView.reloadData()
+                    
+                    self.errorlabel.alpha = 0
+                    
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.alpha = 0
+                    
+                    self.loadingbackground.alpha = 0
+                    
+                    
+                }
+                
+            }
+            
+            self.tableView.reloadData()
+            
+            
+            
+        }
         
-        self.view.endEditing(true)
-        
-
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.view.endEditing(true)
         
     }
     

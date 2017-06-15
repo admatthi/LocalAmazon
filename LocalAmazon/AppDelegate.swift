@@ -23,9 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FIRApp.configure()
+
+        
+        var ref: FIRDatabaseReference?
+        
+        
         
         UXCam.start(withKey: "f5cccd9308e7ffa")
-
+        
 
         return true
     }
@@ -51,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstlaunch = true
         
         searchString = ""
+        
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
