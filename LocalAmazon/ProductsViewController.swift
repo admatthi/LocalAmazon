@@ -13,6 +13,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import CoreLocation
 import MapKit
+import SwiftyJSON
 
 var allproductids = [String]()
 var relevantproductids = [String]()
@@ -86,41 +87,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     let lightgreen = UIColor(red:0.23, green:0.77, blue:0.58, alpha:1.0)
     
     
-  
-
-    func queryforsellerids(completed: @escaping ( () -> () )) {
-        
-        sellerids.removeAll()
-        
-        var functioncounter = 0
-        
-        self.ref?.child("Sellers").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    sellerids[ids] = 0
-                    
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                        
-                        completed()
-                        
-                    }
-                    
-                }
-                
-            }
-            
-            
-        })
-        
-    }
-    
     var maxuserlong = Double()
     var maxuserlat = Double()
     var minuserlat = Double()
@@ -136,393 +102,13 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
                 var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
             
-                maxuserlong = location.longitude + 1
-                maxuserlat = location.latitude + 1
-                minuserlong = location.longitude - 1
-                minuserlat = location.latitude - 1
-            
-                print(maxuserlong)
-                print(maxuserlat)
-        }
-    }
-    
-    func queryforrelevantsellerids(completed: @escaping ( () -> () ))  {
-        
-        
-        var functioncounter = 0
-        
-        for (each, value) in sellerids {
-            
-            self.ref?.child("Sellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                var productitle = value?["Longitude"] as? Double
-                
-                var reviewnumber = value?["Latitude"] as? Double
-                
-                if productitle != nil && reviewnumber != nil {
-                
-                if productitle! < self.maxuserlong && reviewnumber! < self.maxuserlat  && productitle! > self.minuserlong && reviewnumber! > self.minuserlat {
-                    
-                        self.relevantsellerids.append(each)
-                    
-                }
-                    
-                }
-                
-
-                functioncounter += 1
-                
-                if functioncounter == sellerids.count {
-                    
-                    self.relevantsellerids = Array(Set(self.relevantsellerids))
-                    
-                    completed()
-                    
-                }
-                
-            })
-            
-        }
-
-    }
-    
-    func searchwithinrelevantids(completed: @escaping ( () -> () )) {
-        
-        var functioncounter = 0
-        
-        for each in relevantsellerids {
-            
-            self.ref?.child("Products").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if var name = value?["Title"] as? String {
-                    
-                    if var brand = value?["Brand"] as? String {
-                        
-                        if var word = searchString as? String {
-                            
-                            //
-                            //                        if name.caseInsensitiveCompare(word) == ComparisonResult.orderedSame || brand.caseInsensitiveCompare(word) == ComparisonResult.orderedSame || name.contains(word.capitalized) || word.contains(searchString)  || name.contains(word) || brand.contains(word.capitalized) || name.contains(word.lowercased()) || brand.contains(word.lowercased())
-                            
-                            if name.contains(word.capitalized) || word.contains(name.capitalized) || brand.contains(word.capitalized) || word.contains(brand.capitalized) || name.contains(word.lowercased()) || brand.contains(word.lowercased()) || word.contains(brand.lowercased()) || word.contains(name.lowercased()){
-                                
-                                relevantproductids.append(each)
-                                
-                                relevantproductids = Array(Set(relevantproductids))
-                                
-                            }
-                            
-                        }
-                    }
-                    
-                }
-                
-                functioncounter += 1
-                
-                if functioncounter == allproductids.count {
-                    
-                    completed()
-                    
-                    relevantproductids = Array(Set(relevantproductids))
-                    
-                    if relevantproductids.count == 0 {
-                        
-                        
-                        //                                    self.loadingbackground.alpha = 0
-                        //                                    self.activityIndicator.alpha = 0
-                        //                                    self.activityIndicator.stopAnimating()
-                    }
-                }
-                
-                
-            })
-            
-        }
-        
-    }
-
-
-    
-
-    
-    func queryforproductids(completed: @escaping ( () -> () )) {
-        
-        allproductids.removeAll()
-        
-        relevantproductids.removeAll()
-        
-        var functioncounter = 0
-        
-        self.ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    allproductids.append(ids)
-                    
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                    
-                        allproductids = Array(Set(allproductids))
-                        
-                        completed()
-                        
-                    }
-                    
-                }
-                
-            }
-            
-            
-        })
-        
-        
-    }
-
-    
-
-
-    
-    func queryforrelevantids(completed: @escaping () -> () ) {
-        
-        searchstrings.removeAll()
-        
-        relevantproductids.removeAll()
-        
-        searchstrings = (searchString.components(separatedBy: " "))
-        
-        var functioncounter = 0
-        
-        for each in allproductids {
-            
-            self.ref?.child("Products").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if var name = value?["Title"] as? String {
-                    
-                    if var brand = value?["Brand"] as? String {
-                        
-                        if var word = searchString as? String {
-                            
-//                        
-//                        if name.caseInsensitiveCompare(word) == ComparisonResult.orderedSame || brand.caseInsensitiveCompare(word) == ComparisonResult.orderedSame || name.contains(word.capitalized) || word.contains(searchString)  || name.contains(word) || brand.contains(word.capitalized) || name.contains(word.lowercased()) || brand.contains(word.lowercased())
-                        
-                            if name.contains(word.capitalized) || word.contains(name.capitalized) || brand.contains(word.capitalized) || word.contains(brand.capitalized) || name.contains(word.lowercased()) || brand.contains(word.lowercased()) || word.contains(brand.lowercased()) || word.contains(name.lowercased()){
-                                
-                            
-                            
-                            relevantproductids.append(each)
-                            
-                            relevantproductids = Array(Set(relevantproductids))
-                            
-                        }
-                        
-                        }
-                        }
-                        
-                    }
-                
-                functioncounter += 1
-                
-                if functioncounter == allproductids.count {
-                    
-                    completed()
-                    
-                    relevantproductids = Array(Set(relevantproductids))
-                    
-                    if relevantproductids.count == 0 {
-                        
-                        
-//                                    self.loadingbackground.alpha = 0
-//                                    self.activityIndicator.alpha = 0
-//                                    self.activityIndicator.stopAnimating()
-                    }
-                }
-
-
-            })
-            
-        }
-        
-    }
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    func queryforproductdata(completed: @escaping () -> () ){
-        
-        
-        var functioncounter = 0
-        
-        productimages.removeAll()
-        titles.removeAll()
-        prices.removeAll()
-        brands.removeAll()
-        distances.removeAll()
-        quantities.removeAll()
-        distances.removeAll()
-        storenames.removeAll()
-        addresses.removeAll()
-        reviewss.removeAll()
-
-        for each in relevantproductids {
-            
-            self.ref?.child("Products").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                
-                if var productitle = value?["Title"] as? String {
-                    
-                    titles.append(productitle)
-                    
-                }
-                
-                if var reviewnumber = value?["Brand"] as? String {
-                    
-                    brands.append(reviewnumber)
-                    
-                }
-                
-                if var quantity = value?["Quantity"] as? String {
-                    
-                    quantities.append(quantity)
-                    
-                }
-                
+                userlong = location.longitude
+                userlat = location.latitude
      
-                
-                if var address = value?["AddressOfLowestPrice"] as? String {
-                    
-                    addresses.append(address)
-                    
-                }
-                
-                if var reviewnumber = value?["ReviewNumber"] as? String {
-                    
-                    reviewss.append(reviewnumber)
-                    
-                } else {
-                    
-                    reviewss.append("0")
-                    
-                }
-                
-                
-                if var lowprice = value?["LowestPrice"] as? String {
-                    
-                    prices.append(lowprice)
-                    
-                }
-                
-                if var productimagee = value?["Image"] as? String {
-                    
-                    if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
-                        
-                        let dummy = UIImage()
-                        
-                        productimages.append(dummy)
-                        
-                        let insertionIndex = productimages.count - 1
-                        
-                        let url = URL(string: productimagee)
-                        
-                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                        
-                            if data != nil {
-                                
-                                let productphoto = UIImage(data: (data)!)
-                                
-                                if productimages.count > insertionIndex {
-                                
-                                productimages[insertionIndex] = productphoto!
-                                
-                                self.tableView.reloadData()
-                                    
-                                }
-         
-                            }
-                        
-                        
-                    } else {
-                        
-                        let test = UIImage()
-                        
-                        productimages.append(test)
-                    }
-                    
-                }
-                
-                var long = value?["CheapestLongitude"] as? String
-                
-                var latitude = value?["CheapestLatitude"] as? String
-                
-                let manager = CLLocationManager()
-                
-                if let location = manager.location?.coordinate {
-                    
-                    if long != "" && latitude != "" {
-                
-                    var bizLocation = CLLocation(latitude: (Double(latitude!))! , longitude: Double(long!)!)
-                    
-                    var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
-                    
-                    var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
-                        
-                        if ignored == false {
-                        
-                            if distance > 100 {
-                            
-                            self.notavailablelabel.alpha = 1
-                            self.loadingbackground.alpha = 1
-                            self.continueanyway.alpha = 1
-                            self.tableView.alpha = 0
-                        }
-                            
-                        } else {
-                            
-                            self.notavailablelabel.alpha = 0
-                            self.loadingbackground.alpha = 0
-                            self.continueanyway.alpha = 0
-                            self.activityIndicator.alpha = 0
-                            
-                        }
-                    
-                    distances.append(String(format: "%.2f", distance))
-                        
-                    } else {
-                        
-                        distances.append("")
-                    }
-                }
-                
-                
-                self.tableView.reloadData()
-                self.tableView.reloadData()
-                
-                functioncounter += 1
-                
-                if functioncounter == relevantproductids.count {
-                    
-                    completed()
-                }
-
-                
-            })
-            
-            self.tableView.reloadData()
             
         }
-        
-        self.tableView.reloadData()
-        
     }
+    
     
     
     @IBOutlet weak var tableViewTwo: UITableView!
@@ -862,25 +448,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             firstlaunch == false
             
-            if allproductids.count == 0 {
-                
-//            self.queryforproductids { () -> () in
-//            
-//                self.queryforrelevantids { () -> () in
-//                    
-//                    if relevantproductids.count > 0 {
-//                        
-//                        self.queryforproductdata{ () -> () in
-                
-                queryforsellerids { () -> () in
-                    
-                    self.queryforrelevantsellerids { () -> () in
-                        
-                        self.searchwithinrelevantids { () -> () in
-                            
-                            self.queryforproductdata { () -> () in
-              
-                
+            
                             self.tableView.alpha = 1
                             
                             self.tableViewTwo.alpha = 0
@@ -896,33 +464,24 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             self.loadingbackground.alpha = 0
                             
                             }
-                            
-                        }
                         
-//                    } else {
-//                        
-//                        self.errorlabel.alpha = 1
-//                        
-//                        self.errorlabel.text = "No available products. Please refine your search"
-//                        
-//                        self.loadingbackground.alpha = 0
-//                        self.activityIndicator.alpha = 0
-//                        self.activityIndicator.stopAnimating()
-//                    }
-                    
-                }
+               
                 
-                }
+                    
+                    } else {
+                        
+                        self.errorlabel.alpha = 1
+                        
+                        self.errorlabel.text = "No available products. Please refine your search"
+                        
+                        self.loadingbackground.alpha = 0
+                        self.activityIndicator.alpha = 0
+                        self.activityIndicator.stopAnimating()
+    
                 
                 
             } else {
                 
-                self.queryforrelevantids { () -> () in
-                    
-                    if relevantproductids.count > 0 {
-                    
-                    self.queryforproductdata{ () -> () in
-                        
                         self.tableView.alpha = 1
                         
                         self.tableViewTwo.alpha = 0
@@ -959,10 +518,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             }
         
-        
+        }
     }
-        
-    }
+ 
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         
@@ -987,121 +545,68 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        
+        var functioncounter = 0
+   
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
         
         loadingbackground.alpha = 1
         
         searchString = searchBar.text!
-        
-        
-        tableViewTwo.alpha = 0
-        popularlabel.alpha = 0
-        
-        self.tableView.alpha = 0
-        notavailablelabel.alpha = 0
-        continueanyway.alpha = 0
-        
-        firstlaunch == false
-        
-        searched = true
-        
-        if allproductids.count == 0 {
-            
-            self.queryforproductids { () -> () in
-                
-                self.queryforrelevantids { () -> () in
-                    
-                    if relevantproductids.count > 0 {
-                        
-                        self.queryforproductdata{ () -> () in
-                            
-                            self.tableView.alpha = 1
-                            
-                            self.tableViewTwo.alpha = 0
-                            self.popularlabel.alpha = 0
-                            
-                            self.tableView.reloadData()
-                            
-                            self.errorlabel.alpha = 0
-                            
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.alpha = 0
-                            
-                            self.loadingbackground.alpha = 0
-                            
-                        
-                            
-                            
-                        }
-                        
-                    } else {
-                        
-                        self.errorlabel.alpha = 1
-                        
-                        self.errorlabel.text = "No available products. Please refine your search"
-                        
-                        self.loadingbackground.alpha = 0
-                        self.activityIndicator.alpha = 0
-                        self.activityIndicator.stopAnimating()
-                        
-                        self.tableView.alpha = 0
-                    }
-                    
-                }
-                
-            }
-            
-            
-        } else {
-            
-            self.queryforrelevantids { () -> () in
-                
-                if relevantproductids.count > 0 {
-                    
-                    self.queryforproductdata{ () -> () in
-                        
-                        self.tableView.alpha = 1
-                        
-                        self.tableViewTwo.alpha = 0
-                        self.popularlabel.alpha = 0
-                        
-                        self.tableView.reloadData()
-                        
-                        self.errorlabel.alpha = 0
-                        
-                        self.activityIndicator.stopAnimating()
-                        self.activityIndicator.alpha = 0
-                        
-                        self.loadingbackground.alpha = 0
-                        
-                       
-                        
-                        
-                    }
-                    
-                } else {
-                    
-                    self.errorlabel.alpha = 1
-                    
-                    self.errorlabel.text = "No available products. Please refine your search"
-                    
-                    self.loadingbackground.alpha = 0
-                    self.activityIndicator.alpha = 0
-                    self.activityIndicator.stopAnimating()
-                    
-                    self.tableView.alpha = 0
 
-                }
-                
+        let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
+        guard let url = URL(string: endpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        let jsonObject: [String: Any] =  [
+            "query": [
+                "bool": [
+                    "must": [ "match": [ "product_name": searchString], ],
+                    "filter": [ "geo_distance": [ "distance": "10mi", "store_geoloc": "\(userlat), \(userlong)"], ],
+                ],
+            ],
+            ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
+        
+        var urlRequest = URLRequest(url:url)
+        urlRequest.httpBody = jsonData
+        urlRequest.httpMethod = "POST"
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
             }
             
-            self.tableView.reloadData()
+            let json = JSON(data: data)
             
-            
-            
+            for (index,subJson):(String, JSON) in json["hits"]["hits"] {
+                
+                print(index)
+                print(subJson["_source"]["product_name"].string!)
+                print(subJson["_source"]["product_img"].string!)
+                print(subJson["_source"]["store_price"].string!)
+                print(subJson["_source"]["store_name"].string!)
+                print(subJson["_source"]["store_address"].string!)
+                
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.alpha = 0
+                
+                self.loadingbackground.alpha = 0
+            }
         }
+        
+        task.resume()
         
         searchBar.resignFirstResponder()
     }

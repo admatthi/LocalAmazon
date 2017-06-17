@@ -10,6 +10,8 @@ pod ‘Firebase/Storage’
 pod ‘Firebase/Auth’
 pod ‘UXCam’
 pod ‘Firebase/Database’
+pod ‘SwiftyJSON’
+
 
 
   # Pods for LocalAmazon
