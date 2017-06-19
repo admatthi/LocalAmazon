@@ -497,12 +497,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         for (index,subJson):(String, JSON) in json["hits"]["hits"] {
                             
-                            //                print(index)
-                            //                print(subJson["_source"]["product_name"].string!)
-                            //                print(subJson["_source"]["product_img"].string!)
-                            //                print(subJson["_source"]["store_price"].string!)
-                            //                print(subJson["_source"]["store_name"].string!)
-                            //                print(subJson["_source"]["store_address"].string!)
+//                                            print(index)
+//                                            print(subJson["_source"]["product_name"].string!)
+//                                            print(subJson["_source"]["product_img"].string!)
+////                                            print(subJson["_source"]["store_price"].string!)
+//                                            print(subJson["_source"]["store_name"].string!)
+//                                            print(subJson["_source"]["store_address"].string!)
                             
                             
                             producttitle = (subJson["_source"]["product_name"].string)!
@@ -672,7 +672,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableViewTwo.alpha = 0
             
             self.errorlabel.alpha = 1
-            self.errorlabel.text = "We're sorry but we couldn't find any produts based on your search. Please try again."
+            self.errorlabel.text = "This is our fault. We couldn't find any products that matched your search in your area."
             
             timer.invalidate()
         }
@@ -760,16 +760,17 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     for (index,subJson):(String, JSON) in json["hits"]["hits"] {
                         
-                        //                print(index)
-                        //                print(subJson["_source"]["product_name"].string!)
-                        //                print(subJson["_source"]["product_img"].string!)
-                        //                print(subJson["_source"]["store_price"].string!)
-                        //                print(subJson["_source"]["store_name"].string!)
-                        //                print(subJson["_source"]["store_address"].string!)
+//                                        print(index)
+//                                        print(subJson["_source"]["product_name"].string!)
+//                                        print(subJson["_source"]["product_img"].string!)
+//                                        print(subJson["_source"]["store_price"].string!)
+//                                        print(subJson["_source"]["store_name"].string!)
+//                                        print(subJson["_source"]["store_address"].string!)
+//                                        print(subJson)
                         
                         
                         producttitle = (subJson["_source"]["product_name"].string)!
-                            
+                        
                             titles[producttitle] = UIImage()
                             
                             thistitle.append(producttitle)
@@ -784,7 +785,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             brands.append(reviewnumber)
                             
-                            brands = Array(Set(brands))
                             
                         }
                         
