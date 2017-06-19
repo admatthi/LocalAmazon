@@ -203,7 +203,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 //            distanceaway.textColor = .gray
 //        }
         
-        if brands[thisproduct] != "" {
+        if brands[thisproduct] != nil {
             
             brandname.text = ""
 

@@ -48,7 +48,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         continueanyway.alpha = 0
         notavailablelabel.alpha = 0
         ignored = true
-        self.tableView.alpha = 1
         
     }
     @IBOutlet weak var continueanyway: UIButton!
@@ -121,7 +120,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         activityIndicator.alpha = 0
 
-        
+        loadingbackground.alpha = 0
         categories.removeAll()
         
         categories.append("Perfect Foods Peanut Butter Bar")
@@ -139,8 +138,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         errorlabel.alpha = 0
 
-//        activityIndicator.alpha = 0
-//        loadingbackground.alpha = 0
+
         
         
         if CLLocationManager.locationServicesEnabled() {
@@ -168,20 +166,23 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 ////        if searchString == "" {
 //        
 //        
-//        if searched == false {
-//            
-//            tableViewTwo.alpha = 1
-//            tableView.alpha = 0
-//            popularlabel.alpha = 1
-//            
-//        }
-//        
-//        
+        if searched == false {
+            
+            tableViewTwo.alpha = 1
+            tableView.alpha = 0
+            popularlabel.alpha = 1
+            
+        } else {
+            
+            tableView.alpha = 1
+            tableViewTwo.alpha = 0
+            popularlabel.alpha = 0
+        }
+        
+//
         
         self.tableViewTwo.reloadData()
         
-        self.errorlabel.alpha = 0
-    
                 
         let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
         
@@ -201,6 +202,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         calculatemaxuserlongandlat()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -233,18 +235,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
         if titles.count > 0 {
             
-            
-            self.loadingbackground.alpha = 0
-            
-            self.tableViewTwo.alpha = 0
             self.popularlabel.alpha = 0
             
-            self.tableView.alpha = 1
             self.notavailablelabel.alpha = 0
             self.continueanyway.alpha = 0
             
-            activityIndicator.alpha = 0
-
 
             return titles.count
             
@@ -419,8 +414,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             tableViewTwo.alpha = 0
             popularlabel.alpha = 0
             
-            //        activityIndicator.alpha = 1
-            activityIndicator.startAnimating()
             
             //        loadingbackground.alpha = 1
             
@@ -482,7 +475,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             thistitle.append(producttitle)
                             
-                            self.activityIndicator.alpha = 0
                             
                             thistitle = Array(Set(thistitle))
                             
@@ -557,7 +549,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                     
                                     self.tableView.reloadData()
                                     
-                                    self.activityIndicator.alpha = 0
                                 }
                             }
                             
@@ -582,7 +573,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         self.tableView.reloadData()
                         
-                        self.activityIndicator.alpha = 0
                         
                     }
                 }
@@ -619,7 +609,53 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    var timercounter = 0
+    
+    func noavailableproducts() {
+        
+        timercounter += 1
+        
+        if found == false {
+        
+        if timercounter > 5 {
+            
+            self.activityIndicator.alpha = 0
+            self.activityIndicator.stopAnimating()
+            self.loadingbackground.alpha = 0
+            self.tableView.alpha = 0
+            self.tableViewTwo.alpha = 0
+            
+            self.errorlabel.alpha = 1
+            self.errorlabel.text = "We're sorry but we couldn't find any produts based on your search. Please try again."
+            
+            timer.invalidate()
+        }
+            
+        }
+        
+    }
+    
+    
+    var timer = Timer()
+    
+    var found = Bool()
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        timercounter = 0
+        
+        found = false
+        
+        searched = true
+        
+        activityIndicator.alpha = 1
+        activityIndicator.startAnimating()
+        loadingbackground.alpha = 1
+        tableView.alpha = 0
+        popularlabel.alpha = 0
+        
+       
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ProductsViewController.noavailableproducts), userInfo: nil, repeats: true)
         
         titles.removeAll()
         prices.removeAll()
@@ -631,13 +667,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         var functioncounter = 0
         
-        tableViewTwo.alpha = 0
         popularlabel.alpha = 0
-   
-//        activityIndicator.alpha = 1
-        activityIndicator.startAnimating()
-        
-//        loadingbackground.alpha = 1
+
         
         searchString = searchBar.text!
 
@@ -697,8 +728,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             thistitle.append(producttitle)
                             
-                            self.activityIndicator.alpha = 0
-                            
+                        
                             thistitle = Array(Set(thistitle))
 
                             
@@ -754,7 +784,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                         titles[producttitle] = productphoto!
                                     
                                         self.tableView.reloadData()
-                                        
+                                    
+                                    
+                                    
 //                                    }
                                     
                                 }
@@ -764,7 +796,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 
                                 let test = UIImage()
                                 
-                                productimages.append(test)
+                                titles[producttitle] = test
                             }
                             //   
                             
@@ -772,8 +804,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 
                                 self.tableView.reloadData()
                                 
-                                self.activityIndicator.alpha = 0
-                            }
+                                    self.activityIndicator.alpha = 0
+                                    self.activityIndicator.stopAnimating()
+                                    self.loadingbackground.alpha = 0
+                                    self.tableView.alpha = 1
+                                    self.tableViewTwo.alpha = 0
+                                
+                                    self.found = true
+                              
+                           }
                         }
                         
                         self.tableView.reloadData()
@@ -797,7 +836,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     self.tableView.reloadData()
                     
-                    self.activityIndicator.alpha = 0
 
                 }
             }
@@ -811,7 +849,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.resignFirstResponder()
         
 //                            self.activityIndicator.stopAnimating()
-//                            self.activityIndicator.alpha = 0
 
     }
     
