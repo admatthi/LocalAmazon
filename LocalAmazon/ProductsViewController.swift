@@ -21,7 +21,7 @@ var productimages = [UIImage]()
 var titles = [String:UIImage]()
 var prices = [String]()
 var brands = [String]()
-var distances = [String]()
+var distances = [String:String]()
 var quantities = [String]()
 var bizlongitudes = [String]()
 var bizlatitudes = [String]()
@@ -364,9 +364,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if distances.count > indexPath.row {
             
-            if distances[indexPath.row] != "" {
+            if distances[thistitle[indexPath.row]] != "" {
             
-            cell.distanceaway.text = "\(distances[indexPath.row]) mi"
+            cell.distanceaway.text = "\(distances[thistitle[indexPath.row]]) mi"
                 
             } else {
                 
@@ -583,6 +583,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 }
                                 //
                                 
+                           
+                                
                                 DispatchQueue.main.async {
                                     
                                     self.tableView.reloadData()
@@ -772,9 +774,10 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         producttitle = (subJson["_source"]["product_name"].string)!
                         
                             titles[producttitle] = UIImage()
+                        
+                            distances[producttitle] = String()
                             
                             thistitle.append(producttitle)
-                            
                         
                             thistitle = Array(Set(thistitle))
 
@@ -860,6 +863,32 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                               
                            }
                         }
+                        
+//                        var long = subJson["_source"]["store_longitude"].string
+//                            
+//                        var latitude = subJson["_source"]["store_latitude"].string
+//                                
+//                                let manager = CLLocationManager()
+//                                
+//                                if let location = manager.location?.coordinate {
+//                                    
+//                                    if long != "" && latitude != "" {
+//                                        
+//                                        var bizLocation = CLLocation(latitude: (Double(latitude!))! , longitude: Double(long!)!)
+//                                        
+//                                        var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
+//                                        
+//                                        var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
+//                                        
+//                                        distances[producttitle] = String(format: "%.2f", distance)
+//                                        
+//                                    } else {
+//                                        
+//                                        distances[producttitle] = ""
+//                                    }
+//                                }
+//                        
+
                         
                         self.tableView.reloadData()
                         

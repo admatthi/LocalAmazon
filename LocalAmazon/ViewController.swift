@@ -48,36 +48,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func updatedistances() {
         
-        var counter = 0
-        
-        for bizlatitude in bizlatitudes {
-            
-            let manager = CLLocationManager()
-            
-            if let location = manager.location?.coordinate {
-                
-                if counter < bizlatitudes.count {
-                    
-                    var bizLocation = CLLocation(latitude: (Double(bizlatitudes[counter])!) , longitude: Double(bizlongitudes[counter])!)
-                    
-                    var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
-                    
-                    var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
-                    
-                    print("\(cluserLocation) & \(bizLocation) & \(distance)")
-                    
-                    distances.append(String(format: "%.2f", distance))
-                    
-                    counter += 1
-                    
-                    self.tableView.reloadData()
-                    
-                }
-                
-            }
-            
-            
-        }
+//        var counter = 0
+//        
+//        for bizlatitude in bizlatitudes {
+//            
+//            let manager = CLLocationManager()
+//            
+//            if let location = manager.location?.coordinate {
+//                
+//                if counter < bizlatitudes.count {
+//                    
+//                    var bizLocation = CLLocation(latitude: (Double(bizlatitudes[counter])!) , longitude: Double(bizlongitudes[counter])!)
+//                    
+//                    var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
+//                    
+//                    var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
+//                    
+//                    print("\(cluserLocation) & \(bizLocation) & \(distance)")
+//                    
+//                    distances[(String(format: "%.2f", distance))
+//                    
+//                    counter += 1
+//                    
+//                    self.tableView.reloadData()
+//                    
+//                }
+//                
+//            }
+//            
+//            
+//        }
         
         
     }
@@ -383,7 +383,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if distances.count > indexPath.row {
             
-            cell.distanceaway.text = "\(distances[indexPath.row]) mi"
+//            cell.distanceaway.text = "\(distances[indexPath.row]) mi"
         }
         
         return cell

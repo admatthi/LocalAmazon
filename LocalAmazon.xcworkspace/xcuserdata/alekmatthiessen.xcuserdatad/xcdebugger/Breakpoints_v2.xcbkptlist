@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1652"
-            endingLineNumber = "1652">
+            startingLineNumber = "1681"
+            endingLineNumber = "1681">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -120,7 +120,7 @@
                   moduleName = "LocalAmazon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/LocalAmazon/LocalAmazon/CompanyFunctionsViewController.swift"
-                  timestampString = "519596659.479222"
+                  timestampString = "519599096.554493"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
@@ -135,7 +135,7 @@
                   moduleName = "LocalAmazon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/LocalAmazon/LocalAmazon/CompanyFunctionsViewController.swift"
-                  timestampString = "519596659.482793"
+                  timestampString = "519599096.557364"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1560"
-            endingLineNumber = "1560">
+            startingLineNumber = "1589"
+            endingLineNumber = "1589">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -182,11 +182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1562"
-            endingLineNumber = "1562">
+            startingLineNumber = "1591"
+            endingLineNumber = "1591">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1564"
-            endingLineNumber = "1564">
+            startingLineNumber = "1593"
+            endingLineNumber = "1593">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,11 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1566"
-            endingLineNumber = "1566">
+            startingLineNumber = "1595"
+            endingLineNumber = "1595">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -240,11 +240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1483"
-            endingLineNumber = "1483">
+            startingLineNumber = "1512"
+            endingLineNumber = "1512">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -254,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1284"
-            endingLineNumber = "1284">
+            startingLineNumber = "1313"
+            endingLineNumber = "1313">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -268,11 +268,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1194"
-            endingLineNumber = "1194">
+            startingLineNumber = "1223"
+            endingLineNumber = "1223">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1440"
-            endingLineNumber = "1440">
+            startingLineNumber = "1469"
+            endingLineNumber = "1469">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LocalAmazon/ProductsViewController.swift"
-            timestampString = "519596479.050845"
+            timestampString = "519597494.12139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1434"
-            endingLineNumber = "1434">
+            startingLineNumber = "1463"
+            endingLineNumber = "1463">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import FirebaseStorage
 import FirebaseDatabase
 import Firebase
 
@@ -202,7 +201,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
         if distances.count > 0 {
             
-            distanceaway.text = "\(distances[thisproduct]) miles away"
+            distanceaway.text = "\(distances[thistitle[thisproduct]]) miles away"
             
         } else {
             
