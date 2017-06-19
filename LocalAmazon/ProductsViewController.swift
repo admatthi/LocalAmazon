@@ -18,7 +18,7 @@ import SwiftyJSON
 var allproductids = [String]()
 var relevantproductids = [String]()
 var productimages = [UIImage]()
-var titles = [String]()
+var titles = [String:UIImage]()
 var prices = [String]()
 var brands = [String]()
 var distances = [String]()
@@ -28,8 +28,9 @@ var bizlatitudes = [String]()
 var reviewss = [String]()
 var storenames = [String]()
 var addresses = [String]()
-var sellerids = [String:Int]()
+var sellerids = [String:String]()
 var searchstrings = [String]()
+var thistitle = [String]()
 
 var ignored = false
 
@@ -87,8 +88,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     let lightgreen = UIColor(red:0.23, green:0.77, blue:0.58, alpha:1.0)
     
     
-    var maxuserlong = Double()
-    var maxuserlat = Double()
+    var userlong = Double()
+    var userlat = Double()
     var minuserlat = Double()
     var minuserlong = Double()
     
@@ -118,12 +119,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         
-                if allproductids.count == 0  {
-        
-                    queryforproductids { () -> () in
-        
-                    }
-                }
+        activityIndicator.alpha = 0
+
         
         categories.removeAll()
         
@@ -141,9 +138,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         errorlabel.alpha = 0
-        
-        activityIndicator.alpha = 0
-        loadingbackground.alpha = 0
+
+//        activityIndicator.alpha = 0
+//        loadingbackground.alpha = 0
         
         
         if CLLocationManager.locationServicesEnabled() {
@@ -168,26 +165,18 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
     
-//        if searchString == "" {
-        
-        
-        if searched == false {
-            
-            tableViewTwo.alpha = 1
-            tableView.alpha = 0
-            popularlabel.alpha = 1
-            
-        }
-        
-        
-            
-//        } else {
+////        if searchString == "" {
+//        
+//        
+//        if searched == false {
 //            
-//            tableViewTwo.alpha = 0
-//            tableView.alpha = 1
-//            popularlabel.alpha = 0
+//            tableViewTwo.alpha = 1
+//            tableView.alpha = 0
+//            popularlabel.alpha = 1
+//            
 //        }
-        
+//        
+//        
         
         self.tableViewTwo.reloadData()
         
@@ -244,34 +233,25 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
         if titles.count > 0 {
             
-            if ignored == false {
-                
-                self.tableView.alpha = 0
-                
-                notavailablelabel.alpha = 1
-                loadingbackground.alpha = 1
-                continueanyway.alpha = 1
-                
-            } else {
-                
-                tableView.alpha = 1
-            }
-//            errorlabel.alpha = 0
             
-//            loadingbackground.alpha = 0
-//            activityIndicator.alpha = 0
-//            activityIndicator.stopAnimating()
+            self.loadingbackground.alpha = 0
             
+            self.tableViewTwo.alpha = 0
+            self.popularlabel.alpha = 0
+            
+            self.tableView.alpha = 1
+            self.notavailablelabel.alpha = 0
+            self.continueanyway.alpha = 0
+            
+            activityIndicator.alpha = 0
+
+
             return titles.count
-            
             
             
         } else {
             
- 
-            
             tableView.alpha = 0
-            
             
             return 0
             
@@ -292,6 +272,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
        
 
     }
+    
   
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -322,21 +303,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.price.text = ""
         }
         
-        if brands.count > 0 {
+        if brands.count > indexPath.row {
             
-            if prices[indexPath.row] == "" {
-                
-                cell.servings.text = "No locations available"
-                cell.servings.textColor = .gray
-                
-            } else {
-                
                 cell.servings.text = "at \(brands[indexPath.row])"
                 
             }
-            
-        }
-        
+ 
         if reviewss.count > indexPath.row {
             
             if reviewss[indexPath.row] != "0" {
@@ -353,16 +325,16 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if titles.count > indexPath.row {
             
-            cell.productname.text = titles[indexPath.row]
+            cell.productname.text = thistitle[indexPath.row]
 
         } else {
             
             cell.productname.text = ""
         }
         
-        if productimages.count > indexPath.row {
+        if titles.count > indexPath.row {
             
-            cell.productimage.image = productimages[indexPath.row]
+            cell.productimage.image = titles[thistitle[indexPath.row]]
 
         } else {
             
@@ -430,94 +402,198 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             searched = true
             
-            activityIndicator.alpha = 1
-            activityIndicator.startAnimating()
-            
-            loadingbackground.alpha = 1
-            
             searchString = categories[indexPath.row]
             
             searchBar.text = categories[indexPath.row]
             
+            titles.removeAll()
+            prices.removeAll()
+            brands.removeAll()
+            addresses.removeAll()
+            storenames.removeAll()
+            productimages.removeAll()
+            thistitle.removeAll()
+            
+            var functioncounter = 0
+            
             tableViewTwo.alpha = 0
             popularlabel.alpha = 0
             
-            self.tableView.alpha = 0
-            notavailablelabel.alpha = 0
-            continueanyway.alpha = 0
+            //        activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
             
-            firstlaunch == false
+            //        loadingbackground.alpha = 1
             
+            searchString = searchBar.text!
             
-                            self.tableView.alpha = 1
+            let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
+            guard let url = URL(string: endpoint) else {
+                print("Error: cannot create URL")
+                return
+            }
+            
+            let jsonObject: [String: Any] =  [
+                "query": [
+                    "bool": [
+                        "must": [ "match": [ "product_name": searchString], ],
+                        "filter": [ "geo_distance": [ "distance": "10mi", "store_geoloc": "\(userlat), \(userlong)"], ],
+                    ],
+                ],
+                ]
+            
+            let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
+            
+            var urlRequest = URLRequest(url:url)
+            urlRequest.httpBody = jsonData
+            urlRequest.httpMethod = "POST"
+            
+            // set up the session
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            
+            // make the request
+            
+            var producttitle = String()
+            
+            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                
+                
+                do {
+                    
+                    let json = JSON(data: data!)
+                    
+                    let data = data
+                    
+                    DispatchQueue.global(qos: .utility).async {
+                        
+                        for (index,subJson):(String, JSON) in json["hits"]["hits"] {
                             
-                            self.tableViewTwo.alpha = 0
-                            self.popularlabel.alpha = 0
+                            //                print(index)
+                            //                print(subJson["_source"]["product_name"].string!)
+                            //                print(subJson["_source"]["product_img"].string!)
+                            //                print(subJson["_source"]["store_price"].string!)
+                            //                print(subJson["_source"]["store_name"].string!)
+                            //                print(subJson["_source"]["store_address"].string!)
+                            
+                            
+                            producttitle = (subJson["_source"]["product_name"].string)!
+                            
+                            titles[producttitle] = UIImage()
+                            
+                            thistitle.append(producttitle)
+                            
+                            self.activityIndicator.alpha = 0
+                            
+                            thistitle = Array(Set(thistitle))
+                            
+                            
+                            
+                            
+                            if var reviewnumber = subJson["_source"]["store_address"].string{
+                                
+                                brands.append(reviewnumber)
+                                
+                                brands = Array(Set(brands))
+                                
+                            }
+                            
+                            
+                            
+                            
+                            if var address = subJson["_source"]["store_address"].string {
+                                
+                                addresses.append(address)
+                                
+                                addresses = Array(Set(addresses))
+                            }
+                            
+                            
+                            
+                            if var lowprice = subJson["_source"]["store_price"].string {
+                                
+                                prices.append(lowprice)
+                                
+                                prices = Array(Set(prices))
+                            }
+                            
+                            if var productimagee = subJson["_source"]["product_img"].string {
+                                
+                                if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
+                                    //
+                                    //                                let dummy = UIImage()
+                                    //
+                                    //                                productimages.append(dummy)
+                                    
+                                    let insertionIndex = productimages.count - 1
+                                    
+                                    let url = URL(string: productimagee)
+                                    
+                                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                                    
+                                    if data != nil {
+                                        
+                                        let productphoto = UIImage(data: (data)!)
+                                        
+                                        //                                    if productimages.count > insertionIndex {
+                                        
+                                        titles[producttitle] = productphoto!
+                                        
+                                        self.tableView.reloadData()
+                                        
+                                        //                                    }
+                                        
+                                    }
+                                    
+                                    
+                                } else {
+                                    
+                                    let test = UIImage()
+                                    
+                                    productimages.append(test)
+                                }
+                                //
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    self.tableView.reloadData()
+                                    
+                                    self.activityIndicator.alpha = 0
+                                }
+                            }
                             
                             self.tableView.reloadData()
                             
-                            self.errorlabel.alpha = 0
                             
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.alpha = 0
                             
-                            self.loadingbackground.alpha = 0
                             
-                            }
+                        }
                         
-               
-                
+                        
+                    }
                     
-                    } else {
-                        
-                        self.errorlabel.alpha = 1
-                        
-                        self.errorlabel.text = "No available products. Please refine your search"
-                        
-                        self.loadingbackground.alpha = 0
-                        self.activityIndicator.alpha = 0
-                        self.activityIndicator.stopAnimating()
-    
-                
-                
-            } else {
-                
-                        self.tableView.alpha = 1
-                        
-                        self.tableViewTwo.alpha = 0
-                        self.popularlabel.alpha = 0
+                    
+                    
+                    
+                }
+                    
+                catch {
+                    
+                    DispatchQueue.main.async {
                         
                         self.tableView.reloadData()
                         
-                        self.errorlabel.alpha = 0
-                        
-                        self.activityIndicator.stopAnimating()
                         self.activityIndicator.alpha = 0
                         
-                        self.loadingbackground.alpha = 0
-                  
-                        
                     }
-                        
-                    } else {
-                        
-                        self.errorlabel.alpha = 1
-                        
-                        self.errorlabel.text = "No available products. Please refine your search"
-                        
-                       self.loadingbackground.alpha = 0
-                        self.activityIndicator.alpha = 0
-                       self.activityIndicator.stopAnimating()
-                    }
-                    
                 }
                 
-                self.tableView.reloadData()
-
                 
                 
             }
-        
+            
+            task.resume()
+
+                
         }
     }
  
@@ -545,12 +621,23 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        titles.removeAll()
+        prices.removeAll()
+        brands.removeAll()
+        addresses.removeAll()
+        storenames.removeAll()
+        productimages.removeAll()
+        thistitle.removeAll()
+        
         var functioncounter = 0
+        
+        tableViewTwo.alpha = 0
+        popularlabel.alpha = 0
    
-        activityIndicator.alpha = 1
+//        activityIndicator.alpha = 1
         activityIndicator.startAnimating()
         
-        loadingbackground.alpha = 1
+//        loadingbackground.alpha = 1
         
         searchString = searchBar.text!
 
@@ -580,37 +667,155 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         let session = URLSession(configuration: config)
         
         // make the request
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
+        
+        var producttitle = String()
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+       
             
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "No data")
-                return
+            do {
+                
+                let json = JSON(data: data!)
+                
+                let data = data
+                
+                DispatchQueue.global(qos: .utility).async {
+                    
+                    for (index,subJson):(String, JSON) in json["hits"]["hits"] {
+                        
+                        //                print(index)
+                        //                print(subJson["_source"]["product_name"].string!)
+                        //                print(subJson["_source"]["product_img"].string!)
+                        //                print(subJson["_source"]["store_price"].string!)
+                        //                print(subJson["_source"]["store_name"].string!)
+                        //                print(subJson["_source"]["store_address"].string!)
+                        
+                        
+                        producttitle = (subJson["_source"]["product_name"].string)!
+                            
+                            titles[producttitle] = UIImage()
+                            
+                            thistitle.append(producttitle)
+                            
+                            self.activityIndicator.alpha = 0
+                            
+                            thistitle = Array(Set(thistitle))
+
+                            
+                        
+                        
+                        if var reviewnumber = subJson["_source"]["store_name"].string{
+                            
+                            brands.append(reviewnumber)
+                            
+                            brands = Array(Set(brands))
+                            
+                        }
+                        
+                        
+                        
+                        
+//                        if var address = subJson["_source"]["store_name"].string {
+//                            
+//                            addresses.append(address)
+//                            
+//                            addresses = Array(Set(addresses))
+//                        }
+                        
+                        
+                        
+                        if var lowprice = subJson["_source"]["store_price"].string {
+                            
+                            prices.append(lowprice)
+                            
+                            prices = Array(Set(prices))
+                        }
+                        
+                        if var productimagee = subJson["_source"]["product_img"].string {
+                            
+                            if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
+//                                
+//                                let dummy = UIImage()
+//                                
+//                                productimages.append(dummy)
+                                
+                                let insertionIndex = productimages.count - 1
+                                
+                                let url = URL(string: productimagee)
+                                
+                                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                                
+                                if data != nil {
+                                    
+                                    let productphoto = UIImage(data: (data)!)
+                                    
+//                                    if productimages.count > insertionIndex {
+                                    
+                                        titles[producttitle] = productphoto!
+                                    
+                                        self.tableView.reloadData()
+                                        
+//                                    }
+                                    
+                                }
+                                
+                                
+                            } else {
+                                
+                                let test = UIImage()
+                                
+                                productimages.append(test)
+                            }
+                            //   
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.tableView.reloadData()
+                                
+                                self.activityIndicator.alpha = 0
+                            }
+                        }
+                        
+                        self.tableView.reloadData()
+                        
+                      
+                        
+                        
+                    }
+                    
+                    
+                }
+
+                    
+                    
+                    
+                }
+            
+            catch {
+                
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                    self.activityIndicator.alpha = 0
+
+                }
             }
+                
+                
             
-            let json = JSON(data: data)
-            
-            for (index,subJson):(String, JSON) in json["hits"]["hits"] {
-                
-                print(index)
-                print(subJson["_source"]["product_name"].string!)
-                print(subJson["_source"]["product_img"].string!)
-                print(subJson["_source"]["store_price"].string!)
-                print(subJson["_source"]["store_name"].string!)
-                print(subJson["_source"]["store_address"].string!)
-                
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.alpha = 0
-                
-                self.loadingbackground.alpha = 0
-            }
         }
         
         task.resume()
         
         searchBar.resignFirstResponder()
+        
+//                            self.activityIndicator.stopAnimating()
+//                            self.activityIndicator.alpha = 0
+
     }
     
+    @IBOutlet weak var searchBar: UISearchBar!
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)

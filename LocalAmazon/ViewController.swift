@@ -187,7 +187,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 if var productitle = value?["Title"] as? String {
                     
-                    titles.append(productitle)
+//                    titles.append(productitle)
                     
                 }
                 
@@ -365,7 +365,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if titles.count > indexPath.row {
             
-            cell.productname.text = titles[indexPath.row]
+//            cell.productname.text = titles[indexPath.row]
             
         }
         
