@@ -165,8 +165,12 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         featurethree.alpha = 0
         detailshighlight.alpha = 0
         
+        
     }
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         hidedetails()
@@ -176,15 +180,19 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         // Do any additional setup after loading the view.
         
-//        
-//        if prices[thisproduct] != "" {
-//            
-//                price.text = "$\(prices[thisproduct])"
-//                
-//            } else {
-//                
-//                price.text = ""
-//            }
+        
+        
+        if prices.count > 0 {
+            
+            price.text = "$\(prices[thisproduct])"
+
+        } else {
+            
+            price.text = ""
+            
+        }
+        
+        
         
         if thistitle[thisproduct] != "" {
             
@@ -192,22 +200,21 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
         }
 
-//        if distances[thisproduct] != "" {
-//            
-//            distanceaway.text = "\(distances[thisproduct]) miles away"
-//            
-//            
-//        } else {
-//            
-//            distanceaway.text = "No locations available"
-//            distanceaway.textColor = .gray
-//        }
-        
-        if brands[thisproduct] != nil {
+        if distances.count > 0 {
             
-            brandname.text = ""
-
+            distanceaway.text = "\(distances[thisproduct]) miles away"
+            
+        } else {
+            
+            distanceaway.text = "No locations available"
+            distanceaway.textColor = .gray
         }
+        
+//        if brands[thisproduct] != nil {
+//            
+//            brandname.text = ""
+//
+//        }
         
 //        if quantities[thisproduct] != "" {
 //            
@@ -599,30 +606,63 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                     
                     self.descriptionlabel.text = descriptionn
                     
+                    if descriptionn == "" {
+                        
+                        self.descriptiontitle.alpha = 0
+                    }
+                    
+                } else {
+                    
+                    self.descriptiontitle.alpha = 0
+                    self.descriptionlabel.alpha = 0
                 }
                 
                 if var aboutbrand = value?["AboutBrand"] as? String {
                     
                     self.about.text = aboutbrand
                     
+                    if aboutbrand == "" {
+                        
+                        self.aboutthebrand.alpha = 0
+                    }
+                    
+                } else {
+                    
+                    self.aboutthebrand.alpha = 0
+                    self.about.alpha = 0
                 }
                 
                 if var g = value?["Feature1"] as? String {
                     
                     self.featurestext.text = g
                     
+                    if g == "" {
+                        
+                        self.featureslabel.alpha = 0
+                    }
                     
+                } else {
+                    
+                    self.featureslabel.alpha = 0
+                    self.featurestext.alpha = 0
                 }
                 if var ss = value?["Feature3"] as? String {
                     
                     self.featurethree.text = ss
                     
+                } else {
+                    
+                    self.featuretwo.alpha = 0
                 }
                 
                 if var s = value?["Feature2"] as? String {
                     
                     self.featuretwo.text = s
                     
+                } else {
+                    
+                    self.featurethree.alpha = 0
+
                 }
                 
 //                if var hours = value?["HoursOpen"] as? String {
@@ -645,23 +685,14 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         self.ref?.child("Catalog").queryOrdered(byChild: "Title").queryEqual(toValue: thisproducttitle).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let snapDict = snapshot.value as? [String:AnyObject] {
-            
-                for each in snapDict {
-            
-                    let ids = each.key
+                
+            let each = snapDict.first?.key
                     
-                    self.thisproductid = ids
+                    self.thisproductid = each!
                 
                     completed()
-                    
-                }
                 
-                
-            } else {
-                
-                completed()
             }
-            
         })
         
         

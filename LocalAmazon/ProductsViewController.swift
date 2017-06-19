@@ -188,7 +188,25 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         searchBar.backgroundColor = lightgreen
         searchBar.barTintColor = lightgreen
-        searchBar.searchBarStyle = .prominent
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        
+        
+        
+        let textFieldInsideSearchBarLabel = textFieldInsideSearchBar!.value(forKey: "placeholderLabel") as? UILabel
+        
+        
+        let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
+        
+        
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        textFieldInsideSearchBarLabel?.textColor = UIColor.white
+        
+        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView?.tintColor = UIColor.white
+
+        
+//        searchBar.searchBarStyle = .prominent
         
         tableView.reloadData()
         
@@ -302,6 +320,10 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
                 cell.servings.text = "at \(brands[indexPath.row])"
                 
+        } else {
+            
+            cell.servings.text = "No locations available"
+
             }
  
         if reviewss.count > indexPath.row {
@@ -316,7 +338,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
             }
             
-        }
+        } else {
+            
+            cell.reviews.alpha = 0
+
+            }
         
         if titles.count > indexPath.row {
             
@@ -395,11 +421,24 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if tableView.tag == 2 {
             
-            searched = true
-            
             searchString = categories[indexPath.row]
             
             searchBar.text = categories[indexPath.row]
+            
+            timercounter = 0
+            
+            found = false
+            
+            searched = true
+            
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
+            loadingbackground.alpha = 1
+            tableView.alpha = 0
+            popularlabel.alpha = 0
+            
+            
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ProductsViewController.noavailableproducts), userInfo: nil, repeats: true)
             
             titles.removeAll()
             prices.removeAll()
@@ -411,11 +450,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             var functioncounter = 0
             
-            tableViewTwo.alpha = 0
             popularlabel.alpha = 0
             
-            
-            //        loadingbackground.alpha = 1
             
             searchString = searchBar.text!
             
@@ -481,7 +517,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             
                             
-                            if var reviewnumber = subJson["_source"]["store_address"].string{
+                            if var reviewnumber = subJson["_source"]["store_name"].string{
                                 
                                 brands.append(reviewnumber)
                                 
@@ -492,12 +528,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             
                             
-                            if var address = subJson["_source"]["store_address"].string {
-                                
-                                addresses.append(address)
-                                
-                                addresses = Array(Set(addresses))
-                            }
+                            //                        if var address = subJson["_source"]["store_name"].string {
+                            //
+                            //                            addresses.append(address)
+                            //
+                            //                            addresses = Array(Set(addresses))
+                            //                        }
                             
                             
                             
@@ -532,6 +568,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                         
                                         self.tableView.reloadData()
                                         
+                                        
+                                        
                                         //                                    }
                                         
                                     }
@@ -541,13 +579,21 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                     
                                     let test = UIImage()
                                     
-                                    productimages.append(test)
+                                    titles[producttitle] = test
                                 }
                                 //
                                 
                                 DispatchQueue.main.async {
                                     
                                     self.tableView.reloadData()
+                                    
+                                    self.activityIndicator.alpha = 0
+                                    self.activityIndicator.stopAnimating()
+                                    self.loadingbackground.alpha = 0
+                                    self.tableView.alpha = 1
+                                    self.tableViewTwo.alpha = 0
+                                    
+                                    self.found = true
                                     
                                 }
                             }
@@ -859,6 +905,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+ 
     
 
 }

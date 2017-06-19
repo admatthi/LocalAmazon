@@ -2161,27 +2161,7 @@
                                 <rect key="frame" x="313" y="28" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHs-Nb-CWV">
-                                <rect key="frame" x="33" y="66" width="310" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="310" id="68U-ad-bgv"/>
-                                    <constraint firstAttribute="height" constant="21" id="qVB-qc-Pz5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.56827500590972435" green="0.57390149111675126" blue="0.57390149111675126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okn-2C-qpV">
-                                <rect key="frame" x="109" y="37" width="157" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="GXc-f8-QsV"/>
-                                    <constraint firstAttribute="height" constant="21" id="sHV-Ia-9rh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="What do you need right now?" translatesAutoresizingMaskIntoConstraints="NO" id="bOt-30-tEK">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="What do you need right now?" translatesAutoresizingMaskIntoConstraints="NO" id="bOt-30-tEK">
                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="AIG-9u-Qft"/>
@@ -2189,6 +2169,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="NOx-pR-DTT"/>
                                     <constraint firstAttribute="width" constant="375" id="gKL-tw-QTM"/>
                                 </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="uVs-KK-aa0" id="8mn-rQ-Gxk"/>
@@ -2202,7 +2183,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Sort Stores">
-                                    <color key="titleColor" red="0.58427189086294418" green="0.57281557927739624" blue="0.57281557927739624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="N8T-S8-Wjy" kind="show" id="Qk5-om-SoA"/>
@@ -2443,15 +2424,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CfT-VW-nCH" firstAttribute="top" secondItem="bOt-30-tEK" secondAttribute="bottom" constant="50" id="02f-zg-RIa"/>
-                            <constraint firstItem="Okn-2C-qpV" firstAttribute="top" secondItem="M6b-Ho-SpZ" secondAttribute="bottom" constant="17" id="04B-si-TZL"/>
                             <constraint firstItem="ivY-8c-O9W" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="0NR-Y3-hx9"/>
                             <constraint firstItem="hDl-VL-Hix" firstAttribute="top" secondItem="IH1-A6-0Bu" secondAttribute="bottom" id="0r0-09-LaS"/>
                             <constraint firstItem="pZZ-lV-MT1" firstAttribute="top" secondItem="M6b-Ho-SpZ" secondAttribute="bottom" constant="68" id="5at-1n-aI7"/>
                             <constraint firstItem="hDl-VL-Hix" firstAttribute="top" secondItem="ivY-8c-O9W" secondAttribute="bottom" id="6Ra-tE-8dF"/>
                             <constraint firstItem="aVU-wC-Dyi" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="BTj-pA-D0b"/>
+                            <constraint firstItem="N4D-zV-GmQ" firstAttribute="top" secondItem="zne-dG-LCd" secondAttribute="bottom" constant="37" id="FH1-aH-9jL"/>
                             <constraint firstItem="IH1-A6-0Bu" firstAttribute="top" secondItem="M6b-Ho-SpZ" secondAttribute="bottom" constant="90" id="Ikq-wP-acd"/>
                             <constraint firstItem="Um1-fk-Xr1" firstAttribute="top" secondItem="bOt-30-tEK" secondAttribute="bottom" constant="12" id="JWM-ML-o9L"/>
-                            <constraint firstItem="UHs-Nb-CWV" firstAttribute="top" secondItem="M6b-Ho-SpZ" secondAttribute="bottom" constant="46" id="LlZ-8F-a2g"/>
                             <constraint firstItem="pZZ-lV-MT1" firstAttribute="leading" secondItem="pVd-jY-HMf" secondAttribute="leading" constant="7" id="Nd2-Ny-SOg"/>
                             <constraint firstItem="ivY-8c-O9W" firstAttribute="leading" secondItem="pVd-jY-HMf" secondAttribute="leading" id="NsJ-fn-GAO"/>
                             <constraint firstItem="zne-dG-LCd" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="PHW-Oq-YYC"/>
@@ -2460,7 +2440,6 @@
                             <constraint firstItem="ZpN-N2-5oj" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="QQr-MN-B6w"/>
                             <constraint firstItem="o02-bk-f0l" firstAttribute="centerY" secondItem="pVd-jY-HMf" secondAttribute="centerY" id="W93-8q-fuM"/>
                             <constraint firstAttribute="trailing" secondItem="CfT-VW-nCH" secondAttribute="trailing" constant="-1" id="WR7-gS-AE4"/>
-                            <constraint firstItem="Okn-2C-qpV" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="WoY-d9-DTg"/>
                             <constraint firstItem="ZpN-N2-5oj" firstAttribute="top" secondItem="N4D-zV-GmQ" secondAttribute="bottom" constant="57" id="Wse-gL-Is3"/>
                             <constraint firstItem="CfT-VW-nCH" firstAttribute="leading" secondItem="pVd-jY-HMf" secondAttribute="leading" constant="1" id="XLf-gr-sTN"/>
                             <constraint firstItem="IH1-A6-0Bu" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="Z0s-4s-4QW"/>
@@ -2468,8 +2447,6 @@
                             <constraint firstItem="IH1-A6-0Bu" firstAttribute="top" secondItem="bOt-30-tEK" secondAttribute="bottom" id="bW8-Qo-LM5"/>
                             <constraint firstItem="bOt-30-tEK" firstAttribute="leading" secondItem="pVd-jY-HMf" secondAttribute="leading" id="dle-5b-AGP"/>
                             <constraint firstAttribute="trailing" secondItem="bOt-30-tEK" secondAttribute="trailing" id="eUM-Mq-cla"/>
-                            <constraint firstItem="UHs-Nb-CWV" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="hmR-Nj-Ipe"/>
-                            <constraint firstItem="N4D-zV-GmQ" firstAttribute="top" secondItem="UHs-Nb-CWV" secondAttribute="bottom" constant="1" id="i2Z-i4-0Hr"/>
                             <constraint firstItem="tP9-6O-CPD" firstAttribute="top" secondItem="pVd-jY-HMf" secondAttribute="top" id="iKd-w9-q96"/>
                             <constraint firstItem="tP9-6O-CPD" firstAttribute="leading" secondItem="pVd-jY-HMf" secondAttribute="leading" id="iLq-m1-Ve6"/>
                             <constraint firstAttribute="trailing" secondItem="tP9-6O-CPD" secondAttribute="trailing" id="lpX-XH-Oww"/>
@@ -2489,7 +2466,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="o02-bk-f0l" id="W5q-oI-Q4S"/>
                         <outlet property="continueanyway" destination="IVy-dD-4qb" id="KT2-Ck-FwB"/>
-                        <outlet property="currentlocation" destination="UHs-Nb-CWV" id="ebG-pa-0iD"/>
                         <outlet property="errorlabel" destination="aVU-wC-Dyi" id="cGZ-Jf-o2h"/>
                         <outlet property="loadingbackground" destination="ivY-8c-O9W" id="Ue1-Op-GHv"/>
                         <outlet property="notavailablelabel" destination="ZpN-N2-5oj" id="FP4-5P-3do"/>
@@ -2620,12 +2596,12 @@
         <image name="Unchecked" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SQL-er-RRD"/>
+        <segue reference="ptt-wN-geA"/>
+        <segue reference="2eL-gb-NaF"/>
+        <segue reference="BC3-pp-7RL"/>
+        <segue reference="Qk5-om-SoA"/>
         <segue reference="58Z-aw-EGw"/>
         <segue reference="lPa-Wm-jcU"/>
-        <segue reference="Qk5-om-SoA"/>
-        <segue reference="2eL-gb-NaF"/>
-        <segue reference="ptt-wN-geA"/>
-        <segue reference="SQL-er-RRD"/>
-        <segue reference="BC3-pp-7RL"/>
     </inferredMetricsTieBreakers>
 </document>

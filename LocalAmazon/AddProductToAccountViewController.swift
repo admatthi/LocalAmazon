@@ -452,9 +452,9 @@ class AddProductToAccountViewController: UIViewController, UITableViewDelegate, 
  
         let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
         
-        searchBar.backgroundColor = lightgreen
-        searchBar.barTintColor = lightgreen
-        searchBar.searchBarStyle = .prominent
+//        searchBar.backgroundColor = lightgreen
+//        searchBar.barTintColor = lightgreen
+//        searchBar.searchBarStyle = .prominent
         
         tableView.reloadData()
         
