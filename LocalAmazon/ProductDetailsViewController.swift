@@ -178,49 +178,20 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         showlocation()
         hidereviews()
         
+        price.text = ""
+        
+        productname.text = thistitle[thisproduct]
+        
+        
+        
+        
+
+        
         // Do any additional setup after loading the view.
         
         
         
-        if sellerprices.count > 0 {
-            
-            price.text = "$\(sellerprices[0])"
 
-        } else {
-            
-            price.text = ""
-            
-        }
-        
-        
-        if thistitle[thisproduct] != "" {
-            
-            productname.text = thistitle[thisproduct]
-
-        }
-
-        if sellerdistances.count > 0  {
-            
-            distanceaway.text = "\(sellerdistances[0]) miles away"
-            
-        } else {
-            
-            distanceaway.text = "No locations available"
-            distanceaway.textColor = .gray
-        }
-        
-//        if brands[thisproduct] != nil {
-//            
-//            brandname.text = ""
-//
-//        }
-        
-//        if quantities[thisproduct] != "" {
-//            
-//            productsize.text = quantities[thisproduct]
-//
-//        }
-        
         
         if titles[thistitle[thisproduct]] != nil {
         
@@ -449,7 +420,21 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 //                    self.openhours.text = hours
 //                    
 //                }
-//    
+//      
+                
+                if value == nil {
+                    
+                    self.featureslabel.text = ""
+                    self.featurestext.text = ""
+                    self.featuretwo.text = ""
+                    self.featurethree.text = ""
+                    self.aboutthebrand.text = ""
+                    self.about.text = ""
+                    self.descriptiontitle.text = ""
+                    self.descriptionlabel.text = ""
+
+
+                }
             })
         
     }
@@ -602,13 +587,19 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         let jsonObject: [String: Any] =  [
+            "sort" : [ "_score",
+                       [ "store_price" : ["order" : "asc" ] ],
+                       [ "_geo_distance" : [ "store_geoloc" : "34.000290, -118.455380", "order" : "asc", "unit" : "mi"] ]
+            ],
             "query": [
                 "bool": [
-                    "must": [ "match": [ "product_name": thistitle[thisproduct]], ],
-                    "filter": [ "geo_distance": [ "distance": "10mi", "store_geoloc": "\(userlat), \(userlong)"], ],
+                    "filter": [ [ "term": [ "product_name.raw": thistitle[thisproduct]] ] ,
+                                [ "geo_distance": [ "distance": "15mi", "store_geoloc": "34.000290, -118.455380"] ]
+                    ],
                 ],
             ],
             ]
+
         
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
         
@@ -645,15 +636,19 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                         //                                            print(subJson["_source"]["store_address"].string!)
         
                         
-                        if var reviewnumber = subJson["_source"]["store_name"].string{
+                     
+                        
+
+                        
+                        if var storename = subJson["_source"]["store_name"].string{
                             
-                            self.sellernames.append(reviewnumber)
+                            self.sellernames.append(storename)
                             
                         }
                         
                         
                         
-                        if var address = subJson["_source"]["store_name"].string {
+                        if var address = subJson["_source"]["store_address"].string {
                         
                             self.selleraddresses.append(address)
                         
@@ -665,24 +660,38 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                             
                             self.sellerprices.append(lowprice)
                             
+                            self.price.text = "$\(self.sellerprices[0])"
+                            
                         }
                         
                         if var distance = subJson["sort"][2].float {
                             
-                            self.sellerdistances.append(String(distance))
+                            self.sellerdistances.append(String(format: "%.2f", distance))
                             
+                            self.distanceaway.text = "\(self.sellerdistances[0]) miles away"
+                            
+                            
+                        } else {
+                            
+                            self.distanceaway.text = "No locations available"
+                            self.distanceaway.textColor = .gray
                         }
                         
+                        self.tableView.reloadData()
+                        self.tableViewTwo.reloadData()
+
                         
-                            
                             DispatchQueue.main.async {
                                 
-                            
+                                self.tableView.reloadData()
+                                self.tableViewTwo.reloadData()
+
                                 
                             }
                         }
                         
                         self.tableView.reloadData()
+                        self.tableViewTwo.reloadData()
                         
                         
                     }

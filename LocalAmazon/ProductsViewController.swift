@@ -32,6 +32,16 @@ var sellerids = [String:String]()
 var searchstrings = [String]()
 var thistitle = [String]()
 
+var distanceaway = [String:String]()
+
+var brandss = [String:String]()
+
+var pricess = [String:String]()
+
+var storenamess = [String:String]()
+
+var productids = [String:String]()
+
 var ignored = false
 
 var firstlaunch = true
@@ -124,10 +134,10 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         categories.removeAll()
         
         categories.append("Perfect Foods Peanut Butter Bar")
-        categories.append("Organic Chicken Breast")
-        categories.append("Bob's Red Mill Oats")
+        categories.append("Organic")
+        categories.append("Gluten Free")
         categories.append("Alba Botanica Facial Cleanser")
-        categories.append("Vegan Protein")
+        categories.append("Vegan")
         
         
         
@@ -183,8 +193,14 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.tableViewTwo.reloadData()
         
-                
-        let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
+        
+        let healthybrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
+    
+        
+        let healthgrey = UIColor(red:0.59, green:0.58, blue:0.59, alpha:1.0)
+        
+        
+
         
         searchBar.backgroundColor = lightgreen
         searchBar.barTintColor = lightgreen
@@ -425,8 +441,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             searchBar.text = categories[indexPath.row]
             
-            timercounter = 0
-            
             found = false
             
             searched = true
@@ -448,6 +462,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             productimages.removeAll()
             thistitle.removeAll()
             
+            pricess.removeAll()
+            brandss.removeAll()
+            storenamess.removeAll()
+            distanceaway.removeAll()
+            productids.removeAll()
+            
             var functioncounter = 0
             
             popularlabel.alpha = 0
@@ -462,10 +482,14 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             let jsonObject: [String: Any] =  [
+                "sort" : [ "_score",
+                           [ "store_price" : ["order" : "asc" ] ],
+                           [ "_geo_distance" : [ "store_geoloc" : "34.000290, -118.455380", "order" : "asc", "unit" : "mi"] ]
+                ],
                 "query": [
                     "bool": [
-                        "must": [ "match": [ "product_name": searchString], ],
-                        "filter": [ "geo_distance": [ "distance": "10mi", "store_geoloc": "\(userlat), \(userlong)"], ],
+                        "must": [ "match": [ "product_name": searchBar.text ], ],
+                        "filter": [ "geo_distance": [ "distance": "15mi", "store_geoloc": "34.000290, -118.455380"] ],
                     ],
                 ],
                 ]
@@ -497,93 +521,107 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         for (index,subJson):(String, JSON) in json["hits"]["hits"] {
                             
-//                                            print(index)
-//                                            print(subJson["_source"]["product_name"].string!)
-//                                            print(subJson["_source"]["product_img"].string!)
-////                                            print(subJson["_source"]["store_price"].string!)
-//                                            print(subJson["_source"]["store_name"].string!)
-//                                            print(subJson["_source"]["store_address"].string!)
+//                                                                    print(index)
+//                                                                    print(subJson["_source"]["product_name"].string!)
+//                                                                    print(subJson["_source"]["product_img"].string!)
+//                                                                    print(subJson["_source"]["store_price"].string!)
+//                                                                    print(subJson["_source"]["store_name"].string!)
+//                                                                    print(subJson["_source"]["store_address"].string!)
+//                                                                    print(subJson)
+//                            
+                            
                             
                             
                             producttitle = (subJson["_source"]["product_name"].string)!
                             
-//                            titles[producttitle] = UIImage()
-//                            
-//                            thistitle.append(producttitle)
-//                            
-//                            
-//                            thistitle = Array(Set(thistitle))
-                            
-                            
-                            
-                            
-                            if var reviewnumber = subJson["_source"]["store_name"].string{
+                            if thistitle.contains(producttitle) {
                                 
-                                brands.append(reviewnumber)
                                 
-                                brands = Array(Set(brands))
+                            } else {
                                 
-                            }
-                            
-                            
-                            
-                            
-                            //                        if var address = subJson["_source"]["store_name"].string {
-                            //
-                            //                            addresses.append(address)
-                            //
-                            //                            addresses = Array(Set(addresses))
-                            //                        }
-                            
-                            
-                            
-                            if var lowprice = subJson["_source"]["store_price"].string {
+                                thistitle.append(producttitle)
                                 
-                                prices.append(lowprice)
+                                titles[producttitle] = UIImage()
                                 
-                                prices = Array(Set(prices))
-                            }
-                            
-                            if var productimagee = subJson["_source"]["product_img"].string {
-                                
-                                if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
-                                    //
-                                    //                                let dummy = UIImage()
-                                    //
-                                    //                                productimages.append(dummy)
+                                if var reviewnumber = subJson["_source"]["store_name"].string {
                                     
-                                    let insertionIndex = productimages.count - 1
                                     
-                                    let url = URL(string: productimagee)
+                                    storenamess[producttitle] = reviewnumber
                                     
-                                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                                }
+                                
+                                
+                                
+                                
+                                if var lowprice = subJson["_source"]["store_price"].string {
                                     
-                                    if data != nil {
+                                    
+                                    pricess[producttitle] = lowprice
+                                    
+                                    
+                                    
+                                }
+                                
+                                if var distance = subJson["sort"][2].float {
+                                    
+                                    distanceaway[producttitle] = (String(format: "%.2f", distance))
+                                    
+                                    
+                                }
+                                
+                                if var productimagee = subJson["_source"]["product_img"].string {
+                                    
+                                    if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
+                                        //
+                                        //                                let dummy = UIImage()
+                                        //
+                                        //                                productimages.append(dummy)
                                         
-                                        let productphoto = UIImage(data: (data)!)
+                                        let insertionIndex = productimages.count - 1
                                         
-                                        //                                    if productimages.count > insertionIndex {
+                                        let url = URL(string: productimagee)
                                         
-                                        titles[producttitle] = productphoto!
+                                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                                         
-                                        self.tableView.reloadData()
+                                        if data != nil {
+                                            
+                                            let productphoto = UIImage(data: (data)!)
+                                            
+                                            //                                    if productimages.count > insertionIndex {
+                                            
+                                            titles[producttitle] = productphoto!
+                                            
+                                            self.tableView.reloadData()
+                                            
+                                            
+                                            //                                    }
+                                            
+                                        }
                                         
                                         
+                                    } else {
                                         
-                                        //                                    }
+                                        let test = UIImage()
                                         
+                                        titles[producttitle] = test
                                     }
                                     
                                     
-                                } else {
                                     
-                                    let test = UIImage()
                                     
-                                    titles[producttitle] = test
                                 }
+                                
+                                
+                                
+                                if var productid = subJson["_source"]["product_id"].string {
+                                    
+                                    productids[producttitle] = productid
+                                    
+                                }
+                                
+                                
                                 //
                                 
-                           
                                 
                                 DispatchQueue.main.async {
                                     
@@ -600,6 +638,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 }
                             }
                             
+                            
+                            
                             self.tableView.reloadData()
                             
                             
@@ -613,9 +653,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     
                     
-                }
-                    
-                catch {
+                } catch {
                     
                     DispatchQueue.main.async {
                         
@@ -623,15 +661,17 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         
                     }
+                    
+                    
                 }
+                
                 
                 
                 
             }
             
             task.resume()
-
-                
+            
         }
     }
  
@@ -688,15 +728,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var found = Bool()
     
-    var distanceaway = [String:String]()
-    
-    var brandss = [String:String]()
-    
-    var pricess = [String:String]()
-    
-    var storenamess = [String:String]()
-    
-    var productids = [String:String]() 
+
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -807,7 +839,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             if var reviewnumber = subJson["_source"]["store_name"].string {
                                 
                                 
-                        self.storenamess[producttitle] = reviewnumber
+                        storenamess[producttitle] = reviewnumber
                                 
                             }
                             
@@ -817,7 +849,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             if var lowprice = subJson["_source"]["store_price"].string {
                                 
                                 
-                                self.pricess[producttitle] = lowprice
+                                pricess[producttitle] = lowprice
                                 
                                 
                                 
@@ -825,7 +857,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             if var distance = subJson["sort"][2].float {
                                 
-                                self.distanceaway[producttitle] = String(distance)
+                                distanceaway[producttitle] = (String(format: "%.2f", distance))
+
                                 
                             }
                             
@@ -875,7 +908,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     if var productid = subJson["_source"]["product_id"].string {
                         
-                        self.productids[producttitle] = productid
+                        productids[producttitle] = productid
                         
                     }
                     
@@ -897,31 +930,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                               
                            }
                         }
-                        
-//                        var long = subJson["_source"]["store_longitude"].string
-//                            
-//                        var latitude = subJson["_source"]["store_latitude"].string
-//                                
-//                                let manager = CLLocationManager()
-//                                
-//                                if let location = manager.location?.coordinate {
-//                                    
-//                                    if long != "" && latitude != "" {
-//                                        
-//                                        var bizLocation = CLLocation(latitude: (Double(latitude!))! , longitude: Double(long!)!)
-//                                        
-//                                        var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
-//                                        
-//                                        var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
-//                                        
-//                                        distances[producttitle] = String(format: "%.2f", distance)
-//                                        
-//                                    } else {
-//                                        
-//                                        distances[producttitle] = ""
-//                                    }
-//                                }
-//                        
+
 
                         
                         self.tableView.reloadData()
@@ -959,7 +968,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.resignFirstResponder()
     }
     
-//                            self.activityIndicator.stopAnimating()
 
    
     
