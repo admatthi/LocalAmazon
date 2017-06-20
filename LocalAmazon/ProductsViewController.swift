@@ -139,8 +139,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         categories.append("Alba Botanica Facial Cleanser")
         categories.append("Vegan")
         
-        
-        
         ref = FIRDatabase.database().reference()
         
         super.viewDidLoad()
@@ -197,13 +195,14 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         let healthybrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
     
         
-        let healthgrey = UIColor(red:0.59, green:0.58, blue:0.59, alpha:1.0)
+        let healthygrey = UIColor(red:0.59, green:0.58, blue:0.59, alpha:1.0)
         
         
 
         
-        searchBar.backgroundColor = lightgreen
-        searchBar.barTintColor = lightgreen
+        searchBar.backgroundColor = healthybrown
+//        searchBar.barTintColor = lightgreen
+        
         
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         
@@ -215,11 +214,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
         
         
-        textFieldInsideSearchBar?.textColor = UIColor.white
-        textFieldInsideSearchBarLabel?.textColor = UIColor.white
+        textFieldInsideSearchBar?.textColor = healthygrey
+        textFieldInsideSearchBarLabel?.textColor = healthygrey
         
         glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
-        glassIconView?.tintColor = UIColor.white
+        glassIconView?.tintColor = healthygrey
 
         
 //        searchBar.searchBarStyle = .prominent
