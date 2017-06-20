@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import FirebaseDatabase
 import Firebase
+import SwiftyJSON
 
 class ProductDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -181,9 +182,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         
         
-        if prices.count > 0 {
+        if sellerprices.count > 0 {
             
-            price.text = "$\(prices[thisproduct])"
+            price.text = "$\(sellerprices[0])"
 
         } else {
             
@@ -192,16 +193,15 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         
-        
         if thistitle[thisproduct] != "" {
             
             productname.text = thistitle[thisproduct]
 
         }
 
-        if distances.count > 0 {
+        if sellerdistances.count > 0  {
             
-            distanceaway.text = "\(distances[thistitle[thisproduct]]) miles away"
+            distanceaway.text = "\(sellerdistances[0]) miles away"
             
         } else {
             
@@ -244,19 +244,13 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         ref = FIRDatabase.database().reference()
         
-        queryforproductid {
+        getnearestsellers()
         
             self.queryforproductdata()
-        
-            self.getsellerids { () -> () in
-         
-            self.queryforsellerdata { () -> () in
                 
                 self.queryforreviewids {
                     
                     self.queryforreviews()
-                    
-                    self.updatedistances()
                     
                     if self.reviewIDs.count > 0 {
                         
@@ -269,15 +263,10 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                     
                     self.tableView.reloadData()
                 }
-                
-                self.updatedistances()
-                
+        
             }
-        }
-        
-    }
-        
-    }
+    
+  
     
     var ref: FIRDatabaseReference?
     
@@ -297,144 +286,6 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
     var thisproducttitle = thistitle[thisproduct]
     
-    func updatedistances() {
-        
-        sellerdistances.removeAll()
-        
-        var counter = 0
-        
-        for each in sellerlats {
-            
-            let manager = CLLocationManager()
-            
-            if let location = manager.location?.coordinate {
-                
-                if counter < sellerids.count {
-                    
-                    var bizLocation = CLLocation(latitude: (Double(sellerlats[counter])!) , longitude: Double(sellerlongs[counter])!)
-                    
-                    var cluserLocation = CLLocation(latitude: (location.latitude), longitude: (location.longitude))
-                    
-                    var distance = cluserLocation.distance(from: bizLocation) / 1000 * 0.621371
-                    
-                    print("\(cluserLocation) & \(bizLocation) & \(distance)")
-                    
-                    sellerdistances.append(String(format: "%.2f", distance))
-                    
-                    self.tableView.reloadData()
-                    
-                    
-                    
-                }
-                
-            }
-            
-        }
-        
-        }
-        
-    
-
-
-    func queryforshortestcompanies() {
-        
-        sellernames.removeAll()
-        selleraddresses.removeAll()
-        sellerprices.removeAll()
-        sellerlats.removeAll()
-        sellerlongs.removeAll()
-        availablitily.removeAll()
-        
-        var functioncounter = 0
-        
-        for each in sellerids {
-            
-            self.ref?.child("Products").child("\(thisproductid)").child("AllSellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if var name = value?["StoreName"] as? String {
-                    
-                    self.sellernames.append(name)
-                    
-                }
-                
-                if var address = value?["StoreAddress"] as? String {
-                    
-                    self.selleraddresses.append(address)
-                    
-                }
-                
-                if var price = value?["Price"] as? String {
-                    
-                    self.sellerprices.append(price)
-                    
-                }
-                
-                if var long = value?["Longitude"] as? String {
-                    
-                    self.sellerlongs.append(long)
-                    
-                }
-                
-                if var latitude = value?["Latitude"] as? String {
-                    
-                    self.sellerlats.append(latitude)
-                    
-                }
-                
-                self.tableViewTwo.reloadData()
-                
-            
-                
-            })
-            
-            
-            
-            
-        }
-        
-        let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
-        
-        self.tableViewTwo.reloadData()
-        
-
-    }
-
-    
-    func getsellerids(completed: @escaping ( () -> () )) {
-    
-            sellerids.removeAll()
-    
-            var functioncounter = 0
-    
-            self.ref?.child("Catalog").child("\(thisproductid)").child("AllSellers").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                        if let snapDict = snapshot.value as? [String:AnyObject] {
-    
-                            for each in snapDict {
-    
-                                let ids = each.key
-    
-                                sellerids[ids] = ""
-    
-                                functioncounter += 1
-    
-                                if functioncounter == snapDict.count {
-                                    
-                                    completed()
-    
-                                }
-    
-                            }
-    
-                        }
-        
-                    })
-        
-    }
-    
-        
     
     
     
@@ -519,80 +370,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
 
 
-    func queryforsellerdata(completed: @escaping ( () -> () )) {
-        
-       sellernames.removeAll()
-        selleraddresses.removeAll()
-        sellerprices.removeAll()
-        sellerlats.removeAll()
-        sellerlongs.removeAll()
-        availablitily.removeAll()
-        
-        var functioncounter = 0
-        
-        for (each, value) in sellerids {
-            
-            self.ref?.child("Catalog").child("\(thisproductid)").child("AllSellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if var name = value?["StoreName"] as? String {
-                    
-                    self.sellernames.append(name)
-                    
-                }
-                
-                if var address = value?["StoreAddress"] as? String {
-                    
-                    self.selleraddresses.append(address)
-                    
-                }
-                
-                if var price = value?["Price"] as? String {
-                    
-                   self.sellerprices.append(price)
-                    
-                }
-                
-                if var long = value?["Longitude"] as? String {
-                    
-                    self.sellerlongs.append(long)
-                    
-                }
-                
-                if var latitude = value?["Latitude"] as? String {
-                    
-                    self.sellerlats.append(latitude)
-                    
-                }
-                
-                self.tableViewTwo.reloadData()
-            
-                functioncounter += 1
-                
-                if functioncounter == sellerids.count {
-                    
-                    completed()
-                    
-                    
-                    
-                }
-                
-            })
-            
-           
-            
-            
-        }
-        
-        let lightbrown = UIColor(red:0.96, green:0.95, blue:0.93, alpha:1.0)
-                
-        self.tableViewTwo.reloadData()
-        
-    }
     
   
-
+    var thisproductid = thistitle[thisproduct]
     
     func queryforproductdata() {
         
@@ -674,28 +454,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
-    var thisproductid = ""
-    
-    
-    func queryforproductid(completed: @escaping ( () -> () )) {
-        
-        var functioncounter = 0
-        
-        self.ref?.child("Catalog").queryOrdered(byChild: "Title").queryEqual(toValue: thisproducttitle).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-            let each = snapDict.first?.key
-                    
-                    self.thisproductid = each!
-                
-                    completed()
-                
-            }
-        })
-        
-        
-    }
+
     
   
 
@@ -720,7 +479,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         if tableView.tag == 1 {
             
-            return sellerids.count
+            return selleraddresses.count
             
             
         }
@@ -769,9 +528,6 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                 cell.price.text = "$\(sellerprices[indexPath.row])"
             }
             
-            let key = Array(sellerids.keys)[indexPath.section]
-            
-            let test = sellerids[key]
             
             if sellerdistances.count > indexPath.row {
                 
@@ -828,5 +584,131 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
             return nil
     }
+    
+    var userlong = Double()
+    var userlat = Double()
+    
+    func getnearestsellers() {
+        
+        sellerprices.removeAll()
+        selleraddresses.removeAll()
+        sellernames.removeAll()
+        sellerdistances.removeAll()
+        
+        let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
+        guard let url = URL(string: endpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        let jsonObject: [String: Any] =  [
+            "query": [
+                "bool": [
+                    "must": [ "match": [ "product_name": thistitle[thisproduct]], ],
+                    "filter": [ "geo_distance": [ "distance": "10mi", "store_geoloc": "\(userlat), \(userlong)"], ],
+                ],
+            ],
+            ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
+        
+        var urlRequest = URLRequest(url:url)
+        urlRequest.httpBody = jsonData
+        urlRequest.httpMethod = "POST"
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        
+        var producttitle = String()
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            
+            
+            do {
+                
+                let json = JSON(data: data!)
+                
+                let data = data
+                
+                DispatchQueue.global(qos: .utility).async {
+                    
+                    for (index,subJson):(String, JSON) in json["hits"]["hits"] {
+                        
+                        //                                            print(index)
+                        //                                            print(subJson["_source"]["product_name"].string!)
+                        //                                            print(subJson["_source"]["product_img"].string!)
+                        ////                                            print(subJson["_source"]["store_price"].string!)
+                        //                                            print(subJson["_source"]["store_name"].string!)
+                        //                                            print(subJson["_source"]["store_address"].string!)
+        
+                        
+                        if var reviewnumber = subJson["_source"]["store_name"].string{
+                            
+                            self.sellernames.append(reviewnumber)
+                            
+                        }
+                        
+                        
+                        
+                        if var address = subJson["_source"]["store_name"].string {
+                        
+                            self.selleraddresses.append(address)
+                        
+                        }
+                
+                        
+                        
+                        if var lowprice = subJson["_source"]["store_price"].string {
+                            
+                            self.sellerprices.append(lowprice)
+                            
+                        }
+                        
+                        if var distance = subJson["sort"][2].float {
+                            
+                            self.sellerdistances.append(String(distance))
+                            
+                        }
+                        
+                        
+                            
+                            DispatchQueue.main.async {
+                                
+                            
+                                
+                            }
+                        }
+                        
+                        self.tableView.reloadData()
+                        
+                        
+                    }
+                    
+                    
+                }
+      
+            catch {
+                
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                }
+            }
+            
+            
+            
+        }
+        
+        task.resume()
+        
+        
+    }
 
-}
+    }
+
+

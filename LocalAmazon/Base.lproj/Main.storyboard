@@ -2596,10 +2596,10 @@
         <image name="Unchecked" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SQL-er-RRD"/>
-        <segue reference="ptt-wN-geA"/>
-        <segue reference="2eL-gb-NaF"/>
         <segue reference="BC3-pp-7RL"/>
+        <segue reference="2eL-gb-NaF"/>
+        <segue reference="ptt-wN-geA"/>
+        <segue reference="SQL-er-RRD"/>
         <segue reference="Qk5-om-SoA"/>
         <segue reference="7yF-mw-9lR"/>
         <segue reference="lPa-Wm-jcU"/>

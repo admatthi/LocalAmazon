@@ -34,8 +34,11 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
                     
                     self.queryforuploadedtitles {
                         
-                        
-                        self.queryformatchingtitlesandupdateprices()
+                        self.getsellerinfo {
+                            
+                            self.queryformatchingtitlesandupdateprices()
+                            
+                        }
                         
                     }
                     
@@ -74,6 +77,63 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
         
     }
     
+    var addressess = ["":""]
+    var names: [String:String] = [:]
+    var lats: [String:Double] = [:]
+    var longs: [String:String] = [:]
+    
+    var dict = [String]()
+    
+    func getsellerinfo(completed: @escaping ( () -> () ))  {
+        
+        addressess.removeAll()
+        names.removeAll()
+        lats.removeAll()
+        longs.removeAll()
+        
+        var functioncounter = 0
+        
+        for each in dict {
+        
+        self.ref?.child("Sellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var add = value?["StoreAddress"] as? String {
+                
+                self.addressess[each] = add
+            }
+            
+            if var name = value?["StoreName"] as? String {
+                
+                self.names[each] = name
+            }
+            
+            if var lat = value?["Latitude"] as? Double {
+                
+                self.lats[each] = lat
+            }
+            
+            
+            if var long = value?["Longitude"] as? String {
+                
+                self.longs[each] = long
+
+                
+            }
+            
+            functioncounter += 1
+            
+            if functioncounter == self.dict.count {
+                
+                completed()
+            }
+            
+            })
+            
+        }
+    }
+    
     
     func queryforproductids(completed: @escaping ( () -> () )) {
         
@@ -83,7 +143,7 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
         
         var functioncounter = 0
         
-        self.ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref?.child("Catalog").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let snapDict = snapshot.value as? [String:AnyObject] {
                 
@@ -123,7 +183,7 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
         
         for each in sellerviewallproductids {
             
-            self.ref?.child("Products").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.ref?.child("Catalog").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -227,7 +287,7 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
         
     }
     
-    var latitude = ""
+    var latitude = Int()
     var longitude = ""
     var storeaddress = ""
     var storename = ""
@@ -246,83 +306,57 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
                 
                 if id == idd {
                     
-                    for (each, value) in rawsellerinfo {
+                    for iddd in dict {
                         
                     var passed = false
 
-                        
-                    self.ref?.child("Sellers").child("\(each)").observeSingleEvent(of: .value, with: { (snapshot) in
-                            
-                        var value = snapshot.value as? NSDictionary
-                        
-                        if var add = value?["Address"] as? String {
-                            
-                            self.storeaddress = add
-                        }
-                        
-                        if var name = value?["StoreName"] as? String {
-                            
-                            self.storename = name
-                        }
-                        
-                        if var lat = value?["Latitude"] as? String {
-                            
-                            self.latitude = lat
-                        }
-                        
-                        if var long = value?["Longitude"] as? String {
-                            
-                            self.longitude = long
-                            
-                            self.ref?.child("Products").child("\(id)").child("AllSellers").child(each).updateChildValues(["Latitude" : self.latitude, "Longitude" : self.longitude, "Price" : self.uploadedprices[idd], "StoreAddress" : self.storeaddress, "StoreName" : self.storename])
+                    self.ref?.child("Catalog").child("\(id)").child("AllSellers").child(iddd).updateChildValues(["Latitude" : lats[iddd], "Longitude" : longs[iddd], "Price" : self.uploadedprices[idd], "StoreAddress" : addressess[iddd], "StoreName" : names[iddd]])
                             
                             passed = true
                             
-                        }
-                        
-                        if passed {
-                            
-                            let trimmedlowestprice = lowestprice.trimmingCharacters(in: .whitespaces)
-                            let trimmedpricee = pricee.trimmingCharacters(in: .whitespaces)
-                            
-                            
-                            if var intlowestprice = Double(trimmedlowestprice)  {
-                                
-                                if var intpricee = Double(trimmedpricee) {
-                                    
-                                    if intpricee < intlowestprice {
-                                        
-                                        self.ref?.child("Products").child("\(id)").updateChildValues(["CheapestLatitude" : self.latitude, "CheapestLongitude" : self.longitude, "LowestPrice" : self.uploadedprices[idd],  "Brand" : self.storename])
-                                        
-                                    } else {
-                                        
-                                        
-                                    }
-                                    
-                                } else {
-                                    
-                                    self.ref?.child("Products").child("\(id)").updateChildValues(["CheapestLatitude" : self.latitude, "CheapestLongitude" : self.longitude, "LowestPrice" : self.catalogtitles[id],  "Brand" : self.storename])
-                                }
-                                
-                                
-                            } else {
-                                
-                                self.ref?.child("Products").child("\(id)").updateChildValues(["CheapestLatitude" : self.latitude, "CheapestLongitude" : self.longitude, "LowestPrice" : self.uploadedprices[idd],  "Brand" : self.storename])
-                            }
-                            
-
-                        }
+                    }
+                    
+              
+                
+//                        if passed {
+//                            
+//                            let trimmedlowestprice = lowestprice.trimmingCharacters(in: .whitespaces)
+//                            let trimmedpricee = pricee.trimmingCharacters(in: .whitespaces)
+//                            
+//                            
+//                            if var intlowestprice = Double(trimmedlowestprice)  {
+//                                
+//                                if var intpricee = Double(trimmedpricee) {
+//                                    
+//                                    if intpricee < intlowestprice {
+//                                        
+//                                        self.ref?.child("Products").child("\(id)").updateChildValues(["CheapestLatitude" : self.latitude, "CheapestLongitude" : self.longitude, "LowestPrice" : self.uploadedprices[idd],  "Brand" : self.storename])
+//                                        
+//                                    } else {
+//                                        
+//                                        
+//                                    }
+//                                    
+//                                } else {
+//                                    
+//                                    self.ref?.child("Products").child("\(id)").updateChildValues(["CheapestLatitude" : self.latitude, "CheapestLongitude" : self.longitude, "LowestPrice" : self.catalogtitles[id],  "Brand" : self.storename])
+//                                }
+//                                
+//                                
+//                            } else {
+//                                
+//                                self.ref?.child("Products").child("\(id)").updateChildValues(["CheapestLatitude" : self.latitude, "CheapestLongitude" : self.longitude, "LowestPrice" : self.uploadedprices[idd],  "Brand" : self.storename])
+//                            }
+//                            
+//
+//                        }
                         
         
                     
-                        
-                })
-                    
-                }
-            } else {
+            
                     
                     
-                }
+            }
         }
             
         }
@@ -333,6 +367,7 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
     func queryforuploadedids(completed: @escaping ( () -> () )) {
         
         rawsellerinfo.removeAll()
+        dict.removeAll()
         
         var functioncounter = 0
         
@@ -345,6 +380,7 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
                     let ids = each.key
                     
                     self.rawsellerinfo[ids] = " "
+                    self.dict.append(ids)
                     
                     functioncounter += 1
                     
@@ -377,6 +413,8 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
                 if var productitle = value?["StoreAddress"] as? String {
                     
                     self.rawsellerinfo[each] = productitle
+                    
+                    
                     
                 }
                 
@@ -415,13 +453,13 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
                         
                         let latitude = coordinates!.coordinate.latitude
                         
-//                        let stringlatitude = String(latitude)
-//                        
-//                        let longitudestring = String(longitude)
+                        let stringlatitude = String(latitude)
+                        
+                        let longitudestring = String(longitude)
                         
 //                        self.ref?.child("Sellers").child(each).updateChildValues(["Longitude" : "\(longitudestring)", "Latitude" : "\(stringlatitude)"])
                         
-                        self.ref?.child("Sellers").child(each).updateChildValues(["Longitude" : longitude, "Latitude" : latitude])
+                        self.ref?.child("Sellers").child(each).updateChildValues(["Longitude" : longitudestring, "Latitude" : stringlatitude])
 
                         
                         
