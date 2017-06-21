@@ -1,4 +1,6 @@
 PODS:
+  - Firebase/Analytics (3.15.0):
+    - Firebase/Core
   - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -42,6 +44,7 @@ PODS:
   - UXCam (2.5.8)
 
 DEPENDENCIES:
+  - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -62,6 +65,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UXCam: 76cb857694b8f1776998028de985d737b6852bce
 
-PODFILE CHECKSUM: af668f404353898464097752ac4fdaf8292445f8
+PODFILE CHECKSUM: 64ea287125bd43f399b0a16701c1e5d36ead6098
 
 COCOAPODS: 1.2.0

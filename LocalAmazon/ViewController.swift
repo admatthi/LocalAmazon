@@ -14,7 +14,6 @@ import FirebaseAuth
 import CoreLocation
 import MapKit
 
-var searchString = String()
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate {

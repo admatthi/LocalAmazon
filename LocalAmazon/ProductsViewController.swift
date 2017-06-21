@@ -32,6 +32,8 @@ var sellerids = [String:String]()
 var searchstrings = [String]()
 var thistitle = [String]()
 
+var searchString = String()
+
 var distanceaway = [String:String]()
 
 var brandss = [String:String]()
@@ -337,7 +339,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.price.text = ""
         }
         
-        if storenamess.count > indexPath.row {
+        if storenamess.count - 1 > indexPath.row {
             
                 cell.servings.text = "at \(storenamess[thistitle[indexPath.row]]! )"
                 
@@ -347,7 +349,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
             }
  
-        if reviewss.count > indexPath.row {
+        if reviewss.count  > indexPath.row {
             
             if reviewss[indexPath.row] != "0" {
             
@@ -365,7 +367,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
             }
         
-        if titles.count > indexPath.row {
+        if titles.count - 1 > indexPath.row {
             
             cell.productname.text = thistitle[indexPath.row]
 
@@ -383,7 +385,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.productimage.image = UIImage(named: "LoadingImage")
         }
         
-        if distanceaway.count > indexPath.row {
+        if distanceaway.count - 1 > indexPath.row {
             
             if distanceaway[thistitle[indexPath.row]] != "" {
             
@@ -739,6 +741,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        searchString = searchBar.text!
+        
+        FIRAnalytics.logEvent(withName: "searched", parameters: [
+            
+
+            "Term": searchString as NSObject
+            
+            ])
+        
         timercounter = 0
         
         found = false
@@ -871,6 +882,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 
                             }
                             
+                            self.tableView.reloadData()
+                            
                             if var productimagee = subJson["_source"]["product_img"].string {
                                 
                                 if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
@@ -986,9 +999,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
- 
     
 
 }
+
+
+
 
 
