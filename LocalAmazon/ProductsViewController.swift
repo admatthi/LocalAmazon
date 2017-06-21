@@ -778,6 +778,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         storenamess.removeAll()
         distanceaway.removeAll()
         productids.removeAll()
+        quantities.removeAll()
         
         var functioncounter = 0
         
@@ -933,7 +934,13 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         productids[producttitle] = productid
                         
                     }
-                    
+                            
+//                    if var quantity = subJson["_source"]["product_quantity"].string {
+//                                
+//                                quantities[producttitle] = quantity
+//                                
+//                    }
+//                    
                     
                                                    //
                             

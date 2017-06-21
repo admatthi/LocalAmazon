@@ -15,6 +15,8 @@ import SwiftyJSON
 
 class ProductDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var quantitylabel: UILabel!
+    @IBOutlet weak var buyboxstorename: UILabel!
     @IBOutlet weak var citystateziplabel: UILabel!
     @IBOutlet weak var featureslabel: UILabel!
     @IBOutlet weak var featurestext: UILabel!
@@ -183,6 +185,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         productname.text = thistitle[thisproduct]
         
+        quantitylabel.text = quantities[thisproduct]
         
         
         
@@ -705,6 +708,10 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                                 
                                 self.distanceawayy.text = "\(self.sellerdistances[0]) miles away"
                                 self.price.text = "$\(self.sellerprices[0])"
+                                
+                                self.buyboxstorename.text = self.sellernames[0]
+                                
+                                
 
                                 self.tableView.reloadData()
                                 self.tableViewTwo.reloadData()

@@ -49,6 +49,9 @@
 		9D69F1481EE1BD9800EAAE73 /* Dosis-Regular.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62011EDF05FB003113B0 /* Dosis-Regular.otf */; };
 		9D69F1491EE1BD9800EAAE73 /* Dosis-SemiBold.otf in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB62021EDF05FB003113B0 /* Dosis-SemiBold.otf */; };
 		9D69F14B1EE1C19D00EAAE73 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */; };
+		9D7F1A801EFB07FC0052B55E /* TopFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */; };
+		9D7F1A811EFB07FC0052B55E /* TopFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */; };
+		9D7F1A821EFB07FC0052B55E /* TopFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */; };
 		9D965AC91EE5C0D900896098 /* CreateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */; };
 		9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */; };
 		9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
@@ -92,6 +95,15 @@
 		9DEDB6B91EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */; };
 		9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */; };
 		9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */; };
+		9DF477D91EFADA5200791D88 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477D81EFADA5200791D88 /* ShopViewController.swift */; };
+		9DF477DA1EFADA5200791D88 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477D81EFADA5200791D88 /* ShopViewController.swift */; };
+		9DF477DB1EFADA5200791D88 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477D81EFADA5200791D88 /* ShopViewController.swift */; };
+		9DF477DD1EFADA6900791D88 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477DC1EFADA6900791D88 /* ExploreViewController.swift */; };
+		9DF477DE1EFADA6900791D88 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477DC1EFADA6900791D88 /* ExploreViewController.swift */; };
+		9DF477DF1EFADA6900791D88 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477DC1EFADA6900791D88 /* ExploreViewController.swift */; };
+		9DF477E11EFADA7C00791D88 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477E01EFADA7C00791D88 /* ShopTableViewCell.swift */; };
+		9DF477E21EFADA7C00791D88 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477E01EFADA7C00791D88 /* ShopTableViewCell.swift */; };
+		9DF477E31EFADA7C00791D88 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF477E01EFADA7C00791D88 /* ShopTableViewCell.swift */; };
 		A11C8A7550B7CA4DA6DB01FB /* Pods_LocalAmazonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9D08C06520E0DD04A5316F /* Pods_LocalAmazonUITests.framework */; };
 		E7BD21549253FE6CD5F68446 /* Pods_LocalAmazon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23E07248141852F019EEFEA /* Pods_LocalAmazon.framework */; };
 /* End PBXBuildFile section */
@@ -145,6 +157,7 @@
 		9D63E6CB1EDE164F0003C3B9 /* CompanyCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCreateViewController.swift; sourceTree = "<group>"; };
 		9D69F1411EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnOnLocationServicesViewController.swift; sourceTree = "<group>"; };
 		9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProductViewController.swift; sourceTree = "<group>"; };
 		9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewCell.swift; sourceTree = "<group>"; };
 		9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellersTableViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +177,9 @@
 		9DEDB6B81EDE30F600BA2013 /* ActualProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActualProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9DEDB6BA1EDE31EF00BA2013 /* ViewCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCartTableViewCell.swift; sourceTree = "<group>"; };
 		9DEDB6BC1EDE327800BA2013 /* MyPurchasesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPurchasesTableViewCell.swift; sourceTree = "<group>"; };
+		9DF477D81EFADA5200791D88 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		9DF477DC1EFADA6900791D88 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		9DF477E01EFADA7C00791D88 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
 		D7CE557F2DFF0603333EF5BA /* Pods-LocalAmazon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazon/Pods-LocalAmazon.debug.xcconfig"; sourceTree = "<group>"; };
 		E053FBC822DFAEEFB20549A5 /* Pods-LocalAmazonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalAmazonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalAmazonTests/Pods-LocalAmazonTests.release.xcconfig"; sourceTree = "<group>"; };
 		F23E07248141852F019EEFEA /* Pods_LocalAmazon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalAmazon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +261,10 @@
 				9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */,
 				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9DF477DC1EFADA6900791D88 /* ExploreViewController.swift */,
+				9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */,
+				9DF477E01EFADA7C00791D88 /* ShopTableViewCell.swift */,
+				9DF477D81EFADA5200791D88 /* ShopViewController.swift */,
 				9DE70D5B1EF1E18E00A9D5F6 /* CompanyFunctionsViewController.swift */,
 				9D2B19001EEAF12F00B3B176 /* AddPriceToProductViewController.swift */,
 				9D2B18FE1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift */,
@@ -618,15 +638,19 @@
 				9D69F1441EE1BD9800EAAE73 /* Dosis-ExtraBold.otf in Sources */,
 				9D69F1451EE1BD9800EAAE73 /* Dosis-ExtraLight.otf in Sources */,
 				9D69F1461EE1BD9800EAAE73 /* Dosis-Light.otf in Sources */,
+				9DF477D91EFADA5200791D88 /* ShopViewController.swift in Sources */,
 				9D69F1471EE1BD9800EAAE73 /* Dosis-Medium.otf in Sources */,
 				9D69F1481EE1BD9800EAAE73 /* Dosis-Regular.otf in Sources */,
 				9D69F1491EE1BD9800EAAE73 /* Dosis-SemiBold.otf in Sources */,
 				9D63E6C41EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
 				9DEDB6BB1EDE31EF00BA2013 /* ViewCartTableViewCell.swift in Sources */,
 				9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
+				9D7F1A801EFB07FC0052B55E /* TopFoodCollectionViewCell.swift in Sources */,
 				9DEB621D1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
+				9DF477DD1EFADA6900791D88 /* ExploreViewController.swift in Sources */,
 				9D2B18FF1EEAF0C100B3B176 /* AddProductToSellerAccountTableViewCell.swift in Sources */,
 				9DEDB6B71EDE2D4300BA2013 /* ProductDetailsTableViewCell.swift in Sources */,
+				9DF477E11EFADA7C00791D88 /* ShopTableViewCell.swift in Sources */,
 				9D63E6C81EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 				9D2B18FD1EEAF09800B3B176 /* AddProductToAccountViewController.swift in Sources */,
 				9D69F1421EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift in Sources */,
@@ -654,17 +678,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF477E21EFADA7C00791D88 /* ShopTableViewCell.swift in Sources */,
 				9D63E6BD1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
 				9D63E6C51EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
 				9D63E6B91EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9DF477DA1EFADA5200791D88 /* ShopViewController.swift in Sources */,
 				9DCFC7B21EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9D63E69B1EDE141B0003C3B9 /* LocalAmazonTests.swift in Sources */,
 				9DEB621A1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9D63E6C11EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6C91EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 				9DCFC7AA1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
+				9D7F1A811EFB07FC0052B55E /* TopFoodCollectionViewCell.swift in Sources */,
 				9DCFC7AE1EE0D16A00D35238 /* SearchBar.swift in Sources */,
+				9DF477DE1EFADA6900791D88 /* ExploreViewController.swift in Sources */,
 				9DEB621E1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,17 +701,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF477E31EFADA7C00791D88 /* ShopTableViewCell.swift in Sources */,
 				9D63E6BE1EDE15DD0003C3B9 /* ProductDetailsViewController.swift in Sources */,
 				9D63E6C61EDE160A0003C3B9 /* PurchaseConfirmationViewController.swift in Sources */,
 				9D63E6BA1EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */,
+				9DF477DB1EFADA5200791D88 /* ShopViewController.swift in Sources */,
 				9DCFC7B31EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9D63E6A61EDE141B0003C3B9 /* LocalAmazonUITests.swift in Sources */,
 				9DEB621B1EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
 				9D63E6C21EDE15F70003C3B9 /* ViewCartViewController.swift in Sources */,
 				9D63E6CA1EDE161F0003C3B9 /* MyPurchasesViewController.swift in Sources */,
 				9DCFC7AB1EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */,
+				9D7F1A821EFB07FC0052B55E /* TopFoodCollectionViewCell.swift in Sources */,
 				9DCFC7AF1EE0D16A00D35238 /* SearchBar.swift in Sources */,
+				9DF477DF1EFADA6900791D88 /* ExploreViewController.swift in Sources */,
 				9DEB621F1EDF6F0F003113B0 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
