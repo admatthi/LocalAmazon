@@ -465,13 +465,13 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         if tableView.tag == 1 {
             
-            if sellerdistances.count > 7 {
+            if selleraddresses.count > 7 {
                 
                 return 7
                 
             } else {
                 
-                return sellerdistances.count
+                return selleraddresses.count
             }
         
             
@@ -645,23 +645,23 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                         //                                            print(subJson["_source"]["store_address"].string!)
         
                         
-
                         
+                        var address = subJson["_source"]["store_address"].string
+
+                        if self.selleraddresses.contains(address!) {
+                            
+                            
+                        } else {
+                            
+                            self.selleraddresses.append(address!)
+
+                            
                         if var storename = subJson["_source"]["store_name"].string{
                             
                             self.sellernames.append(storename)
                             
                         }
-                        
-                        
-                        
-                        if var address = subJson["_source"]["store_address"].string {
-                        
-                            self.selleraddresses.append(address)
-                        
-                        }
-                
-                        
+                            
                         
                         if var lowprice = subJson["_source"]["store_price"].float {
                             
@@ -693,6 +693,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                             self.distanceawayy.textColor = .gray
                                 
                             }
+                        }
+                            
                         }
                         
                         self.tableView.reloadData()

@@ -143,11 +143,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         loadingbackground.alpha = 0
         categories.removeAll()
         
-        categories.append("Perfect Foods Peanut Butter Bar")
-        categories.append("Organic")
+        categories.append("Fruit Bar")
+        categories.append("Organic Cheese")
         categories.append("Gluten Free")
-        categories.append("Alba Botanica Facial Cleanser")
-        categories.append("Vegan")
+        categories.append("Cleanser")
+        categories.append("Healthy Protein")
         
         ref = FIRDatabase.database().reference()
         
@@ -380,7 +380,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
         } else {
             
-            cell.productimage.image = nil
+            cell.productimage.image = UIImage(named: "LoadingImage")
         }
         
         if distanceaway.count > indexPath.row {
@@ -486,7 +486,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            let jsonObject: [String: Any] =  [ "size" : 1000,
+            let jsonObject: [String: Any] =  [ "size" : 500,
                                                "sort" : [ "_score",
                                                           [ "store_price" : ["order" : "asc" ] ],
                                                           [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
@@ -608,7 +608,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                         
                                     } else {
                                         
-                                        let test = UIImage()
+                                        let test = UIImage(named: "LoadingImage")
                                         
                                         titles[producttitle] = test
                                     }
@@ -781,7 +781,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
-        let jsonObject: [String: Any] =  [ "size" : 1000,
+        let jsonObject: [String: Any] =  [ "size" : 500,
             "sort" : [ "_score",
                        [ "store_price" : ["order" : "asc" ] ],
                        [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
@@ -846,7 +846,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             if var reviewnumber = subJson["_source"]["store_name"].string {
                                 
                                 
-                        storenamess[producttitle] = reviewnumber
+                                storenamess[producttitle] = reviewnumber
                                 
                             }
                             
@@ -903,7 +903,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                     
                                 } else {
                                     
-                                    let test = UIImage()
+                                    let test = UIImage(named: "LoadingImage")
                                     
                                     titles[producttitle] = test
                                 }
@@ -941,9 +941,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         }
 
 
-                        
-                        self.tableView.reloadData()
-                        
+                                                
                       
                         
                         
