@@ -37,7 +37,6 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var reviewimagetwo: UIImageView!
     
-    @IBOutlet weak var distanceaway: UILabel!
     @IBOutlet weak var productsize: UILabel!
     @IBOutlet weak var productimage: UIImageView!
     @IBOutlet weak var reviews: UILabel!
@@ -170,6 +169,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
     
     override func viewDidLoad() {
+        
+        
         
         super.viewDidLoad()
         
@@ -464,7 +465,15 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
         if tableView.tag == 1 {
             
-            return selleraddresses.count
+            if sellerdistances.count > 7 {
+                
+                return 7
+                
+            } else {
+                
+                return sellerdistances.count
+            }
+        
             
             
         }
@@ -563,6 +572,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    @IBOutlet weak var distanceawayy: UILabel!
     @IBOutlet weak var featurethree: UILabel!
     @IBOutlet weak var featuretwo: UILabel!
     internal func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -570,8 +580,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             return nil
     }
     
-    var userlong = Double()
-    var userlat = Double()
+
     
     func getnearestsellers() {
         
@@ -586,15 +595,15 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
             return
         }
         
-        let jsonObject: [String: Any] =  [
-            "sort" : [ "_score",
+        let jsonObject: [String: Any] =  [ "size" : 50,
+            "sort" : [
                        [ "store_price" : ["order" : "asc" ] ],
-                       [ "_geo_distance" : [ "store_geoloc" : "34.000290, -118.455380", "order" : "asc", "unit" : "mi"] ]
+                       [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
             ],
             "query": [
                 "bool": [
-                    "filter": [ [ "term": [ "product_name.raw": thistitle[thisproduct]] ] ,
-                                [ "geo_distance": [ "distance": "15mi", "store_geoloc": "34.000290, -118.455380"] ]
+                    "filter": [ [ "term": [ "product_name.raw": thisproducttitle] ] ,
+                                [ "geo_distance": [ "distance": "15mi", "store_geoloc": userlocation] ]
                     ],
                 ],
             ],
@@ -636,8 +645,6 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                         //                                            print(subJson["_source"]["store_address"].string!)
         
                         
-                     
-                        
 
                         
                         if var storename = subJson["_source"]["store_name"].string{
@@ -656,25 +663,36 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                 
                         
                         
-                        if var lowprice = subJson["_source"]["store_price"].string {
+                        if var lowprice = subJson["_source"]["store_price"].float {
                             
-                            self.sellerprices.append(lowprice)
+                            var stringlowprice = String(format: "%.2f", lowprice)
+
+                            self.sellerprices.append(stringlowprice)
                             
-                            self.price.text = "$\(self.sellerprices[0])"
+                            
+                            
+                            self.tableViewTwo.reloadData()
                             
                         }
                         
-                        if var distance = subJson["sort"][2].float {
+                    
+                        if var distance = subJson["sort"][1].float {
                             
                             self.sellerdistances.append(String(format: "%.2f", distance))
                             
-                            self.distanceaway.text = "\(self.sellerdistances[0]) miles away"
+                        
+                            
+                            self.tableViewTwo.reloadData()
                             
                             
                         } else {
                             
-                            self.distanceaway.text = "No locations available"
-                            self.distanceaway.textColor = .gray
+                            if self.sellerdistances.count == 0 {
+                            
+                            self.distanceawayy.text = "No locations available"
+                            self.distanceawayy.textColor = .gray
+                                
+                            }
                         }
                         
                         self.tableView.reloadData()
@@ -683,6 +701,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                         
                             DispatchQueue.main.async {
                                 
+                                self.distanceawayy.text = "\(self.sellerdistances[0]) miles away"
+                                self.price.text = "$\(self.sellerprices[0])"
+
                                 self.tableView.reloadData()
                                 self.tableViewTwo.reloadData()
 
@@ -703,7 +724,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                 
                 DispatchQueue.main.async {
                     
-                    self.tableView.reloadData()
+                    self.tableViewTwo.reloadData()
                     
                     
                 }

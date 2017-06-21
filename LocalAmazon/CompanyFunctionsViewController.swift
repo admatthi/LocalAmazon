@@ -72,12 +72,54 @@ class CompanyFunctionsViewController: UIViewController, CLLocationManagerDelegat
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
+        queryforproductids {
+            
+            self.queryforuploadedids {
+                
+                
+                self.queryforuploadedidds {
+                    
+                    self.queryforcatalogtitles {
+                        
+                        self.queryforuploadedtitles {
+                            
+                            self.getsellerinfo {
+                                
+                                
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                }
+            }
+        }
         
        
         
     }
     
+    @IBAction func tapAddAllSellersToAllProducts(_ sender: Any) {
+        
+        var addsellercounters = 0
+        
+        
+            for (idd, pricee) in uploadedprices {
+                
+                for iddd in dict {
+                    
+                    self.ref?.child("Catalog").child("\(idd)").child("AllSellers").child(iddd).updateChildValues(["Latitude" : lats[iddd], "Longitude" : longs[iddd], "Price" : self.uploadedprices[idd], "StoreAddress" : addressess[iddd], "StoreName" : names[iddd]])
+                    
+                    addsellercounters += 1
+                }
+                
+        }
+        
+        
+    }
     var addressess = ["":""]
+    
     var names: [String:String] = [:]
     var lats: [String:Double] = [:]
     var longs: [String:String] = [:]

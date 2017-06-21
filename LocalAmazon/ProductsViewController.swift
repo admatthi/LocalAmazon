@@ -48,6 +48,11 @@ var firstlaunch = true
 
 var searched = false
 
+var userlong = Double()
+var userlat = Double()
+var userlocation = ""
+
+
 
 var thisproduct = 0
 
@@ -97,8 +102,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     let lightgreen = UIColor(red:0.23, green:0.77, blue:0.58, alpha:1.0)
     
     
-    var userlong = Double()
-    var userlat = Double()
+
+    
+    
     var minuserlat = Double()
     var minuserlong = Double()
     
@@ -114,7 +120,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
                 userlong = location.longitude
                 userlat = location.latitude
-     
+            
+                userlocation = "\(String(userlat)), \(String(userlong))"
+
             
         }
     }
@@ -127,6 +135,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidLoad() {
+        
+
         
         activityIndicator.alpha = 0
 
@@ -235,7 +245,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         calculatemaxuserlongandlat()
-        
+
         
         // Do any additional setup after loading the view.
     }
@@ -308,24 +318,20 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetails", for: indexPath) as! ProductDetailsTableViewCell
         
-        if prices.count > indexPath.row {
+        if pricess.count > indexPath.row {
             
-            if firstlaunch == false {
-                
-                if prices[indexPath.row] == "" {
+                if pricess[thistitle[indexPath.row]] == "" {
                     
                     cell.price.text = ""
                     cell.price.textColor = .gray
                     
                 } else {
             
-                    cell.price.text = "$\(pricess[thistitle[indexPath.row]])"
+                    cell.price.text = "$\(pricess[thistitle[indexPath.row]]!)"
                     cell.price.textColor = lightgreen
                     
                 }
-                
-            }
-
+            
         } else {
             
             cell.price.text = ""
@@ -483,12 +489,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             let jsonObject: [String: Any] =  [
                 "sort" : [ "_score",
                            [ "store_price" : ["order" : "asc" ] ],
-                           [ "_geo_distance" : [ "store_geoloc" : "34.000290, -118.455380", "order" : "asc", "unit" : "mi"] ]
+                           [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
                 ],
                 "query": [
                     "bool": [
                         "must": [ "match": [ "product_name": searchBar.text ], ],
-                        "filter": [ "geo_distance": [ "distance": "15mi", "store_geoloc": "34.000290, -118.455380"] ],
+                        "filter": [ "geo_distance": [ "distance": "15mi", "store_geoloc": userlocation] ],
                     ],
                 ],
                 ]
@@ -551,11 +557,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 
                                 
                                 
-                                
-                                if var lowprice = subJson["_source"]["store_price"].string {
+                                if var lowprice = subJson["_source"]["store_price"].float {
                                     
                                     
-                                    pricess[producttitle] = lowprice
+                                    var stringlowprice = String(format: "%.2f", lowprice)
+                                    
+                                    pricess[producttitle] = stringlowprice
                                     
                                     
                                     
@@ -773,15 +780,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
-        let jsonObject: [String: Any] =  [
+        let jsonObject: [String: Any] =  [ "size" : 1000,
             "sort" : [ "_score",
                        [ "store_price" : ["order" : "asc" ] ],
-                       [ "_geo_distance" : [ "store_geoloc" : "34.000290, -118.455380", "order" : "asc", "unit" : "mi"] ]
+                       [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
             ],
             "query": [
                 "bool": [
                     "must": [ "match": [ "product_name": searchBar.text ], ],
-                    "filter": [ "geo_distance": [ "distance": "15mi", "store_geoloc": "34.000290, -118.455380"] ],
+                    "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
                 ],
             ],
             ]
@@ -845,10 +852,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 
                             
                             
-                            if var lowprice = subJson["_source"]["store_price"].string {
+                            if var lowprice = subJson["_source"]["store_price"].float {
                                 
                                 
-                                pricess[producttitle] = lowprice
+                                var stringlowprice = String(format: "%.2f", lowprice)
+                                
+                                pricess[producttitle] = stringlowprice
                                 
                                 
                                 
