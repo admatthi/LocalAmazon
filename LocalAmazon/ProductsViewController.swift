@@ -486,18 +486,18 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            let jsonObject: [String: Any] =  [
-                "sort" : [ "_score",
-                           [ "store_price" : ["order" : "asc" ] ],
-                           [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
+            let jsonObject: [String: Any] =  [ "size" : 1000,
+                                               "sort" : [ "_score",
+                                                          [ "store_price" : ["order" : "asc" ] ],
+                                                          [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
                 ],
-                "query": [
-                    "bool": [
-                        "must": [ "match": [ "product_name": searchBar.text ], ],
-                        "filter": [ "geo_distance": [ "distance": "15mi", "store_geoloc": userlocation] ],
-                    ],
+                                               "query": [
+                                                "bool": [
+                                                    "must": [ "match": [ "product_name": searchBar.text ], ],
+                                                    "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
+                                                ],
                 ],
-                ]
+                                               ]
             
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
             
@@ -526,14 +526,14 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         for (index,subJson):(String, JSON) in json["hits"]["hits"] {
                             
-//                                                                    print(index)
-//                                                                    print(subJson["_source"]["product_name"].string!)
-//                                                                    print(subJson["_source"]["product_img"].string!)
-//                                                                    print(subJson["_source"]["store_price"].string!)
-//                                                                    print(subJson["_source"]["store_name"].string!)
-//                                                                    print(subJson["_source"]["store_address"].string!)
-//                                                                    print(subJson)
-//                            
+                            //                                        print(index)
+                            //                                        print(subJson["_source"]["product_name"].string!)
+                            //                                        print(subJson["_source"]["product_img"].string!)
+                            //                                        print(subJson["_source"]["store_price"].string!)
+                            //                                        print(subJson["_source"]["store_name"].string!)
+                            //                                        print(subJson["_source"]["store_address"].string!)
+                            //                                        print(subJson)
+                            
                             
                             
                             
@@ -554,6 +554,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                     storenamess[producttitle] = reviewnumber
                                     
                                 }
+                                
                                 
                                 
                                 
