@@ -181,63 +181,87 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         showlocation()
         hidereviews()
         
+        if shoptodetails == false {
+        
         price.text = ""
         
+        thisproductid = productids[thistitle[thisproduct]]!
+            
         productname.text = thistitle[thisproduct]
-        
-        quantitylabel.text = quantities[thisproduct]
-        
-        
-        
+            
+        thisproducttitle = thistitle[thisproduct]
 
         
-        // Do any additional setup after loading the view.
-        
-        
-        
-
+//        quantitylabel.text = quantities[thisproduct]
         
         if titles[thistitle[thisproduct]] != nil {
         
                 productimage.image = titles[thistitle[thisproduct]]
                 
             }
-        
-      
-//        mapView.delegate = self
-//        
-//        var bizLocation = CLLocationCoordinate2DMake((Double(bizlatitudes[thisproduct])!) , Double(bizlongitudes[thisproduct])!)
-//        
-//        let region = MKCoordinateRegion(center: bizLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//        
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = bizLocation
-//        
-//        mapView.addAnnotation(annotation)
-//        
-//        mapView.setRegion(region, animated: true)
-        
-        ref = FIRDatabase.database().reference()
-        
-        getnearestsellers()
-        
+            
+            getnearestsellers()
+            
             self.queryforproductdata()
+            
+            self.queryforreviewids {
                 
-                self.queryforreviewids {
+                self.queryforreviews()
+                
+                if self.reviewIDs.count > 0 {
                     
-                    self.queryforreviews()
-                    
-                    if self.reviewIDs.count > 0 {
-                        
                     self.reviews.text = "(\(self.reviewIDs.count))"
                     self.reviewstwo.text = "\(self.reviewIDs.count) reviews"
-                        
-                    }
-
-
                     
-                    self.tableView.reloadData()
                 }
+                
+                
+                
+                self.tableView.reloadData()
+            }
+            
+
+            
+        } else {
+         
+            thisproductid = idselected
+            
+            productimage.image = imageselected
+            
+            productname.text = productselected
+            
+            thisproducttitle = productselected
+            
+            getnearestsellers()
+            
+            self.queryforproductdata()
+            
+            self.queryforreviewids {
+                
+                self.queryforreviews()
+                
+                if self.reviewIDs.count > 0 {
+                    
+                    self.reviews.text = "(\(self.reviewIDs.count))"
+                    self.reviewstwo.text = "\(self.reviewIDs.count) reviews"
+                    
+                }
+                
+                
+                
+                self.tableView.reloadData()
+            }
+            
+
+
+
+        }
+        
+        ref = FIRDatabase.database().reference()
+            
+            
+        
+        
         
             }
     
@@ -259,8 +283,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
 
     
-    var thisproducttitle = thistitle[thisproduct]
-    
+    var thisproducttitle = String()
     
     
     
@@ -347,7 +370,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
     
   
-    var thisproductid = thistitle[thisproduct]
+    var thisproductid = String()
     
     func queryforproductdata() {
         
@@ -611,6 +634,7 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
                 ],
             ],
             ]
+
 
         
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)

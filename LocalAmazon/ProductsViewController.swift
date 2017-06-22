@@ -434,8 +434,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if tableView.tag == 1 {
             
-        
-        
         thisproduct = indexPath.row
        
         self.performSegue(withIdentifier: "ProductsToDetails", sender: self)
@@ -907,7 +905,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                         
                                         titles[producttitle] = productphoto!
                                         
-                                        self.tableView.reloadData()
                                         
                                         
                                         //                                    }
