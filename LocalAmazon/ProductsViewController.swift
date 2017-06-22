@@ -32,6 +32,8 @@ var sellerids = [String:String]()
 var searchstrings = [String]()
 var thistitle = [String]()
 
+var autocompletesearches = [String]()
+
 var searchString = String()
 
 var distanceaway = [String:String]()
@@ -138,7 +140,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         
+        shoptodetails = false 
 
+        tableViewThree.alpha = 0
         
         activityIndicator.alpha = 0
 
@@ -214,7 +218,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         searchBar.backgroundColor = healthybrown
 //        searchBar.barTintColor = lightgreen
-        
+        searchBar.delegate = self
+
         
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         
@@ -303,7 +308,16 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             return categories.count
             
-        } else {
+        }
+            
+        if tableView.tag == 3 {
+            
+            return autocompletesearches.count
+            
+        }
+        
+        
+        else {
             
             return 0
         }
@@ -421,12 +435,28 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
         
+        if tableView.tag == 3 {
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell", for: indexPath) as! AutoCompleteTableViewCell
+            
+            if autocompletesearches.count > 0 {
+                
+                cell.textlabel.text = autocompletesearches[indexPath.row]
+            }
+            
+            
+            return cell
+        }
+        
         
         let cell = UITableViewCell()
         
         return cell
         
     }
+    
+    @IBOutlet weak var tableViewThree: UITableView!
     
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
         
@@ -446,238 +476,18 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             searchBar.text = categories[indexPath.row]
             
-            found = false
+            searchwithsearchstring()
+        
+        }
+        
+        if tableView.tag == 3 {
             
-            searched = true
+            searchString = autocompletesearches[indexPath.row]
             
-            activityIndicator.alpha = 1
-            activityIndicator.startAnimating()
-            loadingbackground.alpha = 1
-            tableView.alpha = 0
-            popularlabel.alpha = 0
+            searchBar.text = autocompletesearches[indexPath.row]
             
-            
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ProductsViewController.noavailableproducts), userInfo: nil, repeats: true)
-            
-            titles.removeAll()
-            prices.removeAll()
-            brands.removeAll()
-            addresses.removeAll()
-            storenames.removeAll()
-            productimages.removeAll()
-            thistitle.removeAll()
-            
-            pricess.removeAll()
-            brandss.removeAll()
-            storenamess.removeAll()
-            distanceaway.removeAll()
-            productids.removeAll()
-            
-            var functioncounter = 0
-            
-            popularlabel.alpha = 0
-            
-            
-            searchString = searchBar.text!
-            
-            let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
-            guard let url = URL(string: endpoint) else {
-                print("Error: cannot create URL")
-                return
-            }
-            
-            let jsonObject: [String: Any] =  [ "size" : 500,
-                                               "sort" : [ "_score",
-                                                          [ "store_price" : ["order" : "asc" ] ],
-                                                          [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
-                ],
-                                               "query": [
-                                                "bool": [
-                                                    "must": [ "match": [ "product_name": searchBar.text ], ],
-                                                    "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
-                                                ],
-                ],
-                                               ]
-            
-            let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
-            
-            var urlRequest = URLRequest(url:url)
-            urlRequest.httpBody = jsonData
-            urlRequest.httpMethod = "POST"
-            
-            // set up the session
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-            
-            // make the request
-            
-            var producttitle = String()
-            
-            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                
-                
-                do {
-                    
-                    let json = JSON(data: data!)
-                    
-                    let data = data
-                    
-                    DispatchQueue.global(qos: .utility).async {
-                        
-                        for (index,subJson):(String, JSON) in json["hits"]["hits"] {
-                            
-                            //                                        print(index)
-                            //                                        print(subJson["_source"]["product_name"].string!)
-                            //                                        print(subJson["_source"]["product_img"].string!)
-                            //                                        print(subJson["_source"]["store_price"].string!)
-                            //                                        print(subJson["_source"]["store_name"].string!)
-                            //                                        print(subJson["_source"]["store_address"].string!)
-                            //                                        print(subJson)
-                            
-                            
-                            
-                            
-                            producttitle = (subJson["_source"]["product_name"].string)!
-                            
-                            if thistitle.contains(producttitle) {
-                                
-                                
-                            } else {
-                                
-                                thistitle.append(producttitle)
-                                
-                                titles[producttitle] = UIImage()
-                                
-                                if var reviewnumber = subJson["_source"]["store_name"].string {
-                                    
-                                    
-                                    storenamess[producttitle] = reviewnumber
-                                    
-                                }
-                                
-                                
-                                
-                                
-                                if var lowprice = subJson["_source"]["store_price"].float {
-                                    
-                                    
-                                    var stringlowprice = String(format: "%.2f", lowprice)
-                                    
-                                    pricess[producttitle] = stringlowprice
-                                    
-                                    
-                                    
-                                }
-                                
-                                if var distance = subJson["sort"][2].float {
-                                    
-                                    distanceaway[producttitle] = (String(format: "%.2f", distance))
-                                    
-                                    
-                                }
-                                
-                                if var productimagee = subJson["_source"]["product_img"].string {
-                                    
-                                    if productimagee.hasPrefix("http://") || productimagee.hasPrefix("https://") {
-                                        //
-                                        //                                let dummy = UIImage()
-                                        //
-                                        //                                productimages.append(dummy)
-                                        
-                                        let insertionIndex = productimages.count - 1
-                                        
-                                        let url = URL(string: productimagee)
-                                        
-                                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                                        
-                                        if data != nil {
-                                            
-                                            let productphoto = UIImage(data: (data)!)
-                                            
-                                            //                                    if productimages.count > insertionIndex {
-                                            
-                                            titles[producttitle] = productphoto!
-                                            
-                                            self.tableView.reloadData()
-                                            
-                                            
-                                            //                                    }
-                                            
-                                        }
-                                        
-                                        
-                                    } else {
-                                        
-                                        let test = UIImage(named: "LoadingImage")
-                                        
-                                        titles[producttitle] = test
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                }
-                                
-                                
-                                
-                                if var productid = subJson["_source"]["product_id"].string {
-                                    
-                                    productids[producttitle] = productid
-                                    
-                                }
-                                
-                                
-                                //
-                                
-                                
-                                DispatchQueue.main.async {
-                                    
-                                    self.tableView.reloadData()
-                                    
-                                    self.activityIndicator.alpha = 0
-                                    self.activityIndicator.stopAnimating()
-                                    self.loadingbackground.alpha = 0
-                                    self.tableView.alpha = 1
-                                    self.tableViewTwo.alpha = 0
-                                    
-                                    self.found = true
-                                    
-                                }
-                            }
-                            
-                            
-                            
-                            self.tableView.reloadData()
-                            
-                            
-                            
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    
-                    
-                    
-                } catch {
-                    
-                    DispatchQueue.main.async {
-                        
-                        self.tableView.reloadData()
-                        
-                        
-                    }
-                    
-                    
-                }
-                
-                
-                
-                
-            }
-            
-            task.resume()
+            searchwithsearchstring()
+
             
         }
     }
@@ -698,11 +508,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        
-        
-    }
+   
     
     var timercounter = 0
     
@@ -735,11 +541,39 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var found = Bool()
     
-
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         searchString = searchBar.text!
+        
+        searchwithsearchstring()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            
+        } else {
+            
+            searchString = searchBar.text!
+            
+            
+            tableView.alpha = 0
+            tableViewTwo.alpha = 0
+            tableViewThree.alpha = 1
+            autocompletesearchers()
+            
+            self.tableViewThree.reloadData()
+            
+        }
+        
+        
+        
+    }
+    
+    func searchwithsearchstring()  {
+        
+        
         
         FIRAnalytics.logEvent(withName: "searched", parameters: [
             
@@ -758,6 +592,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         activityIndicator.startAnimating()
         loadingbackground.alpha = 1
         tableView.alpha = 0
+        tableViewTwo.alpha = 0
         popularlabel.alpha = 0
         
        
@@ -783,7 +618,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         popularlabel.alpha = 0
 
         
-        searchString = searchBar.text!
 
         let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
         guard let url = URL(string: endpoint) else {
@@ -798,7 +632,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             ],
             "query": [
                 "bool": [
-                    "must": [ "match": [ "product_name": searchBar.text ], ],
+                    "must": [ "match": [ "product_name": searchString], ],
                     "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
                 ],
             ],
@@ -881,7 +715,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                 
                             }
                             
-                            self.tableView.reloadData()
                             
                             if var productimagee = subJson["_source"]["product_img"].string {
                                 
@@ -951,6 +784,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                                     self.loadingbackground.alpha = 0
                                     self.tableView.alpha = 1
                                     self.tableViewTwo.alpha = 0
+                                    self.tableViewThree.alpha = 0
                                 
                                     self.found = true
                               
@@ -974,7 +808,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 DispatchQueue.main.async {
                     
-                    self.tableView.reloadData()
+//                    self.tableView.reloadData()
                     
                     
                 }
@@ -1001,6 +835,108 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.view.endEditing(true)
         
+    }
+        
+ 
+    
+    
+    
+    func autocompletesearchers() {
+        
+        timercounter = 0
+        
+
+        tableView.alpha = 0
+        tableViewTwo.alpha = 0
+        tableViewThree.alpha = 1
+        
+      
+        
+        let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
+        guard let url = URL(string: endpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        let jsonObject: [String: Any] =  [
+            
+            "suggest": [
+            
+                "product-suggest" : [
+                    "prefix" : searchString,
+                    "completion" : [
+                        "field" : "product_name.suggest"
+                    ],
+                ],
+            ],
+            
+        ]
+        
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
+        
+        var urlRequest = URLRequest(url:url)
+        urlRequest.httpBody = jsonData
+        urlRequest.httpMethod = "POST"
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        
+        var producttitle = String()
+        
+        
+       
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            
+            do {
+                
+                autocompletesearches.removeAll()
+
+                
+                let json = JSON(data: data!)
+                
+                let data = data
+                
+                DispatchQueue.global(qos: .utility).async {
+                    
+                    for (index, subJson):(String, JSON) in json["suggest"]["product-suggest"][0]["options"] {
+                        
+                        var text = subJson["text"].string
+                    
+                        if autocompletesearches.contains(text!) {
+                            
+                        } else {
+                            
+                            autocompletesearches.append(text!)
+                            
+                            self.tableViewThree.reloadData()
+                            
+                            print("motherfucker \(autocompletesearches.count)")
+                            
+                        }
+                            
+                        
+                        
+                    }
+                    
+                }
+                
+            } catch {
+                
+              
+                
+                
+            }
+            
+            
+            
+            
+        }
+        
+        task.resume()
     }
     
     

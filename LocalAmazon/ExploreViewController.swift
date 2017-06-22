@@ -560,9 +560,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                                         //                                    if productimages.count > insertionIndex {
                                         
                                         tophealthimages.append(productphoto!)
-                                        
-                                        self.collectionViewTwo.reloadData()
-                                        
+                                                                                
                                         
                                         //                                    }
                                         

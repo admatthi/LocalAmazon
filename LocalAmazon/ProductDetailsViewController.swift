@@ -598,6 +598,30 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    @IBAction func tapback2(_ sender: Any) {
+        
+        if shoptodetails == false {
+            
+            self.performSegue(withIdentifier: "BackToSearch", sender: self)
+            
+        } else {
+            
+            self.performSegue(withIdentifier: "BackToExplore", sender: self)
+            
+        }
+    }
+    @IBAction func tapback(_ sender: Any) {
+        
+        if shoptodetails == false {
+        
+        self.performSegue(withIdentifier: "BackToSearch", sender: self)
+            
+        } else {
+        
+         self.performSegue(withIdentifier: "BackToExplore", sender: self)
+            
+        }
+    }
     @IBOutlet weak var distanceawayy: UILabel!
     @IBOutlet weak var featurethree: UILabel!
     @IBOutlet weak var featuretwo: UILabel!

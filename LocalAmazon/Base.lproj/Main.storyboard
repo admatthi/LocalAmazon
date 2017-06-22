@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5JU-5b-YRl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uVs-KK-aa0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -582,7 +582,8 @@
                                         </constraints>
                                         <state key="normal" title="Back" image="Back"/>
                                         <connections>
-                                            <segue destination="uVs-KK-aa0" kind="show" id="7yF-mw-9lR"/>
+                                            <action selector="tapback2:" destination="FJU-DL-zxc" eventType="touchUpInside" id="JUj-a3-lHt"/>
+                                            <segue destination="uVs-KK-aa0" kind="show" identifier="BackToSearch" id="7yF-mw-9lR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-bi-YT2">
@@ -595,7 +596,8 @@
                                             <color key="titleColor" red="0.24335649609565735" green="0.23555967211723328" blue="0.21880152821540833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="uVs-KK-aa0" kind="show" id="6LT-5W-DzT"/>
+                                            <action selector="tapback:" destination="FJU-DL-zxc" eventType="touchUpInside" id="Twn-QK-kp2"/>
+                                            <segue destination="5JU-5b-YRl" kind="show" identifier="BackToExplore" id="mzb-Nd-BoW"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peanut Butter Bars" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9R-pi-1bf">
@@ -3003,16 +3005,61 @@
                                 <color key="barTintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
-                                    <outlet property="delegate" destination="uVs-KK-aa0" id="8mn-rQ-Gxk"/>
+                                    <outlet property="delegate" destination="uVs-KK-aa0" id="adh-bc-1nf"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kqD-jO-k6y">
+                                <rect key="frame" x="0.0" y="68" width="375" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="563" id="Fgn-y2-ypn"/>
+                                    <constraint firstAttribute="width" constant="375" id="eZU-mg-442"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AutoCompleteCell" rowHeight="50" id="1oH-yd-NEh" customClass="AutoCompleteTableViewCell" customModule="LocalAmazon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1oH-yd-NEh" id="ZRQ-dU-c6p">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqJ-vN-pZw">
+                                                    <rect key="frame" x="14" y="8" width="347" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="347" id="539-xJ-qxf"/>
+                                                        <constraint firstAttribute="height" constant="21" id="8kL-yh-48L"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.27460291981697083" green="0.27073487639427185" blue="0.26233211159706116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vqJ-vN-pZw" firstAttribute="centerX" secondItem="ZRQ-dU-c6p" secondAttribute="centerX" id="O9A-WV-TrF"/>
+                                                <constraint firstItem="vqJ-vN-pZw" firstAttribute="top" secondItem="ZRQ-dU-c6p" secondAttribute="top" constant="8" id="iB1-Xs-4we"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textlabel" destination="vqJ-vN-pZw" id="tfJ-IB-47C"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uVs-KK-aa0" id="P4B-B9-Vlq"/>
+                                    <outlet property="delegate" destination="uVs-KK-aa0" id="QaH-aj-X2k"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CfT-VW-nCH" firstAttribute="top" secondItem="bOt-30-tEK" secondAttribute="bottom" constant="57" id="02f-zg-RIa"/>
                             <constraint firstItem="hDl-VL-Hix" firstAttribute="top" secondItem="IH1-A6-0Bu" secondAttribute="bottom" id="0r0-09-LaS"/>
                             <constraint firstItem="AeL-7o-PeP" firstAttribute="top" secondItem="Um1-fk-Xr1" secondAttribute="bottom" constant="6" id="1gg-xh-YlG"/>
+                            <constraint firstItem="kqD-jO-k6y" firstAttribute="top" secondItem="bOt-30-tEK" secondAttribute="bottom" id="2TM-fl-bWT"/>
+                            <constraint firstItem="kqD-jO-k6y" firstAttribute="leading" secondItem="pVd-jY-HMf" secondAttribute="leading" id="5QH-J4-sA6"/>
                             <constraint firstItem="pZZ-lV-MT1" firstAttribute="top" secondItem="M6b-Ho-SpZ" secondAttribute="bottom" constant="68" id="5at-1n-aI7"/>
+                            <constraint firstItem="kqD-jO-k6y" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="5x8-w2-4BW"/>
+                            <constraint firstAttribute="trailing" secondItem="kqD-jO-k6y" secondAttribute="trailing" id="A6P-DT-7rB"/>
                             <constraint firstItem="aVU-wC-Dyi" firstAttribute="centerX" secondItem="pVd-jY-HMf" secondAttribute="centerX" id="BTj-pA-D0b"/>
                             <constraint firstAttribute="trailing" secondItem="ivY-8c-O9W" secondAttribute="trailing" id="EGw-1i-Bfw"/>
                             <constraint firstItem="IH1-A6-0Bu" firstAttribute="top" secondItem="M6b-Ho-SpZ" secondAttribute="bottom" constant="56" id="Ikq-wP-acd"/>
@@ -3063,6 +3110,7 @@
                         <outlet property="popularlabel" destination="Um1-fk-Xr1" id="J0T-Ta-TCh"/>
                         <outlet property="searchBar" destination="bOt-30-tEK" id="8Ae-7J-h6P"/>
                         <outlet property="tableView" destination="IH1-A6-0Bu" id="mVo-Mt-iVv"/>
+                        <outlet property="tableViewThree" destination="kqD-jO-k6y" id="cNa-gR-v9p"/>
                         <outlet property="tableViewTwo" destination="CfT-VW-nCH" id="gnM-ty-hDT"/>
                         <segue destination="FJU-DL-zxc" kind="show" identifier="ProductsToDetails" id="lPa-Wm-jcU"/>
                         <segue destination="Gbd-4t-AoB" kind="show" identifier="ShopToNotifications" id="AFL-fi-NSq"/>
@@ -3197,7 +3245,7 @@
         <segue reference="2eL-gb-NaF"/>
         <segue reference="ptt-wN-geA"/>
         <segue reference="SQL-er-RRD"/>
-        <segue reference="HSu-VI-o3F"/>
+        <segue reference="lPa-Wm-jcU"/>
         <segue reference="7yF-mw-9lR"/>
         <segue reference="GS4-Ce-0f7"/>
         <segue reference="X9Z-zl-yPO"/>

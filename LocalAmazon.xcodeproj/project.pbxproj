@@ -58,6 +58,9 @@
 		9D7F1A881EFB330E0052B55E /* TopToolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A871EFB330E0052B55E /* TopToolsCollectionViewCell.swift */; };
 		9D7F1A891EFB330E0052B55E /* TopToolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A871EFB330E0052B55E /* TopToolsCollectionViewCell.swift */; };
 		9D7F1A8A1EFB330E0052B55E /* TopToolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A871EFB330E0052B55E /* TopToolsCollectionViewCell.swift */; };
+		9D7F1A8C1EFB5A350052B55E /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A8B1EFB5A350052B55E /* AutoCompleteTableViewCell.swift */; };
+		9D7F1A8D1EFB5A350052B55E /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A8B1EFB5A350052B55E /* AutoCompleteTableViewCell.swift */; };
+		9D7F1A8E1EFB5A350052B55E /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F1A8B1EFB5A350052B55E /* AutoCompleteTableViewCell.swift */; };
 		9D965AC91EE5C0D900896098 /* CreateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */; };
 		9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */; };
 		9DCFC7A91EE08DDF00D35238 /* SellersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */; };
@@ -166,6 +169,7 @@
 		9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D7F1A831EFB33010052B55E /* TopHealth&BeautyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TopHealth&BeautyCollectionViewCell.swift"; sourceTree = "<group>"; };
 		9D7F1A871EFB330E0052B55E /* TopToolsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopToolsCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D7F1A8B1EFB5A350052B55E /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
 		9D965AC81EE5C0D900896098 /* CreateProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProductViewController.swift; sourceTree = "<group>"; };
 		9DABF42E1EE08022007BF6C4 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewCell.swift; sourceTree = "<group>"; };
 		9DCFC7A81EE08DDF00D35238 /* SellersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellersTableViewCell.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				9D69F14A1EE1C19D00EAAE73 /* FilterViewController.swift */,
 				9DEB62181EDF065F003113B0 /* PopularSearchesTableViewCell.swift */,
 				9D63E6891EDE141B0003C3B9 /* Main.storyboard */,
+				9D7F1A8B1EFB5A350052B55E /* AutoCompleteTableViewCell.swift */,
 				9DF477DC1EFADA6900791D88 /* ExploreViewController.swift */,
 				9D7F1A7F1EFB07FC0052B55E /* TopFoodCollectionViewCell.swift */,
 				9D7F1A831EFB33010052B55E /* TopHealth&BeautyCollectionViewCell.swift */,
@@ -667,6 +672,7 @@
 				9D2B18FD1EEAF09800B3B176 /* AddProductToAccountViewController.swift in Sources */,
 				9D69F1421EE1B4B100EAAE73 /* TurnOnLocationServicesViewController.swift in Sources */,
 				9DEDB6BD1EDE327800BA2013 /* MyPurchasesTableViewCell.swift in Sources */,
+				9D7F1A8C1EFB5A350052B55E /* AutoCompleteTableViewCell.swift in Sources */,
 				9DABF42F1EE08022007BF6C4 /* LocationsTableViewCell.swift in Sources */,
 				9D63E6CC1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9DEB62191EDF065F003113B0 /* PopularSearchesTableViewCell.swift in Sources */,
@@ -697,6 +703,7 @@
 				9D63E6B91EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CD1EDE164F0003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9DF477DA1EFADA5200791D88 /* ShopViewController.swift in Sources */,
+				9D7F1A8D1EFB5A350052B55E /* AutoCompleteTableViewCell.swift in Sources */,
 				9DCFC7B21EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9D7F1A851EFB33010052B55E /* TopHealth&BeautyCollectionViewCell.swift in Sources */,
 				9D63E69B1EDE141B0003C3B9 /* LocalAmazonTests.swift in Sources */,
@@ -722,6 +729,7 @@
 				9D63E6BA1EDE15C80003C3B9 /* ProductsViewController.swift in Sources */,
 				9D63E6CE1EDE16500003C3B9 /* CompanyCreateViewController.swift in Sources */,
 				9DF477DB1EFADA5200791D88 /* ShopViewController.swift in Sources */,
+				9D7F1A8E1EFB5A350052B55E /* AutoCompleteTableViewCell.swift in Sources */,
 				9DCFC7B31EE1039A00D35238 /* UploadPhotoViewController.swift in Sources */,
 				9D7F1A861EFB33010052B55E /* TopHealth&BeautyCollectionViewCell.swift in Sources */,
 				9D63E6A61EDE141B0003C3B9 /* LocalAmazonUITests.swift in Sources */,
