@@ -36,7 +36,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Awesome</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Tell you how far your favorite products are from you</string>
+	<string>Explore Products You Love Nearby</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>awesome</string>
 	<key>UIAppFonts</key>
