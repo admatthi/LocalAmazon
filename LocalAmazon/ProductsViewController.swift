@@ -56,7 +56,7 @@ var userlong = Double()
 var userlat = Double()
 var userlocation = ""
 
-
+var comingfromshop = Bool()
 
 var thisproduct = 0
 
@@ -140,6 +140,23 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         
+        self.tableViewThree.separatorStyle = .none
+        
+        if comingfromshop == true  {
+            
+            comingfromshop = false
+            
+            searchString = "Organic" 
+            
+            searchwithsearchstring()
+            
+            tableView.alpha = 1
+            tableViewTwo.alpha = 0
+            popularlabel.alpha = 0
+            dividerline.alpha = 0
+
+        }
+        
         shoptodetails = false 
 
         tableViewThree.alpha = 0
@@ -164,28 +181,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
 
         
-        
-        if CLLocationManager.locationServicesEnabled() {
-            switch(CLLocationManager.authorizationStatus()) {
-            case .notDetermined, .restricted, .denied:
-            
-                DispatchQueue.main.async {
-                    
-                    self.performSegue(withIdentifier: "ShopToNotifications", sender: self)
-                }
-
-            case .authorizedAlways, .authorizedWhenInUse:
-                
-                locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                locationManager.startUpdatingLocation()
-
-                
-            default: break
-
-            }
-        }
-        
+      
     
 ////        if searchString == "" {
 //        
@@ -195,12 +191,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             tableViewTwo.alpha = 1
             tableView.alpha = 0
             popularlabel.alpha = 1
+            dividerline.alpha = 1
+            
             
         } else {
             
             tableView.alpha = 1
             tableViewTwo.alpha = 0
             popularlabel.alpha = 0
+            dividerline.alpha = 0
         }
         
 //
@@ -269,6 +268,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
   
+    @IBOutlet weak var dividerline: UILabel!
     /*
     // MARK: - Navigation
 
@@ -286,6 +286,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         if titles.count > 0 {
             
             self.popularlabel.alpha = 0
+            dividerline.alpha = 0
+
             
             self.notavailablelabel.alpha = 0
             self.continueanyway.alpha = 0
@@ -334,19 +336,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetails", for: indexPath) as! ProductDetailsTableViewCell
         
-        if pricess.count > indexPath.row && thistitle.count > indexPath.row {
-            
-                if pricess[thistitle[indexPath.row]] == "" {
+        if pricess.count - 1 > indexPath.row && thistitle.count - 1 > indexPath.row {
+        
+                cell.price.text = "$\(pricess[thistitle[indexPath.row]]!)"
+                cell.price.textColor = lightgreen
                     
-                    cell.price.text = ""
-                    cell.price.textColor = .gray
-                    
-                } else {
-            
-                    cell.price.text = "$\(pricess[thistitle[indexPath.row]]!)"
-                    cell.price.textColor = lightgreen
-                    
-                }
             
         } else {
             
@@ -390,7 +384,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.productname.text = ""
         }
         
-        if titles.count > indexPath.row {
+        if titles.count > indexPath.row  && thistitle.count > indexPath.row {
             
             cell.productimage.image = titles[thistitle[indexPath.row]]
 
@@ -399,7 +393,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.productimage.image = UIImage(named: "LoadingImage")
         }
         
-        if distanceaway.count - 1 > indexPath.row {
+        if distanceaway.count + 1 > indexPath.row && thistitle.count  + 1 > indexPath.row {
             
             if distanceaway[thistitle[indexPath.row]] != "" {
             
@@ -445,6 +439,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.textlabel.text = autocompletesearches[indexPath.row]
             }
             
+            cell.selectionStyle = .gray
+            
             
             return cell
         }
@@ -484,12 +480,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             
             if autocompletesearches.count > 0 {
-            
-                searchwithsearchstring()
 
                 searchString = autocompletesearches[indexPath.row]
             
                 searchBar.text = autocompletesearches[indexPath.row]
+                
+                searchwithsearchstring()
             
             
             }
@@ -558,11 +554,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if searchBar.text == nil || searchBar.text == "" {
             
+            tableViewThree.alpha = 0
+            tableView.alpha = 1
+            tableViewTwo.alpha = 0
+            
             
         } else {
             
             
-            searchString = searchBar.text!
+            searchString = searchBar.text! + " "
             
             
             tableView.alpha = 0
@@ -571,12 +571,18 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             autocompletesearchers()
             
             self.tableViewThree.reloadData()
-            
+
         }
         
         
         
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+  
+    }
+    
     
     func searchwithsearchstring()  {
         
@@ -601,7 +607,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.alpha = 0
         tableViewTwo.alpha = 0
         popularlabel.alpha = 0
-        
+        dividerline.alpha = 0
+ 
        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ProductsViewController.noavailableproducts), userInfo: nil, repeats: true)
         
@@ -623,6 +630,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         var functioncounter = 0
         
         popularlabel.alpha = 0
+        dividerline.alpha = 0
 
         
 
@@ -858,26 +866,25 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         tableViewThree.alpha = 1
         
         
+        
         let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
         guard let url = URL(string: endpoint) else {
             print("Error: cannot create URL")
             return
         }
         
-        let jsonObject: [String: Any] =  [
-            
-            "suggest": [
-            
-                "product-suggest" : [
-                    "prefix" : searchString,
-                    "completion" : [
-                        "field" : "product_name.suggest"
-                    ],
-                ],
+        let jsonObject: [String: Any] =  [ "size" : 500,
+                                           "sort" : [ "_score",
+                                                      [ "store_price" : ["order" : "asc" ] ],
+                                                      [ "_geo_distance" : [ "store_geoloc" : userlocation, "order" : "asc", "unit" : "mi"] ]
             ],
-            
-        ]
-        
+                                           "query": [
+                                            "bool": [
+                                                "must": [ "match": [ "product_name": searchString], ],
+                                                "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
+                                            ],
+            ],
+                                           ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject)
         
@@ -893,43 +900,56 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         var producttitle = String()
         
-        
-        
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             
+            
             do {
-                
-
                 
                 let json = JSON(data: data!)
                 
                 let data = data
                 
+                autocompletesearches.removeAll()
+                
                 DispatchQueue.global(qos: .utility).async {
                     
-                    autocompletesearches.removeAll()
-
-                    for (index, subJson):(String, JSON) in json["suggest"]["product-suggest"][0]["options"] {
-                        
-                        var text = subJson["text"].string
                     
-                        if autocompletesearches.contains(text!) {
+                    for (index,subJson):(String, JSON) in json["hits"]["hits"] {
+                        
+                        //                                        print(index)
+                        //                                        print(subJson["_source"]["product_name"].string!)
+                        //                                        print(subJson["_source"]["product_img"].string!)
+                        //                                        print(subJson["_source"]["store_price"].string!)
+                        //                                        print(subJson["_source"]["store_name"].string!)
+                        //                                        print(subJson["_source"]["store_address"].string!)
+                        //                                        print(subJson)
+                        
+                        
+                        
+                        
+                        var text = (subJson["_source"]["product_name"].string)!
+                    
+                        if autocompletesearches.contains(text) {
                             
                         } else {
                             
-                            autocompletesearches.append(text!)
+                            autocompletesearches.append(text)
                             
+                            self.tableViewThree.reloadData()
                             
                             print("motherfucker \(autocompletesearches.count)")
                             
-                        }
                             
-                        self.tableViewThree.reloadData()
-
+                        }
+                        
                         
                     }
                     
-                    self.tableViewThree.reloadData()
+                    DispatchQueue.main.async() {
+                        
+                        self.tableViewThree.reloadData()
+                    }
+                    
 
                 }
                 
@@ -938,7 +958,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 DispatchQueue.main.async {
                     
-                                    self.tableViewThree.reloadData()
                     
                     
                 }

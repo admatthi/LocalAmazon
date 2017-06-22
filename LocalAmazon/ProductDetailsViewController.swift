@@ -122,15 +122,15 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var descriptionlabel: UILabel!
     func showdetails() {
         
-        about.alpha = 1
-        aboutthebrand.alpha = 1
-        
-        descriptiontitle.alpha = 1
-        descriptionlabel.alpha = 1
-        featurestext.alpha = 1
-        featureslabel.alpha = 1
-        featuretwo.alpha = 1
-        featurethree.alpha = 1
+//        about.alpha = 1
+//        aboutthebrand.alpha = 1
+//        
+//        descriptiontitle.alpha = 1
+//        descriptionlabel.alpha = 1
+//        featurestext.alpha = 1
+//        featureslabel.alpha = 1
+//        featuretwo.alpha = 1
+//        featurethree.alpha = 1
         detailshighlight.alpha = 1
         
         if featurestext.text == "" {
@@ -257,8 +257,9 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
         }
         
+        tableView.tableFooterView = UIView()
+
         ref = FIRDatabase.database().reference()
-            
             
         
         
@@ -598,6 +599,16 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    internal func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+     
+            
+        return nil
+     
+        
+    }
+    
+    
+    
     @IBAction func tapback2(_ sender: Any) {
         
         if shoptodetails == false {
@@ -625,10 +636,8 @@ class ProductDetailsViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var distanceawayy: UILabel!
     @IBOutlet weak var featurethree: UILabel!
     @IBOutlet weak var featuretwo: UILabel!
-    internal func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-
-            return nil
-    }
+    
+   
     
 
     

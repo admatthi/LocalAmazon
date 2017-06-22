@@ -25,7 +25,7 @@ class TurnOnLocationServicesViewController: UIViewController, CLLocationManagerD
         
             DispatchQueue.main.async {
                 
-                self.performSegue(withIdentifier: "NotificationsToShop", sender: self)
+                self.performSegue(withIdentifier: "NotificationsToExplore", sender: self)
             }
             
         default: break
@@ -55,7 +55,7 @@ class TurnOnLocationServicesViewController: UIViewController, CLLocationManagerD
             
               DispatchQueue.main.async {
                 
-                self.performSegue(withIdentifier: "NotificationsToShop", sender: self)
+                self.performSegue(withIdentifier: "NotificationsToExplore", sender: self)
         }
             locationManager.delegate = self as! CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters

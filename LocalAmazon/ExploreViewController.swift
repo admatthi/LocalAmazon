@@ -233,7 +233,32 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shoptodetails = false 
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                
+                DispatchQueue.main.async {
+                    
+                    self.performSegue(withIdentifier: "ExploreToNotifications", sender: self)
+                }
+                
+            case .authorizedAlways, .authorizedWhenInUse:
+                
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.startUpdatingLocation()
+                
+                
+            default: break
+                
+            }
+        }
+        
+        
+        comingfromshop = false
+
+        shoptodetails = false
 
         // Do any additional setup after loading the view.
         calculatemaxuserlongandlat {
@@ -328,7 +353,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         }
         
-        if toporganicdistances.count + 1 > indexPath.row {
+        if toporganicdistances.count > indexPath.row {
 
             cell.productdistance.text = "\(toporganicdistances[indexPath.row]) mi"
 
@@ -383,7 +408,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
             }
             
-            if toptoolsdistances.count > indexPath.row {
+            if toptoolsdistances.count > indexPath.row  {
                 
                 cell.productdistance.text = "\(toptoolsdistances[indexPath.row]) mi"
                 
@@ -476,7 +501,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             ],
                                            "query": [
                                             "bool": [
-                                                "must": [ "match": [ "product_name": "Cleanser" ], ],
+                                                "must": [ "match": [ "product_name": "Vitamin" ], ],
                                                 "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
                                             ],
             ],
@@ -648,7 +673,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             ],
                                            "query": [
                                             "bool": [
-                                                "must": [ "match": [ "product_name": "Oil" ], ],
+                                                "must": [ "match": [ "product_name": "Wash" ], ],
                                                 "filter": [ "geo_distance": [ "distance": "25mi", "store_geoloc": userlocation] ],
                                             ],
             ],

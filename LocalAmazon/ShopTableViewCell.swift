@@ -10,6 +10,7 @@ import UIKit
 
 class ShopTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var forwardbutton: UIImageView!
     @IBOutlet weak var categoryimage: UIImageView!
     @IBOutlet weak var CATEGORYLABEL: UILabel!
     override func awakeFromNib() {

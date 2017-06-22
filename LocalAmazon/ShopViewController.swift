@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ShopViewController: UIViewController {
+class ShopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var categories = [String]()
 
@@ -18,18 +18,23 @@ class ShopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        comingfromshop = false
+        
         categories.removeAll()
         
+        categories.append("Restaurants, Food, & Grocery")
+
+        categories.append("Beauty & Health")
+
         categories.append("Clothing, Shoes, & Jewelry")
         categories.append("Home & Garden")
         categories.append("Sports & Outdoors")
-        categories.append("Restaurants, Food, & Grocery")
         categories.append("Automotive, Tools, & Industrial")
-        categories.append("Beauty & Health")
         categories.append("Toys, Kids, & Baby")
         
         
-        
+        tableView.tableFooterView = UIView()
+
 
         // Do any additional setup after loading the view.
     }
@@ -61,12 +66,29 @@ class ShopViewController: UIViewController {
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let lightgrey  = UIColor(red:0.91, green:0.91, blue:0.90, alpha:1.0)
+        
+
+        
+
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShopCell", for: indexPath) as! ShopTableViewCell
             
      
         cell.categoryimage.image = UIImage(named: "\(categories[indexPath.row])")
         cell.CATEGORYLABEL.text = categories[indexPath.row]
+        
+        if indexPath.row > 0 {
+            
+            cell.forwardbutton.alpha = 0
+            
+            cell.CATEGORYLABEL.textColor = .gray
+        
+            
+            cell.selectionStyle = .none
+            
+            
+        }
         
         return cell
         
@@ -76,7 +98,28 @@ class ShopViewController: UIViewController {
         
     {
      
+        comingfromshop = true
+
+        self.performSegue(withIdentifier: "ShopToSearch", sender: self)
+        
         
     }
+    
+    internal func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        
+        
+        if indexPath.row > 0 {
+            
+            return nil
+
+        } else {
+            
+            return indexPath
+        }
+        
+    }
+    
+   
+
 
 }
