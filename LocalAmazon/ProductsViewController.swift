@@ -334,7 +334,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetails", for: indexPath) as! ProductDetailsTableViewCell
         
-        if pricess.count > indexPath.row {
+        if pricess.count > indexPath.row && thistitle.count > indexPath.row {
             
                 if pricess[thistitle[indexPath.row]] == "" {
                     
@@ -381,7 +381,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
 
             }
         
-        if titles.count - 1 > indexPath.row {
+        if thistitle.count > indexPath.row {
             
             cell.productname.text = thistitle[indexPath.row]
 
@@ -482,11 +482,17 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if tableView.tag == 3 {
             
-            searchString = autocompletesearches[indexPath.row]
             
-            searchBar.text = autocompletesearches[indexPath.row]
+            if autocompletesearches.count > 0 {
             
-            searchwithsearchstring()
+                searchwithsearchstring()
+
+                searchString = autocompletesearches[indexPath.row]
+            
+                searchBar.text = autocompletesearches[indexPath.row]
+            
+            
+            }
 
             
         }
@@ -554,6 +560,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             
         } else {
+            
             
             searchString = searchBar.text!
             
@@ -850,7 +857,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         tableViewTwo.alpha = 0
         tableViewThree.alpha = 1
         
-      
         
         let endpoint: String = "https://fb8505096e053937ef65abd75770d7ef.us-west-1.aws.found.io:9243/products/product/_search"
         guard let url = URL(string: endpoint) else {
@@ -888,12 +894,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         var producttitle = String()
         
         
-       
+        
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             
             do {
                 
-                autocompletesearches.removeAll()
 
                 
                 let json = JSON(data: data!)
@@ -902,6 +907,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 DispatchQueue.global(qos: .utility).async {
                     
+                    autocompletesearches.removeAll()
+
                     for (index, subJson):(String, JSON) in json["suggest"]["product-suggest"][0]["options"] {
                         
                         var text = subJson["text"].string
@@ -912,23 +919,30 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             autocompletesearches.append(text!)
                             
-                            self.tableViewThree.reloadData()
                             
                             print("motherfucker \(autocompletesearches.count)")
                             
                         }
                             
-                        
+                        self.tableViewThree.reloadData()
+
                         
                     }
                     
+                    self.tableViewThree.reloadData()
+
                 }
                 
             } catch {
                 
-              
                 
-                
+                DispatchQueue.main.async {
+                    
+                                    self.tableViewThree.reloadData()
+                    
+                    
+                }
+
             }
             
             

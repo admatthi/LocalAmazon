@@ -583,7 +583,6 @@
                                         <state key="normal" title="Back" image="Back"/>
                                         <connections>
                                             <action selector="tapback2:" destination="FJU-DL-zxc" eventType="touchUpInside" id="JUj-a3-lHt"/>
-                                            <segue destination="uVs-KK-aa0" kind="show" identifier="BackToSearch" id="7yF-mw-9lR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-bi-YT2">
@@ -597,7 +596,6 @@
                                         </state>
                                         <connections>
                                             <action selector="tapback:" destination="FJU-DL-zxc" eventType="touchUpInside" id="Twn-QK-kp2"/>
-                                            <segue destination="5JU-5b-YRl" kind="show" identifier="BackToExplore" id="mzb-Nd-BoW"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peanut Butter Bars" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9R-pi-1bf">
@@ -842,6 +840,8 @@
                         <outlet property="tapdetails" destination="8cE-bz-RHD" id="9sq-ip-lZh"/>
                         <outlet property="taplocation" destination="vDE-GO-aQz" id="F7Q-un-YcC"/>
                         <outlet property="tapreviews" destination="V73-FN-fCQ" id="KFY-Z6-xbg"/>
+                        <segue destination="uVs-KK-aa0" kind="show" identifier="BackToSearch" id="N4t-1k-GC8"/>
+                        <segue destination="5JU-5b-YRl" kind="show" identifier="BackToExplore" id="6FF-ze-Kp0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4u0-bT-c4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3246,7 +3246,7 @@
         <segue reference="ptt-wN-geA"/>
         <segue reference="SQL-er-RRD"/>
         <segue reference="lPa-Wm-jcU"/>
-        <segue reference="7yF-mw-9lR"/>
+        <segue reference="N4t-1k-GC8"/>
         <segue reference="GS4-Ce-0f7"/>
         <segue reference="X9Z-zl-yPO"/>
     </inferredMetricsTieBreakers>
